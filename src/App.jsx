@@ -28,7 +28,7 @@ function App() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 w-64">
               <div className="flex items-center gap-2 ml-0.5">
-                <img src="/finallogo.png" alt="Ruebok Ventures" className="h-9 w-auto" />
+                <img src="/finallogo.png" alt="Ruebok Ventures" className="h-12 w-auto" />
               </div>
             </Link>
 
