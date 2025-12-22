@@ -64,7 +64,7 @@ function Home() {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
       {/* Hero Section */}
-      <section className="snap-start relative min-h-screen bg-gray-50 paper-grid pt-[70px] flex items-center justify-center overflow-hidden">
+      <section className="snap-start relative min-h-screen bg-gray-50 lg:paper-grid pt-[70px] flex items-center justify-center overflow-hidden">
       {/* Sticky Note - Top Left */}
       <div className="hidden lg:block absolute top-[9.25rem] left-12 w-[230px] z-10 rotate-initial-n8" style={{ animation: 'float-rotate-n8 10s ease-in-out infinite', animationDelay: '0s' }}>
         <div className="bg-yellow-100 rounded-2xl p-6 shadow-lg relative">
@@ -194,7 +194,14 @@ function Home() {
             backgroundImage: 'url(/frontphoto.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: '0.3'
+            opacity: '0.5'
+          }}
+        ></div>
+        {/* Dark overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'rgba(0, 0, 0, 0.4)'
           }}
         ></div>
         {/* Gradient overlay at bottom */}
@@ -210,13 +217,13 @@ function Home() {
       <div className="text-center px-6 max-w-3xl mx-auto relative z-20 -mt-20">
         {/* Main Headline */}
         <h1 className="mb-4 leading-tight">
-          <div className="text-[48px] sm:text-[56px] md:text-[72px] font-bold text-black">
+          <div className="text-[48px] sm:text-[56px] md:text-[72px] font-bold text-white lg:text-black">
             Fund, mentor, scale.
           </div>
         </h1>
 
         {/* Subheadline */}
-        <p className="subheadline text-[16px] sm:text-[18px] md:text-[20px] text-gray-600 max-w-[500px] mx-auto mb-16 leading-relaxed">
+        <p className="subheadline text-[20px] sm:text-[22px] md:text-[20px] text-white lg:text-gray-600 max-w-[500px] mx-auto mb-16 leading-relaxed">
           Empowering visionary founders across agriculture, fintech, and emerging sectors.
         </p>
 
@@ -224,6 +231,13 @@ function Home() {
         <a href="/apply" className="inline-block px-6 py-3 sm:px-8 sm:py-4 bg-orange-600 text-white rounded-lg font-semibold text-[16px] sm:text-[18px] md:text-[20px] shadow-lg hover:bg-orange-700 hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ fontFamily: 'Playfair Display, Georgia, serif', letterSpacing: '0.5px' }}>
           Join Wait List
         </a>
+
+        {/* Scroll Down Arrow - Mobile Only */}
+        <div className="lg:hidden absolute bottom-8 left-1/2 -translate-x-1/2 z-30" style={{ animation: 'bounce-arrow 3s ease-in-out infinite' }}>
+          <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 16l-6-6h12z" />
+          </svg>
+        </div>
       </div>
     </section>
 
