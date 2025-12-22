@@ -24,12 +24,12 @@ function App() {
     <Router>
       <div className="min-h-screen bg-gray-50 font-sans">
         {/* Navigation Bar */}
-        <nav className={`fixed top-0 left-0 right-0 bg-white z-50 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
+        <nav className={`fixed top-0 left-0 right-0 bg-white lg:bg-white bg-black z-50 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-8 h-[70px] flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
               <div className="flex items-center gap-2 sm:ml-4">
-                <img src="/finallogo.png" alt="Ruebok Ventures" className="h-[36px] sm:h-[44px] w-auto" />
+                <img src="/finallogo.png" alt="Ruebok Ventures" className="h-[36px] sm:h-[44px] w-auto brightness-0 invert lg:brightness-100 lg:invert-0" />
               </div>
             </Link>
 
@@ -50,7 +50,7 @@ function App() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:text-orange-600 transition-colors"
+              className="md:hidden p-2 text-white hover:text-orange-600 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -67,46 +67,46 @@ function App() {
 
           {/* Mobile Menu Dropdown */}
           {mobileMenuOpen && (
-            <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div className="md:hidden bg-black border-t border-gray-800 shadow-lg">
               <div className="px-4 py-4 space-y-3">
                 <Link
                   to="/portfolio"
-                  className="block py-2 text-[15px] font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Portfolio
                 </Link>
                 <Link
                   to="/sectors"
-                  className="block py-2 text-[15px] font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Sectors
                 </Link>
                 <Link
                   to="/curriculum"
-                  className="block py-2 text-[15px] font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Curriculum
                 </Link>
                 <Link
                   to="/resources"
-                  className="block py-2 text-[15px] font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Resources
                 </Link>
                 <Link
                   to="/about"
-                  className="block py-2 text-[15px] font-medium text-gray-700 hover:text-orange-600 transition-colors"
+                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About
                 </Link>
                 <a
                   href="#login"
-                  className="block py-2 text-[15px] font-medium text-orange-600 hover:text-orange-700 transition-colors border-t border-gray-100 mt-2 pt-4"
+                  className="block py-2 text-[15px] font-medium text-orange-600 hover:text-orange-700 transition-colors border-t border-gray-800 mt-2 pt-4"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Founder Login

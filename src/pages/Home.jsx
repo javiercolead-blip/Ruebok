@@ -64,7 +64,7 @@ function Home() {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
       {/* Hero Section */}
-      <section className="snap-start relative min-h-screen bg-gray-50 lg:paper-grid pt-[70px] flex items-center justify-center overflow-hidden">
+      <section className="snap-start relative min-h-screen bg-black lg:bg-gray-50 lg:paper-grid pt-[70px] flex items-center justify-center overflow-hidden">
       {/* Sticky Note - Top Left */}
       <div className="hidden lg:block absolute top-[9.25rem] left-12 w-[230px] z-10 rotate-initial-n8" style={{ animation: 'float-rotate-n8 10s ease-in-out infinite', animationDelay: '0s' }}>
         <div className="bg-yellow-100 rounded-2xl p-6 shadow-lg relative">
@@ -233,7 +233,7 @@ function Home() {
         </a>
 
         {/* Scroll Down Arrow - Mobile Only */}
-        <div className="lg:hidden absolute bottom-8 left-1/2 -translate-x-1/2 z-30" style={{ animation: 'bounce-arrow 3s ease-in-out infinite' }}>
+        <div className="lg:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-30" style={{ animation: 'bounce-arrow 3s ease-in-out infinite' }}>
           <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 16l-6-6h12z" />
           </svg>
@@ -242,7 +242,7 @@ function Home() {
     </section>
 
       {/* Backing Founders Section */}
-      <section className="snap-start relative min-h-screen bg-gray-50 paper-grid pt-[70px] flex items-center justify-center overflow-hidden">
+      <section className="snap-start relative min-h-screen bg-black lg:bg-gray-50 paper-grid pt-[70px] flex items-center justify-center overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center">
           {/* Left Side - Image */}
           <div className="relative flex items-center justify-center">
@@ -253,10 +253,10 @@ function Home() {
 
           {/* Right Side - Content */}
           <div className="space-y-3 sm:space-y-4 lg:space-y-6">
-            <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-bold text-black leading-tight">
+            <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-bold text-white lg:text-black leading-tight">
               Backing founders with purpose
             </h2>
-            <div className="space-y-2 sm:space-y-3 lg:space-y-4 text-[14px] sm:text-[16px] lg:text-[18px] text-gray-700 leading-relaxed">
+            <div className="space-y-2 sm:space-y-3 lg:space-y-4 text-[14px] sm:text-[16px] lg:text-[18px] text-gray-300 lg:text-gray-700 leading-relaxed">
               <p>
                 At Ruebok Ventures, we invest in more than just ideas—we invest in people with vision,
                 resilience, and a deep understanding of the markets they serve.
@@ -274,13 +274,13 @@ function Home() {
       </section>
 
       {/* How We Help Section */}
-      <section className="snap-start relative h-screen bg-gray-50 paper-grid pt-[70px] flex flex-col overflow-hidden">
+      <section className="snap-start relative h-screen bg-black lg:bg-gray-50 paper-grid pt-[70px] flex flex-col overflow-hidden">
         <div className="flex-1 flex flex-col max-w-6xl mx-auto px-4 sm:px-8 py-6 sm:py-8 lg:py-12 w-full">
           <div className="text-center mb-6 sm:mb-8 lg:mb-12">
-            <h2 className="text-[28px] sm:text-[40px] lg:text-[56px] font-bold text-black leading-tight mb-2 sm:mb-3 lg:mb-4">
+            <h2 className="text-[28px] sm:text-[40px] lg:text-[56px] font-bold text-white lg:text-black leading-tight mb-2 sm:mb-3 lg:mb-4">
               How we help you succeed
             </h2>
-            <p className="text-[13px] sm:text-[16px] lg:text-[18px] text-gray-600 max-w-2xl mx-auto px-4">
+            <p className="text-[13px] sm:text-[16px] lg:text-[18px] text-gray-300 lg:text-gray-600 max-w-2xl mx-auto px-4">
               Beyond capital, we provide the support and resources you need to build a sustainable business.
             </p>
           </div>
@@ -288,53 +288,53 @@ function Home() {
           {/* Support Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 flex-1">
             {/* Card 1 - Mentorship */}
-            <div className="bg-white rounded-xl p-3 sm:p-4 lg:p-5 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="bg-gray-900 lg:bg-white rounded-xl p-3 sm:p-4 lg:p-5 shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-2 sm:mb-3 lg:mb-4">
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
-              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2">Expert Mentorship</h3>
-              <p className="text-gray-600 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug">
+              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white lg:text-black">Expert Mentorship</h3>
+              <p className="text-gray-400 lg:text-gray-600 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug">
                 One-on-one guidance from experienced founders and industry leaders who've built successful companies.
               </p>
             </div>
 
             {/* Card 2 - Network Access */}
-            <div className="bg-white rounded-xl p-3 sm:p-4 lg:p-5 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="bg-gray-900 lg:bg-white rounded-xl p-3 sm:p-4 lg:p-5 shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-2 sm:mb-3 lg:mb-4">
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
               </div>
-              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2">Network Access</h3>
-              <p className="text-gray-600 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug">
+              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white lg:text-black">Network Access</h3>
+              <p className="text-gray-400 lg:text-gray-600 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug">
                 Connect with strategic partners, customers, and other founders in our global portfolio community.
               </p>
             </div>
 
             {/* Card 3 - Operational Support */}
-            <div className="bg-white rounded-xl p-3 sm:p-4 lg:p-5 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="bg-gray-900 lg:bg-white rounded-xl p-3 sm:p-4 lg:p-5 shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-green-100 rounded-xl flex items-center justify-center mb-2 sm:mb-3 lg:mb-4">
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
               </div>
-              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2">Operational Tools</h3>
-              <p className="text-gray-600 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug">
+              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white lg:text-black">Operational Tools</h3>
+              <p className="text-gray-400 lg:text-gray-600 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug">
                 Access to business management platforms, financial planning tools, and growth analytics software.
               </p>
             </div>
 
             {/* Card 4 - Funding Support */}
-            <div className="bg-white rounded-xl p-3 sm:p-4 lg:p-5 shadow-lg hover:shadow-xl transition-shadow">
+            <div className="bg-gray-900 lg:bg-white rounded-xl p-3 sm:p-4 lg:p-5 shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-2 sm:mb-3 lg:mb-4">
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2">Follow-On Funding</h3>
-              <p className="text-gray-600 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug">
+              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white lg:text-black">Follow-On Funding</h3>
+              <p className="text-gray-400 lg:text-gray-600 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug">
                 Continued capital support through Series A and beyond, plus introductions to leading investors.
               </p>
             </div>
@@ -342,7 +342,7 @@ function Home() {
         </div>
 
         {/* Bottom CTA Bar */}
-        <div className="w-full bg-white border-t border-gray-200 px-4 sm:px-8 py-6">
+        <div className="w-full bg-gray-900 lg:bg-white border-t border-gray-800 lg:border-gray-200 px-4 sm:px-8 py-6">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <span className="text-[18px] sm:text-[20px] md:text-[24px] font-bold text-orange-600 text-center sm:text-left">
               Ready to build something remarkable?
