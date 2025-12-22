@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../supabaseClient'
 
 function Apply() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -11,10 +13,12 @@ function Apply() {
     website: '',
     one_line_description: '',
     what_problem_are_you_solving: '',
-    what_makes_your_solution_unique: ''
+    what_makes_your_solution_unique: '',
+    biggest_challenge: ''
   })
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState({ type: '', text: '' })
+  const [showBackButton, setShowBackButton] = useState(false)
 
   const handleChange = (e) => {
     const { id, value } = e.target
@@ -46,8 +50,11 @@ function Apply() {
         website: '',
         one_line_description: '',
         what_problem_are_you_solving: '',
-        what_makes_your_solution_unique: ''
+        what_makes_your_solution_unique: '',
+        biggest_challenge: ''
       })
+      // Show back button after 2 seconds
+      setTimeout(() => setShowBackButton(true), 2000)
     } catch (error) {
       setMessage({ type: 'error', text: 'Error submitting application. Please try again.' })
       console.error('Error:', error)
@@ -75,6 +82,20 @@ function Apply() {
               <p className="text-sm text-gray-500">
                 We typically respond within 2-3 weeks
               </p>
+
+              {/* Back to Home Button - Fades in after 2 seconds */}
+              <button
+                onClick={() => navigate('/')}
+                className={`mt-8 flex items-center gap-2 mx-auto text-orange-600 hover:text-orange-700 transition-all duration-300 ${
+                  showBackButton ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ fontFamily: 'Arial, sans-serif' }}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Home Page
+              </button>
             </div>
           </div>
         ) : (
@@ -243,6 +264,21 @@ function Apply() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                     placeholder="What sets you apart from competitors?"
+                  ></textarea>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    What's your biggest challenge at the moment? *
+                  </label>
+                  <textarea
+                    rows="4"
+                    id="biggest_challenge"
+                    value={formData.biggest_challenge}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    placeholder="Tell us about the main challenge you're facing right now..."
+                    required
                   ></textarea>
                 </div>
               </div>

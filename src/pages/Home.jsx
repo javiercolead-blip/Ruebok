@@ -186,8 +186,28 @@ function Home() {
         </div>
       </div>
 
+      {/* Mobile Background Image - Only visible on mobile */}
+      <div className="lg:hidden absolute inset-0 z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/front photo.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: '0.3'
+          }}
+        ></div>
+        {/* Gradient overlay at bottom */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-32"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(249, 250, 251, 0), rgba(249, 250, 251, 1))'
+          }}
+        ></div>
+      </div>
+
       {/* Hero Content - Centered */}
-      <div className="text-center px-6 max-w-3xl mx-auto relative z-20">
+      <div className="text-center px-6 max-w-3xl mx-auto relative z-20 -mt-20">
         {/* Main Headline */}
         <h1 className="mb-4 leading-tight">
           <div className="text-[48px] sm:text-[56px] md:text-[72px] font-bold text-black">
@@ -196,7 +216,7 @@ function Home() {
         </h1>
 
         {/* Subheadline */}
-        <p className="subheadline text-[16px] sm:text-[18px] md:text-[20px] text-gray-600 max-w-[500px] mx-auto mb-8 leading-relaxed">
+        <p className="subheadline text-[16px] sm:text-[18px] md:text-[20px] text-gray-600 max-w-[500px] mx-auto mb-16 leading-relaxed">
           Empowering visionary founders across agriculture, fintech, and emerging sectors.
         </p>
 
