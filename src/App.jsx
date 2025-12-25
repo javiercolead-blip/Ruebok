@@ -24,7 +24,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-gray-50 font-sans">
         {/* Navigation Bar */}
-        <nav className={`fixed top-0 left-0 right-0 bg-white lg:bg-white bg-black z-50 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
+        <nav className={`fixed top-0 left-0 right-0 bg-black lg:bg-white z-50 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-8 h-[70px] flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">

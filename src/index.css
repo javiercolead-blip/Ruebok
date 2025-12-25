@@ -30,6 +30,13 @@
   background-position: -1px -1px;
 }
 
+/* Hide grid on mobile for hero section only */
+@media (max-width: 1023px) {
+  section:first-of-type.paper-grid {
+    background-image: none;
+  }
+}
+
 /* Set initial rotations to prevent flash of unstyled content */
 .rotate-initial-n8 {
   transform: rotate(-8deg);

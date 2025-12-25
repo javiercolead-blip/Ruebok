@@ -64,7 +64,7 @@ function Home() {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
       {/* Hero Section */}
-      <section className="snap-start relative min-h-screen bg-black lg:bg-gray-50 lg:paper-grid pt-[70px] flex items-center justify-center overflow-hidden">
+      <section className="snap-start relative min-h-screen bg-black lg:bg-gray-50 paper-grid pt-[70px] flex items-center justify-center overflow-hidden">
       {/* Sticky Note - Top Left */}
       <div className="hidden lg:block absolute top-[9.25rem] left-12 w-[230px] z-10 rotate-initial-n8" style={{ animation: 'float-rotate-n8 10s ease-in-out infinite', animationDelay: '0s' }}>
         <div className="bg-yellow-100 rounded-2xl p-6 shadow-lg relative">
@@ -208,7 +208,7 @@ function Home() {
         <div
           className="absolute bottom-0 left-0 right-0 h-32"
           style={{
-            background: 'linear-gradient(to bottom, rgba(249, 250, 251, 0), rgba(249, 250, 251, 1))'
+            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))'
           }}
         ></div>
       </div>
@@ -233,7 +233,7 @@ function Home() {
         </a>
 
         {/* Scroll Down Arrow - Mobile Only */}
-        <div className="lg:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-30" style={{ animation: 'bounce-arrow 3s ease-in-out infinite' }}>
+        <div className="lg:hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-30" style={{ animation: 'bounce-arrow 3s ease-in-out infinite' }}>
           <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 16l-6-6h12z" />
           </svg>
