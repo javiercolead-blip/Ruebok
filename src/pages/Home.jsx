@@ -242,8 +242,8 @@ function Home() {
     </section>
 
       {/* Backing Founders Section */}
-      <section className="snap-start relative min-h-screen bg-black lg:bg-gray-50 paper-grid pt-[60px] flex items-center justify-center overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center">
+      <section className="snap-start relative min-h-screen bg-black lg:bg-gray-50 paper-grid pt-[40px] lg:pt-[70px] flex items-center justify-center overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-8 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center -mt-8 lg:mt-0">
           {/* Left Side - Image */}
           <div className="relative flex items-center justify-center">
             <div className="w-full max-w-lg aspect-[4/3] lg:aspect-[4/3] rounded-2xl shadow-2xl overflow-hidden">
