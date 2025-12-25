@@ -28,8 +28,8 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-8 h-[70px] flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
-              <div className="flex items-center gap-2 sm:ml-4">
-                <img src="/finallogo.png" alt="Ruebok Ventures" className="h-[36px] sm:h-[44px] w-auto brightness-0 invert lg:brightness-100 lg:invert-0" />
+              <div className="flex items-center gap-2 sm:ml-4 lg:bg-transparent bg-white lg:p-0 px-3 py-1 rounded-md">
+                <img src="/finallogo.png" alt="Ruebok Ventures" className="h-[36px] sm:h-[44px] w-auto" />
               </div>
             </Link>
 
