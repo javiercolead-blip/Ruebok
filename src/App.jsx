@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
-import Portfolio from './pages/Portfolio'
 import Sectors from './pages/Sectors'
 import Resources from './pages/Resources'
 import About from './pages/About'
@@ -35,7 +34,6 @@ function App() {
 
             {/* Desktop Navigation Links - Centered */}
             <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-              <Link to="/portfolio" className="text-[15px] font-medium font-sans hover:underline underline-offset-4 transition-all">Portfolio</Link>
               <Link to="/sectors" className="text-[15px] font-medium font-sans hover:underline underline-offset-4 transition-all">Sectors</Link>
               <Link to="/curriculum" className="text-[15px] font-medium font-sans hover:underline underline-offset-4 transition-all">Curriculum</Link>
               <Link to="/resources" className="text-[15px] font-medium font-sans hover:underline underline-offset-4 transition-all">Resources</Link>
@@ -69,13 +67,6 @@ function App() {
           {mobileMenuOpen && (
             <div className="md:hidden bg-black border-t border-gray-800 shadow-lg">
               <div className="px-4 py-4 space-y-3">
-                <Link
-                  to="/portfolio"
-                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Portfolio
-                </Link>
                 <Link
                   to="/sectors"
                   className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
@@ -119,7 +110,6 @@ function App() {
         {/* Routes */}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/sectors" element={<Sectors />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/about" element={<About />} />
