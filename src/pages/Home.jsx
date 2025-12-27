@@ -218,13 +218,13 @@ function Home() {
         {/* Main Headline */}
         <h1 className="mb-4 leading-tight">
           <div className="text-[48px] sm:text-[56px] md:text-[72px] font-bold text-white lg:text-black">
-            Fund, mentor, scale.
+            Build, ship, pitch.
           </div>
         </h1>
 
         {/* Subheadline */}
         <p className="subheadline text-[20px] sm:text-[22px] md:text-[20px] text-white lg:text-gray-600 max-w-[500px] mx-auto mb-16 leading-relaxed">
-          Empowering visionary founders across agriculture, fintech, and emerging sectors.
+          Build alongside a curated network of founders. Ship your product with mentor support. Pitch to investors in 8 weeks.
         </p>
 
         {/* CTA Button */}
