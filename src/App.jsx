@@ -27,9 +27,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-8 h-[70px] flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
-              <div className="text-[#ff6700] font-bold uppercase text-xl" style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: '2px' }}>
-                RUEBOK
-              </div>
+              <img src="/finallogo.png" alt="Ruebok Ventures" className="h-[36px] sm:h-[44px] w-auto" />
             </Link>
 
             {/* Desktop Navigation Links - Centered */}
