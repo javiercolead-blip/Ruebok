@@ -63,181 +63,80 @@ function Home() {
 
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
-      {/* Hero Section */}
-      <section className="snap-start relative min-h-screen bg-black lg:bg-gray-50 paper-grid pt-[70px] flex items-center justify-center overflow-hidden">
-      {/* Sticky Note - Top Left */}
-      <div className="hidden lg:block absolute top-[9.25rem] left-12 w-[230px] z-10 rotate-initial-n8" style={{ animation: 'float-rotate-n8 10s ease-in-out infinite', animationDelay: '0s' }}>
-        <div className="bg-yellow-100 rounded-2xl p-6 shadow-lg relative">
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <div className="w-6 h-6 bg-red-500 rounded-full shadow-md"></div>
-          </div>
-          <p className="font-handwritten text-gray-800 text-[24px] leading-relaxed">
-            Learn what it takes<br />
-            to build a startup<br />
-            that lasts :)
+      {/* Hero Section - Industrial Design */}
+      <section className="snap-start relative min-h-screen dark-grid pt-[70px] flex items-center justify-center overflow-hidden">
+      {/* Two-Column Industrial Layout */}
+      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        {/* LEFT COLUMN - Copy/CTA */}
+        <div className="space-y-8">
+          {/* Main Headline */}
+          <h1 className="uppercase leading-none" style={{ fontFamily: "'Oswald', sans-serif" }}>
+            <span className="block text-[64px] lg:text-[96px] font-black text-white">
+              BUILD<span className="text-[#ff6700]">.</span>
+            </span>
+            <span className="block text-[64px] lg:text-[96px] font-black text-white">
+              SHIP<span className="text-[#ff6700]">.</span>
+            </span>
+            <span className="block text-[64px] lg:text-[96px] font-black text-white">
+              PITCH<span className="text-[#ff6700]">.</span>
+            </span>
+          </h1>
+
+          {/* Sub-Header */}
+          <p className="text-lg text-[#a1a1a1] max-w-lg" style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 300 }}>
+            Turn your idea into a startup in 8 weeks, then pitch it to real investors. Global founders welcome. No equity taken.
           </p>
-        </div>
-      </div>
 
-      {/* Criteria Image - Bottom Right */}
-      <div className="hidden lg:block absolute bottom-[5%] right-[3%] z-5 rotate-6">
-        <img src="/criteria.png" alt="Investment Criteria" className="w-auto h-auto max-w-[420px] max-h-[370px] object-contain" />
-      </div>
+          {/* Primary Button */}
+          <div className="space-y-4">
+            <a
+              href="/apply"
+              className="inline-block px-10 py-5 bg-[#ff6700] text-black font-bold uppercase text-lg hover:bg-[#ff7f1f] transition-colors"
+              style={{ borderRadius: 0 }}
+            >
+              START BUILDING
+            </a>
 
-      {/* Checkmark Badge */}
-      <div className="hidden lg:block absolute top-[25rem] left-56 w-[60px] h-[60px] z-10 rotate-initial-n4" style={{ animation: 'float-rotate-n4 10s ease-in-out infinite', animationDelay: '0.5s' }}>
-        <div className="bg-white rounded-xl shadow-lg flex items-center justify-center w-full h-full">
-          <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Startups Mentored Card - Top Right */}
-      <div className="hidden lg:block absolute top-32 right-12 w-[230px] z-10 rotate-initial-5" style={{ animation: 'float-rotate-5 10s ease-in-out infinite', animationDelay: '1s' }}>
-        <div className="bg-white rounded-2xl p-4 shadow-xl">
-          <div className="flex items-center gap-2 mb-3">
-            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            <h3 className="text-[15px] font-bold">Startups Mentored</h3>
+            {/* Trust Signal */}
+            <p className="text-sm text-[#666666]" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+              Applications closing for Cohort 2026.
+            </p>
           </div>
-          <div className="border-t border-gray-200 pt-3">
-            <div className="flex items-start gap-4">
-              <p className="text-[48px] font-bold text-black leading-none mt-1" style={{ fontFamily: 'Times New Roman, Times, serif' }}>{count}+</p>
-              <div className="flex items-end gap-2 mt-1">
-                <span className="text-[13px] text-gray-600 leading-tight font-medium">Growing<br />Every<br />Quarter</span>
-                <svg className="w-5 h-5 text-gray-600 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
+        </div>
+
+        {/* RIGHT COLUMN - Terminal Window */}
+        <div className="terminal-window p-0 overflow-hidden">
+          {/* Window Controls Bar */}
+          <div className="bg-[#0d0d0d] px-4 py-3 flex items-center gap-2 border-b border-[#333333]">
+            <div className="w-3 h-3 rounded-full bg-[#8b0000] opacity-70"></div>
+            <div className="w-3 h-3 rounded-full bg-[#8b8b00] opacity-70"></div>
+            <div className="w-3 h-3 rounded-full bg-[#008b00] opacity-70"></div>
+          </div>
+
+          {/* Terminal Content */}
+          <div className="p-6 space-y-3" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+            <div className="text-[#00ff00] text-sm">
+              <span className="text-white">{'>'}</span> INITIALIZING RUEBOK_PROTOCOL...
+            </div>
+            <div className="text-[#00ff00] text-sm">
+              <span className="text-white">{'>'}</span> LOADING MODULES: MVP_BUILDER...
+            </div>
+            <div className="text-[#00ff00] text-sm">
+              <span className="text-white">{'>'}</span> CONNECTING TO MENTOR_NETWORK...
+            </div>
+            <div className="text-[#00ff00] text-sm">
+              <span className="text-white">{'>'}</span> INVESTOR_DATABASE: ONLINE
+            </div>
+            <div className="text-[#00ff00] text-sm">
+              <span className="text-white">{'>'}</span> 8_WEEK_COUNTDOWN: READY
+            </div>
+            <div className="text-white text-sm mt-6">
+              <span className="text-[#00ff00]">{'>'}</span> STATUS: <span className="text-[#ff6700] font-bold">READY TO SHIP<span className="animate-pulse">_</span></span>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Capital Raised Card - Bottom Left */}
-      <div className="hidden lg:block absolute bottom-24 left-12 w-[330px] z-10 rotate-initial-n5" style={{ animation: 'float-rotate-n5 10s ease-in-out infinite', animationDelay: '1.5s' }}>
-        <div className="bg-white rounded-2xl p-5 shadow-xl">
-          <div className="mb-4">
-            <h3 className="text-[15px] font-bold text-gray-900">Capital Raised</h3>
-            <p className="text-[11px] text-gray-500">By Ruebok Founders</p>
-          </div>
-
-          {/* Graph Container */}
-          <div className="relative h-[140px] mt-6">
-            {/* Y-axis labels */}
-            <div className="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-[10px] text-gray-500">
-              <span>$1M</span>
-              <span>$750K</span>
-              <span>$500K</span>
-              <span>$250K</span>
-              <span>$0</span>
-            </div>
-
-            {/* Grid lines */}
-            <div className="absolute left-12 right-0 top-0 bottom-6 flex flex-col justify-between">
-              <div className="border-t border-gray-100"></div>
-              <div className="border-t border-gray-100"></div>
-              <div className="border-t border-gray-100"></div>
-              <div className="border-t border-gray-100"></div>
-              <div className="border-t border-gray-100"></div>
-            </div>
-
-            {/* SVG Line Graph */}
-            <svg className="absolute left-12 right-0 top-0 bottom-6" viewBox="0 0 280 140" preserveAspectRatio="none">
-              {/* Line path - exponential growth curve */}
-              <polyline
-                points="0,130 23,128 46,124 69,118 92,108 115,95 138,78 161,58 184,42 207,28 230,18 253,10"
-                fill="none"
-                stroke="#86EFAC"
-                strokeWidth="5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-
-              {/* Data point circles */}
-              <circle cx="0" cy="130" r="3" fill="#22C55E" />
-              <circle cx="23" cy="128" r="3" fill="#22C55E" />
-              <circle cx="46" cy="124" r="3" fill="#22C55E" />
-              <circle cx="69" cy="118" r="3" fill="#22C55E" />
-              <circle cx="92" cy="108" r="3" fill="#22C55E" />
-              <circle cx="115" cy="95" r="3" fill="#22C55E" />
-              <circle cx="138" cy="78" r="3" fill="#22C55E" />
-              <circle cx="161" cy="58" r="3" fill="#22C55E" />
-              <circle cx="184" cy="42" r="3" fill="#22C55E" />
-              <circle cx="207" cy="28" r="3" fill="#22C55E" />
-              <circle cx="230" cy="18" r="3" fill="#22C55E" />
-
-              {/* Larger circle at the end */}
-              <circle cx="253" cy="10" r="5" fill="#22C55E" />
-            </svg>
-
-            {/* X-axis labels */}
-            <div className="absolute left-12 right-0 bottom-0 flex justify-between text-[10px] text-gray-500">
-              <span>Jan</span>
-              <span>Mar</span>
-              <span>May</span>
-              <span>Jul</span>
-              <span>Sep</span>
-              <span>Nov</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Background Image - Only visible on mobile */}
-      <div className="lg:hidden absolute inset-0 z-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'url(/frontphoto.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: '0.5'
-          }}
-        ></div>
-        {/* Dark overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'rgba(0, 0, 0, 0.4)'
-          }}
-        ></div>
-        {/* Gradient overlay at bottom */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-32"
-          style={{
-            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))'
-          }}
-        ></div>
-      </div>
-
-      {/* Hero Content - Centered */}
-      <div className="text-center px-6 max-w-3xl mx-auto relative z-20 -mt-20">
-        {/* Main Headline */}
-        <h1 className="mb-4 leading-tight">
-          <div className="text-[48px] sm:text-[56px] md:text-[72px] font-bold text-white lg:text-black">
-            Build, ship, pitch.
-          </div>
-        </h1>
-
-        {/* Subheadline */}
-        <p className="subheadline text-[20px] sm:text-[22px] md:text-[20px] text-white lg:text-gray-600 max-w-[500px] mx-auto mb-16 leading-relaxed">
-          Build alongside a curated network of founders. Ship your product with mentor support. Pitch to investors in 8 weeks.
-        </p>
-
-        {/* CTA Button */}
-        <a href="/apply" className="inline-block px-6 py-3 sm:px-8 sm:py-4 bg-orange-600 text-white rounded-lg font-semibold text-[16px] sm:text-[18px] md:text-[20px] shadow-lg hover:bg-orange-700 hover:shadow-xl hover:scale-105 transition-all duration-300" style={{ fontFamily: 'Playfair Display, Georgia, serif', letterSpacing: '0.5px' }}>
-          Join Wait List
-        </a>
-
-        {/* Scroll Down Arrow - Mobile Only */}
-        <div className="lg:hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-30" style={{ animation: 'bounce-arrow 3s ease-in-out infinite' }}>
-          <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 16l-6-6h12z" />
-          </svg>
-        </div>
       </div>
     </section>
 

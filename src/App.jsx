@@ -22,33 +22,33 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50 font-sans">
-        {/* Navigation Bar */}
-        <nav className={`fixed top-0 left-0 right-0 bg-black lg:bg-white z-50 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
+        {/* Navigation Bar - Industrial */}
+        <nav className={`fixed top-0 left-0 right-0 bg-transparent backdrop-blur-sm z-50 border-b border-[#333333]`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-8 h-[70px] flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
-              <div className="flex items-center gap-2 sm:ml-4 lg:bg-transparent bg-white lg:p-0 px-3 py-1 rounded-md">
-                <img src="/finallogo.png" alt="Ruebok Ventures" className="h-[36px] sm:h-[44px] w-auto" />
+              <div className="text-[#ff6700] font-bold uppercase text-xl" style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: '2px' }}>
+                RUEBOK
               </div>
             </Link>
 
             {/* Desktop Navigation Links - Centered */}
             <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-              <Link to="/sectors" className="text-[15px] font-medium font-sans hover:underline underline-offset-4 transition-all">Sectors</Link>
-              <Link to="/curriculum" className="text-[15px] font-medium font-sans hover:underline underline-offset-4 transition-all">Curriculum</Link>
-              <Link to="/resources" className="text-[15px] font-medium font-sans hover:underline underline-offset-4 transition-all">Resources</Link>
-              <Link to="/about" className="text-[15px] font-medium font-sans hover:underline underline-offset-4 transition-all">About</Link>
+              <Link to="/sectors" className="text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-all tracking-wider">Sectors</Link>
+              <Link to="/curriculum" className="text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-all tracking-wider">Curriculum</Link>
+              <Link to="/resources" className="text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-all tracking-wider">Resources</Link>
+              <Link to="/about" className="text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-all tracking-wider">About</Link>
             </div>
 
             {/* Right Side - Desktop */}
             <div className="hidden md:flex items-center gap-4 w-64 justify-end">
-              <a href="#login" className="text-[15px] font-medium font-sans hover:underline underline-offset-4">Founder Login</a>
+              <a href="#login" className="text-[13px] font-medium uppercase text-white underline hover:text-[#ff6700] transition-all tracking-wider">Founder Login</a>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-white hover:text-orange-600 transition-colors"
+              className="md:hidden p-2 text-white hover:text-[#ff6700] transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -65,39 +65,39 @@ function App() {
 
           {/* Mobile Menu Dropdown */}
           {mobileMenuOpen && (
-            <div className="md:hidden bg-black border-t border-gray-800 shadow-lg">
+            <div className="md:hidden bg-[#111111] border-t border-[#333333] shadow-lg">
               <div className="px-4 py-4 space-y-3">
                 <Link
                   to="/sectors"
-                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
+                  className="block py-2 text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-colors tracking-wider"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Sectors
                 </Link>
                 <Link
                   to="/curriculum"
-                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
+                  className="block py-2 text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-colors tracking-wider"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Curriculum
                 </Link>
                 <Link
                   to="/resources"
-                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
+                  className="block py-2 text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-colors tracking-wider"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Resources
                 </Link>
                 <Link
                   to="/about"
-                  className="block py-2 text-[15px] font-medium text-white hover:text-orange-600 transition-colors"
+                  className="block py-2 text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-colors tracking-wider"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About
                 </Link>
                 <a
                   href="#login"
-                  className="block py-2 text-[15px] font-medium text-orange-600 hover:text-orange-700 transition-colors border-t border-gray-800 mt-2 pt-4"
+                  className="block py-2 text-[13px] font-medium uppercase text-[#ff6700] hover:text-[#ff7f1f] transition-colors border-t border-[#333333] mt-2 pt-4 tracking-wider underline"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Founder Login
