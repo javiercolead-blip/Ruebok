@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -90,13 +91,13 @@ function Home() {
 
           {/* Primary Button */}
           <div className="space-y-4">
-            <a
-              href="/apply"
+            <Link
+              to="/apply"
               className="inline-block px-10 py-5 bg-white text-[#ff6700] font-bold uppercase text-lg hover:bg-gray-100 transition-colors"
               style={{ borderRadius: 0 }}
             >
               START BUILDING
-            </a>
+            </Link>
 
             {/* Trust Signal */}
             <p className="text-sm text-[#666666]" style={{ fontFamily: "'Roboto Mono', monospace" }}>
@@ -268,9 +269,9 @@ function Home() {
             <span className="text-[18px] sm:text-[20px] md:text-[24px] font-bold text-orange-600 text-center sm:text-left">
               Ready to build something remarkable?
             </span>
-            <a href="/apply" className="px-6 py-3 sm:px-8 border-2 border-orange-600 text-orange-600 rounded-lg font-semibold text-[14px] sm:text-[16px] hover:bg-orange-600 hover:text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 whitespace-nowrap">
+            <Link to="/apply" className="px-6 py-3 sm:px-8 border-2 border-orange-600 text-orange-600 rounded-lg font-semibold text-[14px] sm:text-[16px] hover:bg-orange-600 hover:text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 whitespace-nowrap">
               Start Your Application
-            </a>
+            </Link>
           </div>
         </div>
       </section>
