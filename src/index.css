@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Caveat:wght@400;700&family=Oswald:wght@700&family=Roboto+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #111111;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    background-color: #111111;
+  }
+
+  #root {
+    background-color: #111111;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6, .subheadline {
+    font-family: Cambria, Georgia, serif !important;
+  }
+}
+
+.paper-grid {
+  background-image:
+    linear-gradient(rgba(200, 200, 200, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 200, 200, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: -1px -1px;
+}
+
+.dark-grid {
+  background-color: #111111;
+  background-image:
+    linear-gradient(rgba(60, 60, 60, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60, 60, 60, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.terminal-window {
+  background: #1a1a1a;
+  border: 1px solid #ffffff;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* Hide grid on mobile for hero section only */
+@media (max-width: 1023px) {
+  section:first-of-type.paper-grid {
+    background-image: none;
+  }
+}
+
+/* Set initial rotations to prevent flash of unstyled content */
+.rotate-initial-n8 {
+  transform: rotate(-8deg);
+}
+
+.rotate-initial-n4 {
+  transform: rotate(-4deg);
+}
+
+.rotate-initial-5 {
+  transform: rotate(5deg);
+}
+
+.rotate-initial-n5 {
+  transform: rotate(-5deg);
+}
+
+@keyframes float-rotate-n8 {
+  0%, 100% {
+    transform: rotate(-8deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-8deg) translateY(-10px);
+  }
+}
+
+@keyframes gift-shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-15deg);
+  }
+  20% {
+    transform: rotate(15deg);
+  }
+  30% {
+    transform: rotate(-15deg);
+  }
+  40% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes float-rotate-n4 {
+  0%, 100% {
+    transform: rotate(-4deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-4deg) translateY(-10px);
+  }
+}
+
+@keyframes float-rotate-n5 {
+  0%, 100% {
+    transform: rotate(-5deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-5deg) translateY(-10px);
+  }
+}
+
+@keyframes float-rotate-5 {
+  0%, 100% {
+    transform: rotate(5deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(5deg) translateY(-10px);
+  }
+}
+
+@keyframes float-rotate-4 {
+  0%, 100% {
+    transform: rotate(4deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(4deg) translateY(-10px);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(135deg);
+  }
+  50% {
+    transform: translateX(100%) rotate(135deg);
+  }
+  100% {
+    transform: translateX(-100%) rotate(135deg);
+  }
+}
+
+@keyframes slow-bounce {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes bounce-arrow {
+  0%, 90%, 100% {
+    transform: translateX(-50%) translateY(0px);
+  }
+  95% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+@keyframes terminal-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Custom Scrollbar Styling - Industrial Theme */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+  border-left: 1px solid #333333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff6700;
+  border-radius: 0;
+  border: 1px solid #111111;
+  min-height: 40px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7f1f;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #e55d00;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff6700 #111111;
+}
