@@ -1,8 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function Curriculum() {
   const [openFaq, setOpenFaq] = useState(null)
   const [selectedPhase, setSelectedPhase] = useState(0)
+
+  useEffect(() => {
+    document.title = 'Ruebok Ventures | Curriculum'
+  }, [])
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index)

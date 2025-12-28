@@ -9,6 +9,9 @@ function Home() {
   const [fintechGrowth, setFintechGrowth] = useState(0)
 
   useEffect(() => {
+    // Set page title
+    document.title = 'Ruebok Ventures | Home'
+
     // Startups Mentored counter animation
     const targetCount = 50
     const duration = 2000

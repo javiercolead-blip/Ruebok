@@ -20,6 +20,10 @@ function Apply() {
   const [message, setMessage] = useState({ type: '', text: '' })
   const [showBackButton, setShowBackButton] = useState(false)
 
+  useEffect(() => {
+    document.title = 'Ruebok Ventures | Application'
+  }, [])
+
   const handleChange = (e) => {
     const { id, value } = e.target
     setFormData(prev => ({

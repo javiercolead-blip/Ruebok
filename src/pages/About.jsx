@@ -1,4 +1,10 @@
+import { useEffect } from 'react'
+
 function About() {
+  useEffect(() => {
+    document.title = 'Ruebok Ventures | Mission'
+  }, [])
+
   return (
     <div className="min-h-screen bg-[#111111] dark-grid pt-[70px]">
       <div className="max-w-7xl mx-auto px-8 py-16">
