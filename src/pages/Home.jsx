@@ -145,7 +145,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-8 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center -mt-8 lg:mt-0">
           {/* Left Side - Image */}
           <div className="relative flex items-center justify-center">
-            <div className="w-full max-w-lg aspect-[3/4] lg:aspect-[3/4] border border-gray-600 shadow-2xl overflow-hidden" style={{ borderRadius: 0 }}>
+            <div className="w-full max-w-lg aspect-[1/1] lg:aspect-[1/1] border border-gray-600 shadow-2xl overflow-hidden" style={{ borderRadius: 0 }}>
               <img src="/imageforcreative.png" alt="Founder" className="w-full h-full object-cover" />
             </div>
           </div>
