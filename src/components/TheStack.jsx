@@ -78,7 +78,7 @@ function TheStack() {
           </div>
 
           {/* Code Content */}
-          <div className="p-6 font-mono text-sm leading-relaxed flex-1 flex items-center">
+          <div className="p-6 font-mono text-xs leading-relaxed flex-1 flex items-center overflow-hidden">
             <div className="space-y-1">
               <div>
                 <span className="text-purple-400">const</span>
@@ -91,23 +91,22 @@ function TheStack() {
               </div>
               <div className="pl-4">
                 <span className="text-white">mode: </span>
-                <span className="text-[#ff6700]">"production"</span>
+                <span className="text-[#ff6700]">"prod"</span>
                 <span className="text-white">,</span>
               </div>
               <div className="pl-4">
-                <span className="text-white">scaling: </span>
+                <span className="text-white">scale: </span>
                 <span className="text-purple-400">true</span>
               </div>
               <div>
                 <span className="text-white">{'}'}</span>
-                <span className="text-white">;</span>
               </div>
-              <div className="mt-3">
-                <span className="text-gray-500">// Deploy infrastructure</span>
+              <div className="mt-2">
+                <span className="text-gray-500">// Deploy</span>
               </div>
               <div>
                 <span className="text-blue-400">init</span>
-                <span className="text-white">(config);</span>
+                <span className="text-white">(config)</span>
               </div>
             </div>
           </div>
@@ -131,11 +130,11 @@ function TheStack() {
           <img
             src="/mentorpic.png"
             alt="Mentor"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover brightness-125"
           />
 
           {/* Dark overlay for contrast */}
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
 
           {/* Content Container - Centered */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -147,15 +146,17 @@ function TheStack() {
             </button>
           </div>
 
-          {/* Bottom Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-4">
+          {/* Top Left Overlay */}
+          <div className="absolute top-4 left-4">
             {/* Mentor Review Badge */}
             <div className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20" style={{ borderRadius: '6px' }}>
               <span className="text-xs text-white font-semibold uppercase tracking-wider">Mentor Review</span>
             </div>
+          </div>
 
-            {/* Progress Bar */}
-            <div className="mt-3 h-1 bg-gray-700 rounded-full overflow-hidden">
+          {/* Bottom Overlay - Progress Bar */}
+          <div className="absolute bottom-4 left-4 right-4">
+            <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
               <div className="h-full bg-[#ff6700] w-[40%] rounded-full"></div>
             </div>
           </div>
@@ -174,57 +175,36 @@ function TheStack() {
         }}
       >
         <div
-          className="bg-gray-900/80 backdrop-blur-md border border-white/10 shadow-2xl ring-1 ring-white/10 relative overflow-hidden h-full flex flex-col justify-center"
+          className="bg-white shadow-2xl relative overflow-hidden h-full flex flex-col"
           style={{ borderRadius: '8px' }}
         >
-          {/* Orange accent bar */}
-          <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#ff6700]"></div>
+          <div className="p-5 flex-1 flex flex-col">
+            {/* Y-Axis Label */}
+            <div className="text-[10px] text-gray-600 font-semibold mb-2">REVENUE ($)</div>
 
-          <div className="p-6 pl-8 space-y-6">
-            {/* Revenue Metric */}
-            <div className="flex items-center gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                  </svg>
-                </div>
+            {/* Chart Area */}
+            <div className="flex-1 relative">
+              {/* Grid Lines */}
+              <div className="absolute inset-0 flex flex-col justify-between">
+                <div className="border-t border-gray-200"></div>
+                <div className="border-t border-gray-200"></div>
+                <div className="border-t border-gray-200"></div>
+                <div className="border-t border-gray-200"></div>
+                <div className="border-t border-gray-200"></div>
               </div>
-              <div className="flex-1">
-                <p className="text-xs text-gray-400 font-medium mb-0.5">First Revenue</p>
-                <p className="text-2xl text-white font-bold">${revenue.toFixed(2)}</p>
+
+              {/* Histogram Bars */}
+              <div className="absolute inset-0 flex items-end justify-around px-4 pb-1">
+                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '35%' }}></div>
+                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '48%' }}></div>
+                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '62%' }}></div>
+                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '71%' }}></div>
+                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '88%' }}></div>
               </div>
             </div>
 
-            {/* Downloads Metric */}
-            <div className="flex items-center gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
-                  </svg>
-                </div>
-              </div>
-              <div className="flex-1">
-                <p className="text-xs text-gray-400 font-medium mb-0.5">Downloads</p>
-                <p className="text-2xl text-white font-bold">{downloads.toLocaleString()}</p>
-              </div>
-            </div>
-
-            {/* Active Users Metric */}
-            <div className="flex items-center gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="flex-1">
-                <p className="text-xs text-gray-400 font-medium mb-0.5">Active Users</p>
-                <p className="text-2xl text-white font-bold">{users}</p>
-              </div>
-            </div>
+            {/* X-Axis Label */}
+            <div className="text-[10px] text-gray-600 font-semibold text-center mt-2">USERS</div>
           </div>
         </div>
       </div>
