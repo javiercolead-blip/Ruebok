@@ -74,7 +74,7 @@ function Curriculum() {
             {weeks.slice(0, 3).map((week, index) => (
               <div key={week.week} className="relative">
                 {/* Week Content */}
-                <div className="space-y-3">
+                <div className="space-y-3 pr-8">
                   <div className="flex items-center gap-2">
                     <span className="text-[#ff6700] font-bold text-lg">WEEK {week.week}</span>
                   </div>
@@ -123,7 +123,7 @@ function Curriculum() {
             {weeks.slice(3, 6).map((week, index) => (
               <div key={week.week} className="relative">
                 {/* Week Content */}
-                <div className="space-y-3">
+                <div className="space-y-3 pr-8">
                   <div className="flex items-center gap-2">
                     <span className="text-[#ff6700] font-bold text-lg">WEEK {week.week}</span>
                   </div>
