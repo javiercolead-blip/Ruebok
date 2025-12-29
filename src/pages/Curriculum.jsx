@@ -98,53 +98,49 @@ function Curriculum() {
             ))}
           </div>
 
-          {/* Curved arrow from Week 3 to Week 4 */}
-          <div className="absolute -bottom-24 right-0 left-0">
-            <svg className="w-full h-24" viewBox="0 0 1000 100" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <marker id="curved-arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                  <path d="M10,0 L10,7 L0,3.5 z" fill="#ff6700" />
-                </marker>
-              </defs>
-              <path
-                d="M 870 10 L 870 50 Q 870 70, 850 70 L 150 70 Q 130 70, 130 90"
-                stroke="#ff6700"
-                strokeWidth="2"
-                fill="none"
-                markerEnd="url(#curved-arrowhead)"
-              />
-            </svg>
-          </div>
         </div>
 
         {/* Week Flow - Second Row (Weeks 4-6) */}
         <div className="mb-12">
           <div className="grid grid-cols-3 gap-8">
-            {weeks.slice(3, 6).map((week, index) => (
-              <div key={week.week} className="relative">
-                {/* Week Content */}
-                <div className="space-y-3 pr-8">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[#ff6700] font-bold text-lg">WEEK {week.week}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white uppercase">
-                    {week.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {week.description}
-                  </p>
-                </div>
+            {weeks.slice(3, 6).map((week, index) => {
+              const isPremium = week.week >= 5
 
-                {/* Arrow to next week (except last) */}
-                {index < 2 && (
-                  <div className="absolute top-24 -right-6 flex items-center">
-                    <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+              return (
+                <div key={week.week} className="relative">
+                  {/* Premium badge */}
+                  {isPremium && (
+                    <div className="absolute -top-3 -right-3 z-10">
+                      <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-lg border-2 border-blue-400">
+                        Premium
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Week Content */}
+                  <div className={`space-y-3 pr-8 relative ${isPremium ? 'p-6 rounded-lg bg-gradient-to-br from-gray-800/40 to-gray-900/40 border-2 border-blue-500/50 shadow-xl' : ''}`}>
+                    <div className="flex items-center gap-2">
+                      <span className={`font-bold text-lg ${isPremium ? 'text-blue-400' : 'text-[#ff6700]'}`}>WEEK {week.week}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white uppercase">
+                      {week.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {week.description}
+                    </p>
                   </div>
-                )}
-              </div>
-            ))}
+
+                  {/* Arrow to next week (except last) */}
+                  {index < 2 && (
+                    <div className="absolute top-24 -right-6 flex items-center">
+                      <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
