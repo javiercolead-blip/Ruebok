@@ -88,7 +88,7 @@ function Curriculum() {
 
                 {/* Arrow to next week (except last in row) */}
                 {index < 2 && (
-                  <div className="absolute top-12 -right-6 flex items-center">
+                  <div className="absolute top-20 -right-6 flex items-center">
                     <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -99,10 +99,10 @@ function Curriculum() {
           </div>
 
           {/* Curved arrow from Week 3 to Week 4 */}
-          <div className="absolute -bottom-24 right-0 left-0 flex items-center justify-center">
-            <svg className="w-full h-24" viewBox="0 0 1000 100" preserveAspectRatio="none">
+          <div className="absolute -bottom-24 right-0 left-0">
+            <svg className="w-full h-24" viewBox="0 0 1000 100" preserveAspectRatio="xMidYMid meet">
               <path
-                d="M 950 10 L 950 50 Q 950 70, 930 70 L 70 70 Q 50 70, 50 90"
+                d="M 833 10 L 833 50 Q 833 70, 813 70 L 187 70 Q 167 70, 167 90"
                 stroke="#ff6700"
                 strokeWidth="2"
                 fill="none"
@@ -137,7 +137,7 @@ function Curriculum() {
 
                 {/* Arrow to next week (except last) */}
                 {index < 2 && (
-                  <div className="absolute top-12 -right-6 flex items-center">
+                  <div className="absolute top-20 -right-6 flex items-center">
                     <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
