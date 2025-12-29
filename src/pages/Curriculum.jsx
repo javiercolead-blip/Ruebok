@@ -101,7 +101,7 @@ function Curriculum() {
         </div>
 
         {/* Week Flow - Second Row (Weeks 4-6) */}
-        <div className="mb-6">
+        <div className="mb-2">
           <div className="grid grid-cols-3 gap-8">
             {weeks.slice(3, 6).map((week, index) => (
               <div key={week.week} className="relative">
