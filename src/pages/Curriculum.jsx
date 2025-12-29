@@ -101,18 +101,18 @@ function Curriculum() {
           {/* Curved arrow from Week 3 to Week 4 */}
           <div className="absolute -bottom-24 right-0 left-0">
             <svg className="w-full h-24" viewBox="0 0 1000 100" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <marker id="curved-arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <path d="M0,0 L0,7 L9,3.5 z" fill="#ff6700" />
+                </marker>
+              </defs>
               <path
-                d="M 833 10 L 833 50 Q 833 70, 813 70 L 187 70 Q 167 70, 167 90"
+                d="M 870 10 L 870 50 Q 870 70, 850 70 L 150 70 Q 130 70, 130 90"
                 stroke="#ff6700"
                 strokeWidth="2"
                 fill="none"
-                markerEnd="url(#arrowhead)"
+                markerEnd="url(#curved-arrowhead)"
               />
-              <defs>
-                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                  <polygon points="0 0, 10 3, 0 6" fill="#ff6700" />
-                </marker>
-              </defs>
             </svg>
           </div>
         </div>
