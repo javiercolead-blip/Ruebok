@@ -103,188 +103,35 @@ function Curriculum() {
         {/* Week Flow - Second Row (Weeks 4-6) */}
         <div className="mb-12">
           <div className="grid grid-cols-3 gap-8">
-            {weeks.slice(3, 6).map((week, index) => {
-              const isPremium = week.week >= 5
-
-              return (
-                <div key={week.week} className="relative">
-                  {/* Premium badge */}
-                  {isPremium && (
-                    <div className="absolute -top-3 -right-3 z-10">
-                      <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-lg border-2 border-blue-400">
-                        Premium
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Week Content */}
-                  <div className={`space-y-3 pr-8 relative ${isPremium ? 'p-6 rounded-lg bg-gradient-to-br from-gray-800/40 to-gray-900/40 border-2 border-blue-500/50 shadow-xl' : ''}`}>
-                    <div className="flex items-center gap-2">
-                      <span className={`font-bold text-lg ${isPremium ? 'text-blue-400' : 'text-[#ff6700]'}`}>WEEK {week.week}</span>
-                    </div>
-                    <h3 className="text-xl font-bold text-white uppercase">
-                      {week.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      {week.description}
-                    </p>
+            {weeks.slice(3, 6).map((week, index) => (
+              <div key={week.week} className="relative">
+                {/* Week Content */}
+                <div className="space-y-3 pr-8">
+                  <div className="flex items-center gap-2">
+                    <span className={`font-bold text-lg ${week.week >= 5 ? 'text-blue-400' : 'text-[#ff6700]'}`}>WEEK {week.week}</span>
                   </div>
-
-                  {/* Arrow to next week (except last) */}
-                  {index < 2 && (
-                    <div className="absolute top-24 -right-6 flex items-center">
-                      <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </div>
-                  )}
+                  <h3 className="text-xl font-bold text-white uppercase">
+                    {week.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {week.description}
+                  </p>
                 </div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
 
-      {/* Perks Section */}
-      <div className="max-w-7xl mx-auto px-8 py-12">
-        <div className="bg-gray-900 rounded-xl p-12 shadow-lg mb-12">
-          <h2 className="text-[32px] font-bold text-white mb-4 text-center">The Program Pays for Itself</h2>
-          <p className="text-[18px] text-gray-300 leading-relaxed text-center mb-8">
-            Every member gets access to $10,000+ in negotiated partner credits.
-          </p>
-
-          {/* Value Badge */}
-          <div className="text-center mb-8">
-            <div className="inline-block bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-blue-500 rounded-lg px-8 py-6">
-              <div className="text-xs text-blue-400 mb-2 font-bold uppercase tracking-wider">Total Value</div>
-              <div className="text-5xl font-bold text-white">&gt;$10,000</div>
-            </div>
-          </div>
-
-          {/* Partner Logos with Individual Pricing */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {[
-              { name: 'AWS', credits: '$5,000' },
-              { name: 'HubSpot', credits: '$2,000' },
-              { name: 'Notion', credits: '$1,000' },
-              { name: 'Stripe', credits: '$1,500' },
-              { name: 'Google Cloud', credits: '$2,500' }
-            ].map((partner) => (
-              <div key={partner.name} className="flex flex-col items-center gap-3">
-                <div className="w-32 h-16 bg-gray-800 border border-gray-700 rounded-lg flex items-center justify-center hover:border-blue-500 transition-colors">
-                  <span className="text-gray-300 font-semibold text-sm">{partner.name}</span>
-                </div>
-                <span className="text-blue-400 font-bold text-sm">{partner.credits} Credits</span>
+                {/* Arrow to next week (except last) */}
+                {index < 2 && (
+                  <div className="absolute top-24 -right-6 flex items-center">
+                    <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Pricing Section */}
-      <div className="max-w-7xl mx-auto px-8 pb-16">
-        <h2 className="text-[32px] font-bold text-white mb-8">Choose Your Path</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Community Card - Phases 1 & 2 */}
-          <div className="bg-gray-900 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all">
-              <h3 className="text-2xl font-bold text-white mb-2">The Foundation</h3>
-              <p className="text-gray-400 mb-6">Phases 1 & 2 • Weeks 1-4</p>
-
-              <div className="mb-6">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold text-white">$99</span>
-                  <span className="text-gray-400">/month</span>
-                </div>
-              </div>
-
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">The Audit: Customer Discovery & MVP</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">The Engine: Unit Economics & GTM</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">Access to video library & templates</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">Slack community access</span>
-                </li>
-              </ul>
-
-              <button className="w-full py-3 px-6 border-2 border-gray-600 text-gray-300 font-semibold rounded-lg hover:bg-gray-600 hover:text-white transition-all">
-                Join Foundation
-              </button>
-            </div>
-
-            {/* Premium Card - Phase 3 */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-blue-500 rounded-xl p-8 shadow-2xl relative transform hover:scale-105 transition-all">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 text-xs font-bold uppercase tracking-wider rounded">
-                PREMIUM ACCESS
-              </div>
-
-              <h3 className="text-2xl font-bold text-white mb-2">The Complete Program</h3>
-              <p className="text-gray-400 mb-6">All Phases • Weeks 1-6</p>
-
-              <div className="mb-6">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold text-white">$1,000</span>
-                  <span className="text-gray-400">one-time</span>
-                </div>
-              </div>
-
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-white font-semibold">Everything in Foundation, plus:</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">The Pitch: Investor Presentation Training</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">Weekly Live Coaching Sessions</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">Pitch Deck Review & 1:1 Office Hours</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">Guaranteed Demo Day Spot</span>
-                </li>
-              </ul>
-
-              <button className="w-full py-3 px-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all">
-                Apply for Premium
-              </button>
-            </div>
-          </div>
-        </div>
 
       {/* FAQ Section */}
       <div className="max-w-7xl mx-auto px-8 py-16">
