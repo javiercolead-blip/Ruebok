@@ -102,8 +102,8 @@ function Curriculum() {
           <div className="absolute -bottom-24 right-0 left-0">
             <svg className="w-full h-24" viewBox="0 0 1000 100" preserveAspectRatio="xMidYMid meet">
               <defs>
-                <marker id="curved-arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                  <path d="M0,0 L0,7 L9,3.5 z" fill="#ff6700" />
+                <marker id="curved-arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                  <path d="M10,0 L10,7 L0,3.5 z" fill="#ff6700" />
                 </marker>
               </defs>
               <path
