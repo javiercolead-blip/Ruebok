@@ -88,7 +88,7 @@ function Curriculum() {
 
                 {/* Arrow to next week (except last in row) */}
                 {index < 2 && (
-                  <div className="absolute top-20 -right-6 flex items-center">
+                  <div className="absolute top-24 -right-6 flex items-center">
                     <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -137,7 +137,7 @@ function Curriculum() {
 
                 {/* Arrow to next week (except last) */}
                 {index < 2 && (
-                  <div className="absolute top-20 -right-6 flex items-center">
+                  <div className="absolute top-24 -right-6 flex items-center">
                     <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
