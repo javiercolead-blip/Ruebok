@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 function About() {
   useEffect(() => {
-    document.title = 'Ruebok Ventures | Mission'
+    document.title = 'Mission'
   }, [])
 
   return (

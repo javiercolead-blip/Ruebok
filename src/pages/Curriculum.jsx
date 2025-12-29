@@ -2,71 +2,45 @@ import { useState, useEffect } from 'react'
 
 function Curriculum() {
   const [openFaq, setOpenFaq] = useState(null)
-  const [selectedPhase, setSelectedPhase] = useState(0)
 
   useEffect(() => {
-    document.title = 'Ruebok Ventures | Curriculum'
+    document.title = 'Curriculum'
   }, [])
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index)
   }
 
-  const phases = [
+  const weeks = [
     {
-      id: 0,
-      title: 'PHASE 01 // BUILD',
-      subtitle: 'THE AUDIT',
-      duration: 'WEEKS 1-2',
-      weeks: [
-        {
-          title: 'WEEK 01: PROVE IT OR PIVOT',
-          description: "You'll interview 20+ potential customers, map the problem space, and identify whether your solution addresses a genuine pain point or just a nice-to-have. By the end of the week, you'll know if you're onto something real.",
-          output: '[ OUTPUT: EXECUTIVE SUMMARY ]'
-        },
-        {
-          title: 'WEEK 02: MVP & EARLY TRACTION',
-          description: "Build a lean MVP using no-code tools and lightweight experiments. Learn to generate Letters of Intent (LOIs) from real prospects and get users to commit before writing production code. We'll show you how to validate with minimum resources.",
-          output: '[ OUTPUT: MVP + 10 LOIs ]'
-        }
-      ]
+      week: 1,
+      title: 'PROVE IT OR PIVOT',
+      description: "You'll interview 20+ potential customers, map the problem space, and identify whether your solution addresses a genuine pain point or just a nice-to-have. By the end of the week, you'll know if you're onto something real."
     },
     {
-      id: 1,
-      title: 'PHASE 02 // SHIP',
-      subtitle: 'THE ENGINE',
-      duration: 'WEEKS 3-4',
-      weeks: [
-        {
-          title: 'WEEK 03: UNIT ECONOMICS',
-          description: "Build a financial model that investors actually care about. Learn to calculate Customer Acquisition Cost (CAC), Lifetime Value (LTV), burn rate, and runway. We'll teach you how to project revenue realistically and identify the metrics that matter for your sector.",
-          output: '[ OUTPUT: 2-YEAR PROJECTIONS ]'
-        },
-        {
-          title: 'WEEK 04: GO-TO-MARKET',
-          description: "Map out your path from your first 10 customers to your first 100. You'll identify acquisition channels, test messaging, design a sales or growth playbook, and build a repeatable system for customer acquisition that doesn't rely on luck.",
-          output: '[ OUTPUT: GTM STRATEGY DOC ]'
-        }
-      ]
+      week: 2,
+      title: 'MVP & EARLY TRACTION',
+      description: "Build a lean MVP using no-code tools and lightweight experiments. Learn to generate Letters of Intent (LOIs) from real prospects and get users to commit before writing production code. We'll show you how to validate with minimum resources."
     },
     {
-      id: 2,
-      title: 'PHASE 03 // PITCH',
-      subtitle: 'THE PITCH',
-      duration: 'WEEKS 5-6',
-      isPremium: true,
-      weeks: [
-        {
-          title: 'WEEK 05: NARRATIVE & DESIGN',
-          description: "Transform your business into a story that resonates. Learn how to frame the problem, position your solution, and articulate your vision in a way that captures attention. You'll design a pitch deck that's visually compelling and built to close deals.",
-          output: '[ OUTPUT: PITCH DECK V1 ]'
-        },
-        {
-          title: 'WEEK 06: THE CLOSE',
-          description: "Prepare for the hardest questions investors will ask. Through live roast sessions, Q&A drills, and a final Demo Day showcase in front of real investors, you'll refine your delivery, sharpen your responses, and walk away ready to close funding.",
-          output: '[ OUTPUT: INVESTOR MEETING ]'
-        }
-      ]
+      week: 3,
+      title: 'UNIT ECONOMICS',
+      description: "Build a financial model that investors actually care about. Learn to calculate Customer Acquisition Cost (CAC), Lifetime Value (LTV), burn rate, and runway. We'll teach you how to project revenue realistically and identify the metrics that matter for your sector."
+    },
+    {
+      week: 4,
+      title: 'GO-TO-MARKET',
+      description: "Map out your path from your first 10 customers to your first 100. You'll identify acquisition channels, test messaging, design a sales or growth playbook, and build a repeatable system for customer acquisition that doesn't rely on luck."
+    },
+    {
+      week: 5,
+      title: 'NARRATIVE & DESIGN',
+      description: "Transform your business into a story that resonates. Learn how to frame the problem, position your solution, and articulate your vision in a way that captures attention. You'll design a pitch deck that's visually compelling and built to close deals."
+    },
+    {
+      week: 6,
+      title: 'THE CLOSE',
+      description: "Prepare for the hardest questions investors will ask. Through live roast sessions, Q&A drills, and a final Demo Day showcase in front of real investors, you'll refine your delivery, sharpen your responses, and walk away ready to close funding."
     }
   ]
 
@@ -86,130 +60,113 @@ function Curriculum() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#111111] dark-grid pt-[70px] overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-8 py-16 overflow-x-hidden">
-          {/* Headline */}
-          <div className="mb-12 text-center">
-            <h1 className="text-[56px] font-bold text-white mb-6">
-              6 Weeks to Investor-Ready.
-            </h1>
-            <p className="subheadline text-[20px] text-gray-300 max-w-3xl mx-auto mb-12">
-              A high-intensity sprint designed to kill bad assumptions, build a business engine, and refine your pitch. No fluff, just deliverables.
-            </p>
-          </div>
+    <div className="min-h-screen bg-[#111111] dark-grid pt-[70px]">
+      <div className="max-w-7xl mx-auto px-8 py-16">
+        {/* Headline */}
+        <h1 className="text-[56px] font-bold text-white mb-6">6 Weeks to Investor-Ready.</h1>
+        <p className="subheadline text-[20px] text-gray-300 max-w-3xl mb-16">
+          A high-intensity sprint designed to kill bad assumptions, build a business engine, and refine your pitch. No fluff, just deliverables.
+        </p>
 
-          {/* Server Rack Accordion */}
-          <div className="max-w-4xl mx-auto space-y-4">
-            {phases.map((phase) => (
-              <div key={phase.id}>
-                {/* The Blade (Closed State) */}
-                <button
-                  onClick={() => setSelectedPhase(selectedPhase === phase.id ? null : phase.id)}
-                  className={`w-full h-24 bg-[#1a1a1a] border transition-all flex items-center justify-between px-8 ${
-                    selectedPhase === phase.id
-                      ? 'border-l-4 border-l-[#ff6700] border-r border-r-neutral-800 border-t border-t-neutral-800 border-b border-b-neutral-800'
-                      : 'border-neutral-800 hover:border-[#ff6700]'
-                  }`}
-                  style={{ borderRadius: 0 }}
-                >
-                  <div className="flex items-center gap-6">
-                    <h2
-                      className={`text-2xl font-bold uppercase transition-all ${
-                        selectedPhase === phase.id ? 'text-white' : 'text-white hover:text-[#ff6700]'
-                      }`}
-                      style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: '0.05em' }}
-                    >
-                      {phase.title}
-                    </h2>
+        {/* Week Flow - First Row (Weeks 1-3) */}
+        <div className="mb-32 relative">
+          <div className="grid grid-cols-3 gap-8">
+            {weeks.slice(0, 3).map((week, index) => (
+              <div key={week.week} className="relative">
+                {/* Week Content */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[#ff6700] font-bold text-lg">WEEK {week.week}</span>
                   </div>
+                  <h3 className="text-xl font-bold text-white uppercase">
+                    {week.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {week.description}
+                  </p>
+                </div>
 
-                  <div className="flex items-center gap-6">
-                    {/* System ID */}
-                    <span
-                      className="text-6xl font-bold text-neutral-800 select-none"
-                      style={{ fontFamily: "'Oswald', sans-serif" }}
-                    >
-                      {String(phase.id + 1).padStart(2, '0')}
-                    </span>
-
-                    {/* Chevron Icon */}
-                    <svg
-                      className={`w-6 h-6 text-[#ff6700] transition-transform ${
-                        selectedPhase === phase.id ? 'rotate-180' : ''
-                      }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                {/* Arrow to next week (except last in row) */}
+                {index < 2 && (
+                  <div className="absolute top-12 -right-6 flex items-center">
+                    <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </div>
-                </button>
+                )}
+              </div>
+            ))}
+          </div>
 
-                {/* The Drawer (Open State) */}
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    selectedPhase === phase.id ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <div className="bg-[#0d0d0d] border-l-4 border-l-[#ff6700] border-r border-r-neutral-800 border-b border-b-neutral-800 p-8" style={{ borderRadius: 0 }}>
-                    {/* 2-Column Grid for Weeks */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      {phase.weeks.map((week, index) => (
-                        <div key={index} className="space-y-4">
-                          <h3
-                            className="text-xl font-bold text-[#ff6700] uppercase"
-                            style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: '0.05em' }}
-                          >
-                            {week.title}
-                          </h3>
-                          <p
-                            className="text-gray-400 text-sm leading-relaxed"
-                            style={{ fontFamily: "'Roboto Mono', monospace" }}
-                          >
-                            {week.description}
-                          </p>
-                          <div
-                            className="inline-block bg-[#1a1a1a] border border-neutral-800 text-[#ff6700] px-3 py-2 text-xs font-bold uppercase"
-                            style={{ fontFamily: "'Roboto Mono', monospace", borderRadius: 0 }}
-                          >
-                            {week.output}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+          {/* Curved arrow from Week 3 to Week 4 */}
+          <div className="absolute -bottom-24 right-0 left-0 flex items-center justify-center">
+            <svg className="w-full h-24" viewBox="0 0 1000 100" preserveAspectRatio="none">
+              <path
+                d="M 950 10 L 950 50 Q 950 70, 930 70 L 70 70 Q 50 70, 50 90"
+                stroke="#ff6700"
+                strokeWidth="2"
+                fill="none"
+                markerEnd="url(#arrowhead)"
+              />
+              <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                  <polygon points="0 0, 10 3, 0 6" fill="#ff6700" />
+                </marker>
+              </defs>
+            </svg>
+          </div>
+        </div>
 
-                    {/* Premium Badge if applicable */}
-                    {phase.isPremium && (
-                      <div className="mt-6 pt-6 border-t border-neutral-800">
-                        <div className="inline-block bg-[#ff6700] text-white px-4 py-2 text-sm font-bold uppercase" style={{ fontFamily: "'Roboto Mono', monospace", borderRadius: 0 }}>
-                          [ ACCESS LEVEL: PREMIUM ]
-                        </div>
-                      </div>
-                    )}
+        {/* Week Flow - Second Row (Weeks 4-6) */}
+        <div className="mb-12">
+          <div className="grid grid-cols-3 gap-8">
+            {weeks.slice(3, 6).map((week, index) => (
+              <div key={week.week} className="relative">
+                {/* Week Content */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[#ff6700] font-bold text-lg">WEEK {week.week}</span>
                   </div>
+                  <h3 className="text-xl font-bold text-white uppercase">
+                    {week.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {week.description}
+                  </p>
                 </div>
+
+                {/* Arrow to next week (except last) */}
+                {index < 2 && (
+                  <div className="absolute top-12 -right-6 flex items-center">
+                    <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
+      </div>
 
       {/* Perks Section */}
-      <section className="py-20 px-8 bg-[#0d0d0d] text-white">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4 uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>// THE PROGRAM PAYS FOR ITSELF</h2>
-          <p className="text-lg text-gray-400 mb-12" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+      <div className="max-w-7xl mx-auto px-8 py-12">
+        <div className="bg-gray-900 rounded-xl p-12 shadow-lg mb-12">
+          <h2 className="text-[32px] font-bold text-white mb-4 text-center">The Program Pays for Itself</h2>
+          <p className="text-[18px] text-gray-300 leading-relaxed text-center mb-8">
             Every member gets access to $10,000+ in negotiated partner credits.
           </p>
 
           {/* Value Badge */}
-          <div className="inline-block bg-[#1a1a1a] border-2 border-orange-600 px-8 py-6 mb-12" style={{ borderRadius: 0 }}>
-            <div className="text-xs text-orange-600 mb-2 font-bold uppercase tracking-wider" style={{ fontFamily: "'Roboto Mono', monospace" }}>[ TOTAL VALUE ]</div>
-            <div className="text-5xl font-bold text-white" style={{ fontFamily: "'Oswald', sans-serif" }}>&gt;$10,000</div>
+          <div className="text-center mb-8">
+            <div className="inline-block bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-blue-500 rounded-lg px-8 py-6">
+              <div className="text-xs text-blue-400 mb-2 font-bold uppercase tracking-wider">Total Value</div>
+              <div className="text-5xl font-bold text-white">&gt;$10,000</div>
+            </div>
           </div>
 
           {/* Partner Logos with Individual Pricing */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-start justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {[
               { name: 'AWS', credits: '$5,000' },
               { name: 'HubSpot', credits: '$2,000' },
@@ -218,24 +175,23 @@ function Curriculum() {
               { name: 'Google Cloud', credits: '$2,500' }
             ].map((partner) => (
               <div key={partner.name} className="flex flex-col items-center gap-3">
-                <div className="w-32 h-16 bg-[#1a1a1a] border border-gray-700 flex items-center justify-center hover:border-orange-600 transition-colors" style={{ borderRadius: 0 }}>
-                  <span className="text-gray-400 font-semibold text-sm">{partner.name}</span>
+                <div className="w-32 h-16 bg-gray-800 border border-gray-700 rounded-lg flex items-center justify-center hover:border-blue-500 transition-colors">
+                  <span className="text-gray-300 font-semibold text-sm">{partner.name}</span>
                 </div>
-                <span className="text-orange-600 font-bold text-sm" style={{ fontFamily: "'Roboto Mono', monospace" }}>{partner.credits} Credits</span>
+                <span className="text-blue-400 font-bold text-sm">{partner.credits} Credits</span>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Pricing Section */}
-      <section className="py-20 px-8 bg-[#111111]">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-16 text-center">Choose Your Path</h2>
+      <div className="max-w-7xl mx-auto px-8 pb-16">
+        <h2 className="text-[32px] font-bold text-white mb-8">Choose Your Path</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Community Card - Phases 1 & 2 */}
-            <div className="bg-gray-900 border-2 border-gray-700 p-8 hover:border-gray-600 transition-all" style={{ borderRadius: 0 }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Community Card - Phases 1 & 2 */}
+          <div className="bg-gray-900 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all">
               <h3 className="text-2xl font-bold text-white mb-2">The Foundation</h3>
               <p className="text-gray-400 mb-6">Phases 1 & 2 • Weeks 1-4</p>
 
@@ -273,15 +229,15 @@ function Curriculum() {
                 </li>
               </ul>
 
-              <button className="w-full py-3 px-6 border-2 border-orange-600 text-orange-600 font-semibold hover:bg-orange-600 hover:text-white transition-all" style={{ borderRadius: 0 }}>
+              <button className="w-full py-3 px-6 border-2 border-gray-600 text-gray-300 font-semibold rounded-lg hover:bg-gray-600 hover:text-white transition-all">
                 Join Foundation
               </button>
             </div>
 
             {/* Premium Card - Phase 3 */}
-            <div className="bg-[#1a1a1a] border-2 border-orange-500 p-8 shadow-2xl shadow-orange-500/20 relative transform hover:scale-105 transition-all" style={{ borderRadius: 0 }}>
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-600 text-white px-4 py-1 text-xs font-bold uppercase tracking-wider" style={{ fontFamily: "'Roboto Mono', monospace" }}>
-                [ ACCESS LEVEL: UNLOCKED ]
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-blue-500 rounded-xl p-8 shadow-2xl relative transform hover:scale-105 transition-all">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 text-xs font-bold uppercase tracking-wider rounded">
+                PREMIUM ACCESS
               </div>
 
               <h3 className="text-2xl font-bold text-white mb-2">The Complete Program</h3>
@@ -327,46 +283,43 @@ function Curriculum() {
                 </li>
               </ul>
 
-              <button className="w-full py-3 px-6 bg-orange-600 text-white font-semibold hover:bg-orange-700 shadow-lg hover:shadow-xl transition-all" style={{ borderRadius: 0 }}>
+              <button className="w-full py-3 px-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all">
                 Apply for Premium
               </button>
             </div>
           </div>
         </div>
-      </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-8 bg-[#111111]">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-12 text-center">Frequently Asked Questions</h2>
+      <div className="max-w-7xl mx-auto px-8 py-16">
+        <h2 className="text-[32px] font-bold text-white mb-8">Frequently Asked Questions</h2>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="bg-gray-900 rounded-lg overflow-hidden shadow-md">
+              <button
+                onClick={() => toggleFaq(index)}
+                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-800 transition-colors"
+              >
+                <span className="font-semibold text-white">{faq.question}</span>
+                <svg
+                  className={`w-5 h-5 text-gray-400 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <span className="font-semibold text-white">{faq.question}</span>
-                  <svg
-                    className={`w-5 h-5 text-gray-500 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {openFaq === index && (
-                  <div className="px-6 pb-4 text-gray-300">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {openFaq === index && (
+                <div className="px-6 pb-4 text-gray-300 bg-gray-800">
+                  {faq.answer}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Sectors from './pages/Sectors'
 import Resources from './pages/Resources'
@@ -7,35 +7,26 @@ import About from './pages/About'
 import Apply from './pages/Apply'
 import Curriculum from './pages/Curriculum'
 
-function App() {
-  const [scrolled, setScrolled] = useState(false)
+function NavBar() {
+  const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const isActive = (path) => location.pathname === path
 
   return (
-    <Router>
-      <div className="min-h-screen bg-[#111111] font-sans">
-        {/* Navigation Bar - Industrial */}
-        <nav className={`fixed top-0 left-0 right-0 bg-transparent backdrop-blur-sm z-50 border-b border-[#333333]`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 h-[70px] flex items-center justify-between">
-            {/* Home Button - Top Left */}
-            <Link to="/" className="text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-all tracking-wider">
-              Home
-            </Link>
+    <nav className={`fixed top-0 left-0 right-0 bg-transparent backdrop-blur-sm z-50 border-b border-[#333333]`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 h-[70px] flex items-center justify-between">
+        {/* Home Button - Top Left */}
+        <Link to="/" className={`text-[13px] font-medium uppercase transition-all tracking-wider ${isActive('/') ? 'text-[#ff6700]' : 'text-white hover:text-[#ff6700]'}`}>
+          Home
+        </Link>
 
-            {/* Desktop Navigation Links - Centered */}
-            <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-              <Link to="/about" className="text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-all tracking-wider">Mission</Link>
-              <Link to="/curriculum" className="text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-all tracking-wider">Curriculum</Link>
-              <Link to="/resources" className="text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-all tracking-wider">Our Resources</Link>
-            </div>
+        {/* Desktop Navigation Links - Centered */}
+        <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+          <Link to="/about" className={`text-[13px] font-medium uppercase transition-all tracking-wider ${isActive('/about') ? 'text-[#ff6700]' : 'text-white hover:text-[#ff6700]'}`}>Mission</Link>
+          <Link to="/curriculum" className={`text-[13px] font-medium uppercase transition-all tracking-wider ${isActive('/curriculum') ? 'text-[#ff6700]' : 'text-white hover:text-[#ff6700]'}`}>Curriculum</Link>
+          <Link to="/resources" className={`text-[13px] font-medium uppercase transition-all tracking-wider ${isActive('/resources') ? 'text-[#ff6700]' : 'text-white hover:text-[#ff6700]'}`}>Our Resources</Link>
+        </div>
 
             {/* Right Side - Desktop */}
             <div className="hidden md:flex items-center gap-4 w-64 justify-end">
@@ -60,42 +51,50 @@ function App() {
             </button>
           </div>
 
-          {/* Mobile Menu Dropdown */}
-          {mobileMenuOpen && (
-            <div className="md:hidden bg-[#111111] border-t border-[#333333] shadow-lg">
-              <div className="px-4 py-4 space-y-3">
-                <Link
-                  to="/about"
-                  className="block py-2 text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-colors tracking-wider"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Mission
-                </Link>
-                <Link
-                  to="/curriculum"
-                  className="block py-2 text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-colors tracking-wider"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Curriculum
-                </Link>
-                <Link
-                  to="/resources"
-                  className="block py-2 text-[13px] font-medium uppercase text-white hover:text-[#ff6700] transition-colors tracking-wider"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Our Resources
-                </Link>
-                <a
-                  href="#login"
-                  className="block py-2 text-[13px] font-medium uppercase text-[#ff6700] hover:text-[#ff7f1f] transition-colors border-t border-[#333333] mt-2 pt-4 tracking-wider underline"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Founder Login
-                </a>
-              </div>
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-[#111111] border-t border-[#333333] shadow-lg">
+            <div className="px-4 py-4 space-y-3">
+              <Link
+                to="/about"
+                className={`block py-2 text-[13px] font-medium uppercase transition-colors tracking-wider ${isActive('/about') ? 'text-[#ff6700]' : 'text-white hover:text-[#ff6700]'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Mission
+              </Link>
+              <Link
+                to="/curriculum"
+                className={`block py-2 text-[13px] font-medium uppercase transition-colors tracking-wider ${isActive('/curriculum') ? 'text-[#ff6700]' : 'text-white hover:text-[#ff6700]'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Curriculum
+              </Link>
+              <Link
+                to="/resources"
+                className={`block py-2 text-[13px] font-medium uppercase transition-colors tracking-wider ${isActive('/resources') ? 'text-[#ff6700]' : 'text-white hover:text-[#ff6700]'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Our Resources
+              </Link>
+              <a
+                href="#login"
+                className="block py-2 text-[13px] font-medium uppercase text-[#ff6700] hover:text-[#ff7f1f] transition-colors border-t border-[#333333] mt-2 pt-4 tracking-wider underline"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Founder Login
+              </a>
             </div>
-          )}
-        </nav>
+          </div>
+        )}
+      </nav>
+    )
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-[#111111] font-sans">
+        <NavBar />
 
         {/* Routes */}
         <Routes>

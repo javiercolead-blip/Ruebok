@@ -21,7 +21,7 @@ function Apply() {
   const [showBackButton, setShowBackButton] = useState(false)
 
   useEffect(() => {
-    document.title = 'Ruebok Ventures | Application'
+    document.title = 'Application'
   }, [])
 
   const handleChange = (e) => {
@@ -69,7 +69,7 @@ function Apply() {
 
   return (
     <div className="min-h-screen bg-[#111111] dark-grid pt-[70px]">
-      <div className="max-w-4xl mx-auto px-8 py-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 py-16">
         {message.type === 'success' ? (
           // Success Message - Centered with Industrial Style
           <div className="flex items-center justify-center min-h-[60vh] animate-[fadeIn_0.6s_ease-out]">
@@ -120,7 +120,7 @@ function Apply() {
             </div>
 
             {/* Application Form */}
-            <div className="bg-[#1a1a1a] border border-neutral-800 p-8 shadow-xl animate-[slideUp_0.8s_ease-out]" style={{ borderRadius: 0 }}>
+            <div className="bg-[#1a1a1a] border border-neutral-800 p-4 sm:p-8 shadow-xl animate-[slideUp_0.8s_ease-out]" style={{ borderRadius: 0 }}>
               {message.text && message.type === 'error' && (
                 <div className="mb-6 p-4 border-l-4 border-l-red-600 bg-red-950/30 text-red-400" style={{ borderRadius: 0 }}>
                   <p style={{ fontFamily: "'Roboto Mono', monospace" }}>{message.text}</p>
@@ -172,16 +172,16 @@ function Apply() {
                   <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider" style={{ fontFamily: "'Roboto Mono', monospace" }}>
                     One-line description *
                   </label>
-                  <input
-                    type="text"
+                  <textarea
+                    rows="2"
                     id="one_line_description"
                     value={formData.one_line_description}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-[#0d0d0d] text-white border border-neutral-800 focus:border-white focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[#0d0d0d] text-white border border-neutral-800 focus:border-white focus:outline-none transition-colors resize-none"
                     style={{ borderRadius: 0, fontFamily: "'Roboto Mono', monospace" }}
                     placeholder="What does your company do in one sentence?"
                     required
-                  />
+                  ></textarea>
                 </div>
               </div>
             </div>
@@ -256,7 +256,7 @@ function Apply() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#0d0d0d] text-white border border-neutral-800 focus:border-white focus:outline-none transition-colors"
                     style={{ borderRadius: 0, fontFamily: "'Roboto Mono', monospace" }}
-                    placeholder="https://linkedin.com/in/yourprofile"
+                    placeholder="Link to profile"
                   />
                 </div>
               </div>
