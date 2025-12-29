@@ -56,14 +56,14 @@ function TheStack() {
     >
       {/* Layer 1: Code Editor (Back Card) */}
       <div
-        className={`absolute top-[-48px] left-[28px] w-[380px] h-[280px] transition-all duration-700 ease-out ${
+        className={`absolute top-[-48px] left-[28px] w-[380px] h-[220px] transition-all duration-700 ease-out ${
           isHovered ? 'translate-x-[-32px] translate-y-[-48px]' : ''
         }`}
         style={{
           transform: `rotateY(12deg) rotateX(6deg) ${isHovered ? 'translateX(-32px) translateY(-48px)' : ''}`,
           zIndex: 10,
           transformStyle: 'preserve-3d',
-          animation: 'float1 6s ease-in-out infinite'
+          animation: 'float1 12s ease-in-out infinite'
         }}
       >
         <div className="bg-[#0F0F0F] border border-gray-800 shadow-2xl opacity-90 h-full flex flex-col" style={{ borderRadius: '8px' }}>
@@ -116,14 +116,14 @@ function TheStack() {
 
       {/* Layer 2: Mentor Feedback Player (Middle Card) */}
       <div
-        className={`absolute top-[110px] left-[100px] w-[380px] h-[280px] transition-all duration-700 ease-out ${
+        className={`absolute top-[110px] left-[100px] w-[380px] h-[220px] transition-all duration-700 ease-out ${
           isHovered ? 'translate-x-[10px] translate-y-[10px]' : ''
         }`}
         style={{
           transform: `rotateY(6deg) rotateX(3deg) ${isHovered ? 'translateX(10px) translateY(10px)' : ''}`,
           zIndex: 20,
           transformStyle: 'preserve-3d',
-          animation: 'float2 7s ease-in-out infinite'
+          animation: 'float2 14s ease-in-out infinite'
         }}
       >
         <div className="bg-[#0F0F0F] border border-gray-700 shadow-2xl relative overflow-hidden h-full" style={{ borderRadius: '8px' }}>
@@ -164,13 +164,13 @@ function TheStack() {
 
       {/* Layer 3: Metrics Dashboard (Front Card) */}
       <div
-        className={`absolute top-[280px] left-[188px] w-[380px] h-[280px] transition-all duration-700 ease-out ${
+        className={`absolute top-[280px] left-[188px] w-[380px] h-[220px] transition-all duration-700 ease-out ${
           isHovered ? 'translate-x-[48px] translate-y-[64px]' : ''
         }`}
         style={{
           zIndex: 30,
           transformStyle: 'preserve-3d',
-          animation: 'float3 8s ease-in-out infinite'
+          animation: 'float3 16s ease-in-out infinite'
         }}
       >
         <div
@@ -235,7 +235,7 @@ function TheStack() {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-10px);
+            transform: translateY(-6px);
           }
         }
 
@@ -244,7 +244,7 @@ function TheStack() {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-12px);
+            transform: translateY(-7px);
           }
         }
 
@@ -253,7 +253,7 @@ function TheStack() {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
           }
         }
       `}</style>

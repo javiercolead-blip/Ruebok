@@ -121,7 +121,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-8 py-4 sm:py-8 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center -mt-8 lg:mt-0">
           {/* Left Side - Image */}
           <div className="relative flex items-center justify-center">
-            <div className="w-full max-w-sm aspect-[4/3] border border-gray-600 shadow-2xl overflow-hidden" style={{ borderRadius: 0 }}>
+            <div className="w-full aspect-square shadow-2xl overflow-hidden rounded-lg">
               <img src="/imageforcreative.png" alt="Founder" className="w-full h-full object-cover object-center" />
             </div>
           </div>
@@ -157,7 +157,7 @@ function Home() {
           {/* Support Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 flex-1">
             {/* Card 1 - Mentorship */}
-            <div className="border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative overflow-hidden group" style={{ borderRadius: 0 }}>
+            <div className="border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative overflow-hidden group rounded-lg">
               {/* Layer 1: Background Image */}
               <img
                 src="/mentorship.png"
@@ -170,8 +170,6 @@ function Home() {
 
               {/* Layer 3: Content */}
               <div className="relative z-10">
-                {/* Orange Square Icon */}
-                <div className="w-3 h-3 bg-[#ff6700] mb-2 sm:mb-3 lg:mb-4" style={{ borderRadius: 0 }}></div>
                 {/* Watermark Number */}
                 <div className="absolute top-2 right-3 text-[80px] font-bold text-white opacity-5 select-none" style={{ fontFamily: "'Oswald', sans-serif" }}>01</div>
                 <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>MENTORSHIP</h3>
@@ -182,7 +180,7 @@ function Home() {
             </div>
 
             {/* Card 2 - Network Access */}
-            <div className="border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative overflow-hidden group" style={{ borderRadius: 0 }}>
+            <div className="border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative overflow-hidden group rounded-lg">
               {/* Layer 1: Background Image */}
               <img
                 src="/Network.png"
@@ -195,8 +193,6 @@ function Home() {
 
               {/* Layer 3: Content */}
               <div className="relative z-10">
-                {/* Orange Square Icon */}
-                <div className="w-3 h-3 bg-[#ff6700] mb-2 sm:mb-3 lg:mb-4" style={{ borderRadius: 0 }}></div>
                 {/* Watermark Number */}
                 <div className="absolute top-2 right-3 text-[80px] font-bold text-white opacity-5 select-none" style={{ fontFamily: "'Oswald', sans-serif" }}>02</div>
                 <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>THE NETWORK</h3>
@@ -207,9 +203,7 @@ function Home() {
             </div>
 
             {/* Card 3 - Operational Support */}
-            <div className="bg-[#1a1a1a] border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative" style={{ borderRadius: 0 }}>
-              {/* Orange Square Icon */}
-              <div className="w-3 h-3 bg-[#ff6700] mb-2 sm:mb-3 lg:mb-4" style={{ borderRadius: 0 }}></div>
+            <div className="bg-[#1a1a1a] border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative rounded-lg">
               {/* Watermark Number */}
               <div className="absolute top-2 right-3 text-[80px] font-bold text-white opacity-5 select-none" style={{ fontFamily: "'Oswald', sans-serif" }}>03</div>
               <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>THE STACK</h3>
@@ -219,9 +213,7 @@ function Home() {
             </div>
 
             {/* Card 4 - Funding Support */}
-            <div className="bg-[#1a1a1a] border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative" style={{ borderRadius: 0 }}>
-              {/* Orange Square Icon */}
-              <div className="w-3 h-3 bg-[#ff6700] mb-2 sm:mb-3 lg:mb-4" style={{ borderRadius: 0 }}></div>
+            <div className="bg-[#1a1a1a] border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative rounded-lg">
               {/* Watermark Number */}
               <div className="absolute top-2 right-3 text-[80px] font-bold text-white opacity-5 select-none" style={{ fontFamily: "'Oswald', sans-serif" }}>04</div>
               <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>FUNDING INJECTION</h3>
