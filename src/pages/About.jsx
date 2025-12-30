@@ -17,10 +17,7 @@ function About() {
         <div className="bg-gray-900 rounded-xl p-12 shadow-lg mb-12">
           <h2 className="text-[32px] font-bold text-white mb-4">Our Mission</h2>
           <p className="text-[18px] text-gray-300 leading-relaxed">
-            Ruebok Ventures exists to bridge the gap between visionary founders and the resources they need to succeed.
-            We believe that the most transformative innovations come from those who deeply understand local challenges
-            while thinking globally. Our approach combines capital, mentorship, and a network of industry experts to
-            help startups navigate the unique complexities of emerging markets.
+            Ruebok exists to solve the execution gap. We believe the biggest barrier to innovation is not a lack of ideas but a lack of structure. Our mission is to provide the high-performance environment and operational infrastructure founders need to turn raw ambition into a scalable business. We strip away the legal, financial, and technical friction so you can focus entirely on building a product people want.
           </p>
         </div>
 
