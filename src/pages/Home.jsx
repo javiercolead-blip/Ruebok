@@ -110,129 +110,264 @@ function Home() {
           </div>
         </div>
 
-        {/* RIGHT COLUMN - The Stack */}
-        <TheStack />
+        {/* RIGHT COLUMN - Upcoming Milestones Carousel */}
+        <div className="relative flex items-center justify-center">
+          {/* Upcoming Milestones Card */}
+          <div className="w-full max-w-md bg-black/40 backdrop-blur-xl border border-[#ff6700]/20 rounded-2xl shadow-2xl p-6">
+            {/* Header */}
+            <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-4">Upcoming Milestones</p>
+
+            {/* Event Image Placeholder */}
+            <div className="relative w-full h-48 bg-gradient-to-br from-[#ff6700]/20 to-orange-900/20 rounded-xl mb-4 overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <svg className="w-16 h-16 text-[#ff6700]/40 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  <p className="text-sm text-gray-500">Event Meetup</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Date & Title */}
+            <div className="space-y-2">
+              <div className="flex items-baseline gap-3">
+                <span className="text-2xl font-bold text-[#ff6700]">AUGUST 15TH</span>
+              </div>
+              <h3 className="text-lg font-bold text-white leading-tight">WELCOME DAY & FOUNDER MEETUP</h3>
+            </div>
+          </div>
+        </div>
 
       </div>
     </section>
 
-      {/* Backing Founders Section */}
-      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[40px] lg:pt-[70px] flex items-center justify-center overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 py-4 sm:py-8 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center -mt-8 lg:mt-0">
-          {/* Left Side - Image */}
-          <div className="relative flex items-center justify-center">
-            <div className="w-4/5 aspect-square shadow-2xl overflow-hidden rounded-2xl">
-              <img src="/imageforcreative.png" alt="Founder" className="w-full h-full object-cover object-center" />
-            </div>
-          </div>
-
-          {/* Right Side - Content */}
-          <div className="space-y-4 sm:space-y-6 max-w-lg">
-            <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>
-              BACKING FOUNDERS WITH PURPOSE
-            </h2>
-            <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-gray-400 leading-relaxed" style={{ fontFamily: "'Roboto Mono', monospace" }}>
-              At Ruebok Ventures, we invest in more than just ideas—we invest in people with vision,
-              resilience, and a deep understanding of the markets they serve.
-            </p>
-            <button className="px-6 py-3 sm:px-8 sm:py-4 border-2 border-[#ff6700] text-[#ff6700] font-bold text-[14px] sm:text-[16px] uppercase hover:bg-[#ff6700] hover:text-white shadow-lg hover:shadow-xl transition-all duration-300" style={{ borderRadius: 0, fontFamily: "'Oswald', sans-serif", letterSpacing: '0.05em' }}>
-              LEARN MORE
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* How We Help Section */}
-      <section className="snap-start relative h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
-        <div className="flex-1 flex flex-col max-w-6xl mx-auto px-4 sm:px-8 py-6 sm:py-8 lg:py-12 w-full">
-          <div className="text-center mb-6 sm:mb-8 lg:mb-12">
+      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden pb-16">
+        <div className="flex-1 flex flex-col max-w-7xl mx-auto px-4 sm:px-8 py-6 sm:py-8 lg:py-10 w-full">
+          <div className="text-center mb-4 sm:mb-6 lg:mb-8">
             <h2 className="text-[28px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight mb-2 sm:mb-3 lg:mb-4">
               How we help you succeed
             </h2>
             <p className="text-[13px] sm:text-[16px] lg:text-[18px] text-gray-300 max-w-2xl mx-auto px-4">
-              Beyond capital, we provide the support and resources you need to build a sustainable business.
+              From idea to investment in four focused phases
             </p>
           </div>
 
-          {/* Support Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 flex-1">
-            {/* Card 1 - Mentorship */}
-            <div className="border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative overflow-hidden group rounded-2xl">
-              {/* Layer 1: Background Image */}
-              <img
-                src="/mentorship.png"
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover grayscale"
-              />
+          {/* Phase Cards Grid - Horizontal Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* Card 1 - Build */}
+            <div className="bg-[#1a1a1a] border border-gray-800 shadow-2xl flex flex-col rounded-xl overflow-hidden hover:border-[#ff6700] transition-all min-h-[420px] group relative">
+              {/* Visual Area - Code Editor */}
+              <div className="relative h-40 bg-[#0F0F0F]">
+                {/* Badge */}
+                <div className="absolute top-3 left-3 z-10">
+                  <div className="inline-block px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
+                    <span className="text-[10px] text-white font-semibold uppercase tracking-wider">Build</span>
+                  </div>
+                </div>
 
-              {/* Layer 2: Dark Overlay */}
-              <div className="absolute inset-0 bg-neutral-950/90 group-hover:bg-neutral-950/70 transition-all duration-700"></div>
+                {/* Code Editor */}
+                <div className="h-full flex flex-col">
+                  <div className="bg-[#1a1a1a] px-4 py-2.5 flex items-center gap-2 border-b border-gray-800">
+                    <div className="flex gap-2">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                    </div>
+                    <span className="text-xs text-gray-400 font-mono">startup.ts</span>
+                  </div>
+                  <div className="p-6 font-mono text-sm leading-relaxed flex-1">
+                    <div className="space-y-1.5">
+                      <div><span className="text-purple-400">const</span><span className="text-white"> mvp = {'{'}</span></div>
+                      <div className="pl-4"><span className="text-white">build: </span><span className="text-[#ff6700]">"fast"</span><span className="text-gray-500">,</span></div>
+                      <div className="pl-4"><span className="text-white">launch: </span><span className="text-purple-400">true</span><span className="text-gray-500">,</span></div>
+                      <div className="pl-4"><span className="text-white">status: </span><span className="text-[#ff6700]">"ready"</span></div>
+                      <div><span className="text-white">{'}'}</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              {/* Layer 3: Content */}
-              <div className="relative z-10">
-                {/* Watermark Number */}
-                <div className="absolute top-2 right-3 text-[80px] font-bold text-white opacity-5 select-none" style={{ fontFamily: "'Oswald', sans-serif" }}>01</div>
-                <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>MENTORSHIP</h3>
-                <p className="text-gray-300 group-hover:text-gray-100 transition-colors duration-700 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug" style={{ fontFamily: "'Roboto Mono', monospace" }}>
-                  One-on-one guidance from experienced founders and industry leaders who've built successful companies.
+              {/* Content Area */}
+              <div className="bg-[#1a1a1a] p-6 border-t border-gray-800 flex-1 relative">
+                <h3 className="text-lg font-bold text-white mb-1">Build</h3>
+                <p className="text-xs text-gray-400 mb-3">Weeks 1-4</p>
+                <p className="text-base text-gray-300 leading-relaxed mb-12">
+                  Turn your idea into a working product with hands-on guidance and weekly milestones.
                 </p>
+
+                {/* Learn More Link */}
+                <div className="absolute bottom-8 left-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[#ff6700] text-sm font-medium">Learn More</span>
+                  <svg className="w-4 h-4 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
               </div>
             </div>
 
-            {/* Card 2 - Network Access */}
-            <div className="border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative overflow-hidden group rounded-2xl">
-              {/* Layer 1: Background Image */}
-              <img
-                src="/Network.png"
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover grayscale"
-              />
+            {/* Card 2 - Mentorship */}
+            <div className="bg-[#1a1a1a] border border-gray-700 shadow-2xl flex flex-col rounded-xl overflow-hidden hover:border-[#ff6700] transition-all min-h-[420px] group relative">
+              {/* Visual Area - Mentor */}
+              <div className="relative h-40 overflow-hidden">
+                <img
+                  src="/mentorpic.png"
+                  alt="Mentor"
+                  className="absolute inset-0 w-full h-full object-cover object-center brightness-125"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 
-              {/* Layer 2: Dark Overlay */}
-              <div className="absolute inset-0 bg-neutral-950/90 group-hover:bg-neutral-950/70 transition-all duration-700"></div>
+                {/* Badge */}
+                <div className="absolute top-3 left-3 z-10">
+                  <div className="inline-block px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
+                    <span className="text-[10px] text-white font-semibold uppercase tracking-wider">Mentorship</span>
+                  </div>
+                </div>
+              </div>
 
-              {/* Layer 3: Content */}
-              <div className="relative z-10">
-                {/* Watermark Number */}
-                <div className="absolute top-2 right-3 text-[80px] font-bold text-white opacity-5 select-none" style={{ fontFamily: "'Oswald', sans-serif" }}>02</div>
-                <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>THE NETWORK</h3>
-                <p className="text-gray-300 group-hover:text-gray-100 transition-colors duration-700 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug" style={{ fontFamily: "'Roboto Mono', monospace" }}>
-                  Connect with strategic partners, customers, and other founders in our global portfolio community.
+              {/* Content Area */}
+              <div className="bg-[#1a1a1a] p-6 border-t border-gray-800 flex-1 relative">
+                <h3 className="text-lg font-bold text-white mb-1">Mentorship</h3>
+                <p className="text-xs text-gray-400 mb-3">Ongoing Support</p>
+                <p className="text-base text-gray-300 leading-relaxed mb-12">
+                  Get personalized feedback from founders who've scaled and VCs who've funded successful startups.
                 </p>
+
+                {/* Learn More Link */}
+                <div className="absolute bottom-8 left-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[#ff6700] text-sm font-medium">Learn More</span>
+                  <svg className="w-4 h-4 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
               </div>
             </div>
 
-            {/* Card 3 - Operational Support */}
-            <div className="bg-[#1a1a1a] border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative rounded-2xl">
-              {/* Watermark Number */}
-              <div className="absolute top-2 right-3 text-[80px] font-bold text-white opacity-5 select-none" style={{ fontFamily: "'Oswald', sans-serif" }}>03</div>
-              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>THE STACK</h3>
-              <p className="text-gray-400 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug" style={{ fontFamily: "'Roboto Mono', monospace" }}>
-                Access to business management platforms, financial planning tools, and growth analytics software.
-              </p>
+            {/* Card 3 - Funding */}
+            <div className="bg-[#1a1a1a] shadow-2xl flex flex-col rounded-xl overflow-hidden hover:border hover:border-[#ff6700] transition-all min-h-[420px] border border-gray-800 group relative">
+              {/* Visual Area - Chart */}
+              <div className="relative h-40 bg-[#0F0F0F] p-5 flex flex-col">
+                {/* Badge */}
+                <div className="absolute top-3 left-3 z-10">
+                  <div className="inline-block px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
+                    <span className="text-[10px] text-white font-semibold uppercase tracking-wider">Funding</span>
+                  </div>
+                </div>
+
+                {/* Chart */}
+                <div className="pt-10 h-full flex flex-col">
+                  <div className="text-[10px] text-gray-400 font-semibold mb-3 uppercase tracking-wide">Traction</div>
+                  <div className="flex-1 relative">
+                    <div className="absolute inset-0 flex flex-col justify-between py-1">
+                      <div className="border-t border-gray-700"></div>
+                      <div className="border-t border-gray-700"></div>
+                      <div className="border-t border-gray-700"></div>
+                      <div className="border-t border-gray-700"></div>
+                    </div>
+                    <div className="absolute inset-0 flex items-end justify-around px-3">
+                      <div className="w-8 bg-[#ff6700] rounded-t-sm" style={{ height: '35%' }}></div>
+                      <div className="w-8 bg-[#ff6700] rounded-t-sm" style={{ height: '52%' }}></div>
+                      <div className="w-8 bg-[#ff6700] rounded-t-sm" style={{ height: '68%' }}></div>
+                      <div className="w-8 bg-[#ff6700] rounded-t-sm" style={{ height: '85%' }}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content Area */}
+              <div className="bg-[#1a1a1a] p-6 border-t border-gray-800 flex-1 relative">
+                <h3 className="text-lg font-bold text-white mb-1">Funding</h3>
+                <p className="text-xs text-gray-400 mb-3">Investor Connections</p>
+                <p className="text-base text-gray-300 leading-relaxed mb-12">
+                  Refine your pitch and connect directly with global investors actively seeking deals.
+                </p>
+
+                {/* Learn More Link */}
+                <div className="absolute bottom-8 left-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[#ff6700] text-sm font-medium">Learn More</span>
+                  <svg className="w-4 h-4 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
             </div>
 
-            {/* Card 4 - Funding Support */}
-            <div className="bg-[#1a1a1a] border border-neutral-800 hover:border-[#ff6700] transition-all p-3 sm:p-4 lg:p-5 relative rounded-2xl">
-              {/* Watermark Number */}
-              <div className="absolute top-2 right-3 text-[80px] font-bold text-white opacity-5 select-none" style={{ fontFamily: "'Oswald', sans-serif" }}>04</div>
-              <h3 className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold mb-1 sm:mb-2 text-white uppercase" style={{ fontFamily: "'Oswald', sans-serif" }}>FUNDING INJECTION</h3>
-              <p className="text-gray-400 text-[12px] sm:text-[13px] lg:text-[14px] leading-snug" style={{ fontFamily: "'Roboto Mono', monospace" }}>
-                Continued capital support through Series A and beyond, plus introductions to leading investors.
-              </p>
+            {/* Card 4 - Network */}
+            <div className="bg-[#1a1a1a] border border-neutral-800 shadow-2xl flex flex-col rounded-xl overflow-hidden hover:border-[#ff6700] transition-all min-h-[420px] group relative">
+              {/* Visual Area - Network */}
+              <div className="relative h-40 overflow-hidden">
+                <img
+                  src="/Network.png"
+                  alt="Network"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                {/* Badge */}
+                <div className="absolute top-3 left-3 z-10">
+                  <div className="inline-block px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
+                    <span className="text-[10px] text-white font-semibold uppercase tracking-wider">Network</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content Area */}
+              <div className="bg-[#1a1a1a] p-6 border-t border-gray-800 flex-1 relative">
+                <h3 className="text-lg font-bold text-white mb-1">Network</h3>
+                <p className="text-xs text-gray-400 mb-3">Lifetime Access</p>
+                <p className="text-base text-gray-300 leading-relaxed mb-12">
+                  Join a global community of founders, mentors, and investors building together.
+                </p>
+
+                {/* Learn More Link */}
+                <div className="absolute bottom-8 left-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[#ff6700] text-sm font-medium">Learn More</span>
+                  <svg className="w-4 h-4 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Backing Founders Section */}
+      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
+        <div className="flex-1 max-w-7xl mx-auto px-12 pt-8 sm:pt-10 lg:pt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start w-full">
+          {/* Left Side - Content */}
+          <div className="space-y-4 sm:space-y-6 max-w-lg pt-0 lg:pt-4 pl-7">
+            <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight" style={{ fontFamily: "'Oswald', sans-serif" }}>
+              Backing Founders With Purpose
+            </h2>
+            <p className="text-[15px] sm:text-[17px] lg:text-[19px] text-gray-400 leading-relaxed" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+              We invest in people with vision and resilience who deeply understand their markets.
+            </p>
+            <p className="text-[15px] sm:text-[17px] lg:text-[19px] text-gray-400 leading-relaxed" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+              No matter who you are or where you're at—we'll help you build.
+            </p>
+            <Link to="/apply" className="inline-block px-10 py-5 bg-white text-[#ff6700] font-bold uppercase text-lg hover:bg-gray-100 transition-colors" style={{ borderRadius: 0 }}>
+              APPLY TODAY
+            </Link>
+          </div>
+
+          {/* Right Side - Placeholder */}
+          <div className="relative flex items-center justify-center lg:justify-end">
+            <div className="w-4/5 aspect-square bg-black rounded-2xl shadow-2xl">
             </div>
           </div>
         </div>
 
-        {/* Bottom CTA Bar */}
-        <div className="w-full bg-[#111111] border-t border-gray-800 px-4 sm:px-8 py-6">
-          <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="text-[18px] sm:text-[20px] md:text-[24px] font-bold text-orange-600 text-center sm:text-left">
-              Ready to build something remarkable?
-            </span>
-            <Link to="/apply" className="px-6 py-3 sm:px-8 border-2 border-orange-600 text-orange-600 rounded-lg font-semibold text-[14px] sm:text-[16px] hover:bg-orange-600 hover:text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 whitespace-nowrap">
-              Start Your Application
-            </Link>
+        {/* Bottom Footer Bar */}
+        <div className="w-full bg-black border-t border-gray-800 px-4 sm:px-8 py-4">
+          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm text-gray-400">
+            <Link to="/about" className="hover:text-[#ff6700] transition-colors">About</Link>
+            <Link to="/faq" className="hover:text-[#ff6700] transition-colors">FAQ</Link>
+            <Link to="/contact" className="hover:text-[#ff6700] transition-colors">Contact</Link>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff6700] transition-colors">Twitter</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff6700] transition-colors">LinkedIn</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#ff6700] transition-colors">Instagram</a>
           </div>
         </div>
       </section>
