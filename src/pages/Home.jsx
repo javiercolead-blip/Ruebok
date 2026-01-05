@@ -126,15 +126,6 @@ function Home() {
   useEffect(() => {
     // Set page title
     document.title = 'Ruebok'
-
-    // Carousel rotation timer - cycles every 4 seconds
-    const carouselTimer = setInterval(() => {
-      setCarouselIndex((prev) => (prev + 1) % 4)
-    }, 4000)
-
-    return () => {
-      clearInterval(carouselTimer)
-    }
   }, [])
 
   return (
@@ -210,28 +201,28 @@ function Home() {
                 <div className="w-full flex-shrink-0 px-2">
                   <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
                     {/* Text Content */}
-                    <div className="p-6">
-                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight">Build</h3>
-                      <p className="text-[15px] text-gray-400 mb-4">Weeks 1-4</p>
-                      <p className="text-[16px] text-gray-300 leading-[1.6] mb-4">
+                    <div className="p-4">
+                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Build</h3>
+                      <p className="text-[14px] text-gray-400 mb-3">Weeks 1-4</p>
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
                         Transform your idea into a working product with hands-on guidance and weekly milestones.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-2 mb-6">
+                      <ul className="space-y-1.5 mb-4">
                         {cardDetails.build.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[13px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     {/* Code Editor Visual */}
-                    <div className="relative h-[200px] mx-6 mb-6 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkSection }}>
+                    <div className="relative h-[140px] mx-4 mb-4 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkSection }}>
                       <div className="h-full flex flex-col">
                         <div className="px-3 py-2 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
                           <div className="flex gap-1.5">
@@ -259,28 +250,28 @@ function Home() {
                 <div className="w-full flex-shrink-0 px-2">
                   <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
                     {/* Text Content */}
-                    <div className="p-6">
-                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight">Mentorship</h3>
-                      <p className="text-[15px] text-gray-400 mb-4">Ongoing Support</p>
-                      <p className="text-[16px] text-gray-300 leading-[1.6] mb-4">
+                    <div className="p-4">
+                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Mentorship</h3>
+                      <p className="text-[14px] text-gray-400 mb-3">Ongoing Support</p>
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
                         Get personalized feedback from founders who've scaled startups and VCs who've funded successful companies.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-2 mb-6">
+                      <ul className="space-y-1.5 mb-4">
                         {cardDetails.mentorship.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[13px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     {/* Mentor Image */}
-                    <div className="relative h-[200px] mx-6 mb-6 rounded-lg overflow-hidden">
+                    <div className="relative h-[140px] mx-4 mb-4 rounded-lg overflow-hidden">
                       <img
                         src="/mentorpic.png"
                         alt="Mentor"
@@ -295,28 +286,28 @@ function Home() {
                 <div className="w-full flex-shrink-0 px-2">
                   <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
                     {/* Text Content */}
-                    <div className="p-6">
-                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight">Funding</h3>
-                      <p className="text-[15px] text-gray-400 mb-4">Investor Connections</p>
-                      <p className="text-[16px] text-gray-300 leading-[1.6] mb-4">
+                    <div className="p-4">
+                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Funding</h3>
+                      <p className="text-[14px] text-gray-400 mb-3">Investor Connections</p>
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
                         Refine your pitch and connect directly with global investors actively seeking deals.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-2 mb-6">
+                      <ul className="space-y-1.5 mb-4">
                         {cardDetails.funding.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[13px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     {/* Chart Visual */}
-                    <div className="relative h-[200px] mx-6 mb-6 bg-neutral-950 rounded-lg p-4 flex flex-col">
+                    <div className="relative h-[140px] mx-4 mb-4 bg-neutral-950 rounded-lg p-4 flex flex-col">
                       <div className="text-[10px] text-gray-400 font-semibold mb-3 uppercase tracking-wide">Traction</div>
                       <div className="flex-1 relative flex items-end justify-between gap-1.5">
                         <div className="flex flex-col items-center gap-1 flex-1">
@@ -346,28 +337,28 @@ function Home() {
                 <div className="w-full flex-shrink-0 px-2">
                   <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
                     {/* Text Content */}
-                    <div className="p-6">
-                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight">Network</h3>
-                      <p className="text-[15px] text-gray-400 mb-4">Lifetime Access</p>
-                      <p className="text-[16px] text-gray-300 leading-[1.6] mb-4">
+                    <div className="p-4">
+                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Network</h3>
+                      <p className="text-[14px] text-gray-400 mb-3">Lifetime Access</p>
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
                         Join a community of ambitious founders and gain lifetime access to our network of mentors and alumni.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-2 mb-6">
+                      <ul className="space-y-1.5 mb-4">
                         {cardDetails.network.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[13px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     {/* Network Image */}
-                    <div className="relative h-[200px] mx-6 mb-6 rounded-lg overflow-hidden bg-gradient-to-br from-gray-900 to-black p-6 flex items-center justify-center">
+                    <div className="relative h-[140px] mx-4 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-gray-900 to-black p-6 flex items-center justify-center">
                       <div className="grid grid-cols-3 gap-3">
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600"></div>
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600"></div>
