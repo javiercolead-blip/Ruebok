@@ -153,7 +153,7 @@ function Home() {
           {/* Phase Cards Grid - Horizontal Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
             {/* Card 1 - Build */}
-            <div className="border border-gray-800 shadow-2xl rounded-xl overflow-hidden transition-all h-[280px] md:min-h-[420px] group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray, borderColor: COLORS.border }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.border}>
+            <div className="border border-gray-800 shadow-2xl rounded-xl overflow-hidden transition-all h-[140px] md:min-h-[420px] group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray, borderColor: COLORS.border }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.border}>
 
               {/* Detail Overlay - slides from left on mobile, bottom on desktop */}
               <div
@@ -317,7 +317,7 @@ function Home() {
             </div>
 
             {/* Card 2 - Mentorship */}
-            <div className="border border-gray-700 shadow-2xl rounded-xl overflow-hidden hover:border-orange-600 transition-all h-[280px] md:min-h-[420px] group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray }}>
+            <div className="border border-gray-700 shadow-2xl rounded-xl overflow-hidden hover:border-orange-600 transition-all h-[140px] md:min-h-[420px] group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray }}>
 
               {/* Detail Overlay - slides from left on mobile, bottom on desktop */}
               <div
@@ -454,7 +454,7 @@ function Home() {
             </div>
 
             {/* Card 3 - Funding */}
-            <div className="shadow-2xl rounded-xl overflow-hidden hover:border hover:border-orange-600 transition-all h-[280px] md:min-h-[420px] border border-gray-800 group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray }}>
+            <div className="shadow-2xl rounded-xl overflow-hidden hover:border hover:border-orange-600 transition-all h-[140px] md:min-h-[420px] border border-gray-800 group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray }}>
 
               {/* Detail Overlay - slides from left on mobile, bottom on desktop */}
               <div
@@ -611,7 +611,7 @@ function Home() {
             </div>
 
             {/* Card 4 - Network */}
-            <div className="border border-neutral-800 shadow-2xl rounded-xl overflow-hidden hover:border-orange-600 transition-all h-[280px] md:min-h-[420px] group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray }}>
+            <div className="border border-neutral-800 shadow-2xl rounded-xl overflow-hidden hover:border-orange-600 transition-all h-[140px] md:min-h-[420px] group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray }}>
 
               {/* Detail Overlay - slides from left on mobile, bottom on desktop */}
               <div
