@@ -194,7 +194,7 @@ function Home() {
               onTouchEnd={handleTouchEnd}
             >
               <div
-                className="flex transition-transform duration-300 ease-out"
+                className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${carouselIndex * 100}%)` }}
               >
                 {/* Build Card */}
