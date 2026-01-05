@@ -959,39 +959,50 @@ function Home() {
       </section>
 
       {/* Backing Founders Section */}
-      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
-        <div className="flex-1 max-w-7xl mx-auto px-12 pt-8 sm:pt-10 lg:pt-12 w-full">
+      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] pb-8 flex flex-col overflow-hidden">
+        <div className="flex-1 max-w-7xl mx-auto px-6 pt-8 sm:pt-10 lg:pt-12 w-full">
           {/* Mobile Layout */}
-          <div className="lg:hidden flex flex-col space-y-4">
+          <div className="lg:hidden flex flex-col">
             {/* Title */}
-            <h2 className="text-[32px] sm:text-[40px] font-bold text-white leading-tight pl-7" style={{ fontFamily: FONTS.heading }}>
+            <h2 className="text-[38px] font-bold text-white leading-[1.2] mb-6" style={{ fontFamily: FONTS.heading }}>
               Backing Founders With Purpose
             </h2>
 
             {/* Image */}
-            <div className="relative flex items-center justify-start pl-7 -mt-4">
-              <div className="relative w-3/5 max-w-xs">
+            <div className="relative flex items-center justify-center mb-4">
+              <div className="relative w-full max-w-[280px]">
                 <div className="aspect-[2/3] rounded-2xl shadow-2xl overflow-hidden">
                   <img src="/ruebokguy.png" alt="Ruebok Founder" className="w-full h-[120%] object-cover object-top" />
                 </div>
                 {/* Floating Description */}
-                <div className="absolute -bottom-3 left-0 right-0 px-4">
-                  <p className="text-white font-semibold text-sm">
-                    Rajesh Patel <span className="text-[#4a9eff]">SwiftLogix</span> <span className="text-gray-400">— Raised $2.5M Series A</span>
-                  </p>
+                <div className="absolute -bottom-5 left-0 right-0 px-4">
+                  <div className="bg-black/80 backdrop-blur-sm rounded-lg p-3">
+                    <p className="text-white font-bold text-[22px] leading-tight">
+                      Rajesh Patel
+                    </p>
+                    <p className="text-[#5db0ff] font-semibold text-[18px] mt-1">
+                      SwiftLogix
+                    </p>
+                    <p className="text-[#b8b8b8] text-[16px] mt-1">
+                      Raised $2.5M Series A
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Description */}
-            <div className="space-y-4 pl-7">
-              <p className="text-[15px] text-gray-400 leading-relaxed" style={{ fontFamily: FONTS.mono }}>
+            <div className="space-y-4 mt-8">
+              <p className="text-[19px] text-[#b8b8b8] leading-[1.6]" style={{ fontFamily: FONTS.mono }}>
                 We invest in people with vision and resilience who deeply understand their markets.
               </p>
-              <p className="text-[15px] text-gray-400 leading-relaxed" style={{ fontFamily: FONTS.mono }}>
+              <p className="text-[19px] text-[#b8b8b8] leading-[1.6]" style={{ fontFamily: FONTS.mono }}>
                 No matter who you are or where you're at—we'll help you build.
               </p>
-              <Link to="/apply" className="inline-block px-10 py-5 bg-white text-orange-600 font-bold uppercase text-lg hover:bg-gray-100 transition-colors" style={{ borderRadius: 0 }}>
+              <Link
+                to="/apply"
+                className="block w-[90%] mx-auto text-center py-5 bg-white text-orange-600 font-bold uppercase text-[19px] hover:bg-gray-100 active:scale-[0.98] transition-all rounded-md shadow-lg mt-6"
+              >
                 APPLY TODAY
               </Link>
             </div>
