@@ -6,6 +6,8 @@ import { useCounterAnimation } from '../hooks/useCounterAnimation'
 
 function Home() {
   const [carouselIndex, setCarouselIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
   const [selectedCards, setSelectedCards] = useState([])
 
   // Use counter animation hook for all animated numbers
@@ -15,16 +17,60 @@ function Home() {
   const fintechProgress = useCounterAnimation(85, 2000, 'easeInOut')
   const fintechGrowth = useCounterAnimation(220, 2000, 'easeInOut')
 
-  // Helper functions for card selection
-  const toggleCard = (cardId) => {
+  // Carousel navigation
+  const totalCards = 4
+
+  const nextCard = () => {
+    setCarouselIndex((prev) => (prev + 1) % totalCards)
+  }
+
+  const prevCard = () => {
+    setCarouselIndex((prev) => (prev - 1 + totalCards) % totalCards)
+  }
+
+  const goToCard = (index) => {
+    setCarouselIndex(index)
+  }
+
+  // Handle touch events for swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      nextCard()
+    }
+    if (isRightSwipe) {
+      prevCard()
+    }
+
+    setTouchStart(0)
+    setTouchEnd(0)
+  }
+
+  // Desktop card overlay functions
+  const toggleCard = (cardName) => {
     setSelectedCards(prev =>
-      prev.includes(cardId)
-        ? prev.filter(id => id !== cardId)
-        : [...prev, cardId]
+      prev.includes(cardName)
+        ? prev.filter(name => name !== cardName)
+        : [...prev, cardName]
     )
   }
 
-  const isCardSelected = (cardId) => selectedCards.includes(cardId)
+  const isCardSelected = (cardName) => {
+    return selectedCards.includes(cardName)
+  }
 
   const cardDetails = {
     build: {
@@ -139,21 +185,225 @@ function Home() {
     </section>
 
       {/* How We Help Section */}
-      <section className="snap-start relative h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
-        <div className="flex-1 flex flex-col max-w-7xl mx-auto px-4 sm:px-8 py-3 sm:py-6 lg:py-10 w-full">
-          <div className="text-center mb-3 sm:mb-6 lg:mb-8">
-            <h2 className="text-[24px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight mb-1 sm:mb-3 lg:mb-4">
+      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10 sm:py-12 lg:py-16 w-full">
+          <div className="mb-10 sm:mb-12 lg:mb-16">
+            <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
               How we help you succeed
             </h2>
-            <p className="text-[11px] sm:text-[16px] lg:text-[18px] text-gray-300 max-w-2xl mx-auto px-4">
-              From idea to investment in four focused phases
-            </p>
           </div>
 
-          {/* Phase Cards Grid - Horizontal Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+          {/* Mobile: Carousel */}
+          <div className="md:hidden">
+            {/* Carousel Container */}
+            <div
+              className="relative overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div
+                className="flex transition-transform duration-300 ease-out"
+                style={{ transform: `translateX(-${carouselIndex * 100}%)` }}
+              >
+                {/* Build Card */}
+                <div className="w-full flex-shrink-0 px-2">
+                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
+                    {/* Text Content */}
+                    <div className="p-6">
+                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight">Build</h3>
+                      <p className="text-[15px] text-gray-400 mb-4">Weeks 1-4</p>
+                      <p className="text-[16px] text-gray-300 leading-[1.6] mb-4">
+                        Transform your idea into a working product with hands-on guidance and weekly milestones.
+                      </p>
+
+                      {/* Features List */}
+                      <ul className="space-y-2 mb-6">
+                        {cardDetails.build.features.map((feature, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Code Editor Visual */}
+                    <div className="relative h-[200px] mx-6 mb-6 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkSection }}>
+                      <div className="h-full flex flex-col">
+                        <div className="px-3 py-2 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
+                          <div className="flex gap-1.5">
+                            <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                            <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+                            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                          </div>
+                          <span className="text-[11px] text-gray-400 font-mono">startup.ts</span>
+                        </div>
+                        <div className="p-4 font-mono text-[14px] leading-relaxed flex-1">
+                          <div className="space-y-1">
+                            <div><span className="text-purple-400">const</span><span className="text-white"> mvp = {'{'}</span></div>
+                            <div className="pl-4"><span className="text-white">build: </span><span style={{ color: COLORS.primary }}>"fast"</span><span className="text-gray-500">,</span></div>
+                            <div className="pl-4"><span className="text-white">launch: </span><span className="text-purple-400">true</span><span className="text-gray-500">,</span></div>
+                            <div className="pl-4"><span className="text-white">status: </span><span style={{ color: COLORS.primary }}>"ready"</span></div>
+                            <div><span className="text-white">{'}'}</span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mentorship Card */}
+                <div className="w-full flex-shrink-0 px-2">
+                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
+                    {/* Text Content */}
+                    <div className="p-6">
+                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight">Mentorship</h3>
+                      <p className="text-[15px] text-gray-400 mb-4">Ongoing Support</p>
+                      <p className="text-[16px] text-gray-300 leading-[1.6] mb-4">
+                        Get personalized feedback from founders who've scaled startups and VCs who've funded successful companies.
+                      </p>
+
+                      {/* Features List */}
+                      <ul className="space-y-2 mb-6">
+                        {cardDetails.mentorship.features.map((feature, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Mentor Image */}
+                    <div className="relative h-[200px] mx-6 mb-6 rounded-lg overflow-hidden">
+                      <img
+                        src="/mentorpic.png"
+                        alt="Mentor"
+                        className="absolute inset-0 w-full h-full object-cover object-center brightness-125"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Funding Card */}
+                <div className="w-full flex-shrink-0 px-2">
+                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
+                    {/* Text Content */}
+                    <div className="p-6">
+                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight">Funding</h3>
+                      <p className="text-[15px] text-gray-400 mb-4">Investor Connections</p>
+                      <p className="text-[16px] text-gray-300 leading-[1.6] mb-4">
+                        Refine your pitch and connect directly with global investors actively seeking deals.
+                      </p>
+
+                      {/* Features List */}
+                      <ul className="space-y-2 mb-6">
+                        {cardDetails.funding.features.map((feature, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Chart Visual */}
+                    <div className="relative h-[200px] mx-6 mb-6 bg-neutral-950 rounded-lg p-4 flex flex-col">
+                      <div className="text-[10px] text-gray-400 font-semibold mb-3 uppercase tracking-wide">Traction</div>
+                      <div className="flex-1 relative flex items-end justify-between gap-1.5">
+                        <div className="flex flex-col items-center gap-1 flex-1">
+                          <div className="w-full rounded-t" style={{ height: '60%', backgroundColor: COLORS.primary }}></div>
+                          <span className="text-[9px] text-gray-500">Q1</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-1 flex-1">
+                          <div className="w-full rounded-t" style={{ height: '75%', backgroundColor: COLORS.primary }}></div>
+                          <span className="text-[9px] text-gray-500">Q2</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-1 flex-1">
+                          <div className="w-full rounded-t" style={{ height: '90%', backgroundColor: COLORS.primary }}></div>
+                          <span className="text-[9px] text-gray-500">Q3</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-1 flex-1">
+                          <div className="w-full rounded-t relative" style={{ height: '100%', backgroundColor: COLORS.primary }}>
+                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[11px] font-bold text-white">2.5x</div>
+                          </div>
+                          <span className="text-[9px] text-gray-500">Q4</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Network Card */}
+                <div className="w-full flex-shrink-0 px-2">
+                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
+                    {/* Text Content */}
+                    <div className="p-6">
+                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight">Network</h3>
+                      <p className="text-[15px] text-gray-400 mb-4">Lifetime Access</p>
+                      <p className="text-[16px] text-gray-300 leading-[1.6] mb-4">
+                        Join a community of ambitious founders and gain lifetime access to our network of mentors and alumni.
+                      </p>
+
+                      {/* Features List */}
+                      <ul className="space-y-2 mb-6">
+                        {cardDetails.network.features.map((feature, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Network Image */}
+                    <div className="relative h-[200px] mx-6 mb-6 rounded-lg overflow-hidden bg-gradient-to-br from-gray-900 to-black p-6 flex items-center justify-center">
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600"></div>
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600"></div>
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-teal-600"></div>
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600"></div>
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 ring-2 ring-white"></div>
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Carousel Dots */}
+            <div className="flex justify-center gap-2 mt-8">
+              {[0, 1, 2, 3].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => goToCard(index)}
+                  className="transition-all"
+                  style={{
+                    width: carouselIndex === index ? '32px' : '8px',
+                    height: '8px',
+                    borderRadius: '4px',
+                    backgroundColor: carouselIndex === index ? COLORS.primary : '#444'
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: Grid - Vertical stack on mobile, horizontal on desktop */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-5">
             {/* Card 1 - Build */}
-            <div className="border border-gray-800 shadow-2xl rounded-xl overflow-hidden transition-all h-[140px] md:min-h-[420px] group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray, borderColor: COLORS.border }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.border}>
+            <div className="border border-gray-800 shadow-2xl rounded-lg overflow-hidden transition-all group relative flex flex-col" style={{ backgroundColor: COLORS.darkGray, borderColor: COLORS.border }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.border}>
 
               {/* Detail Overlay - slides from left on mobile, bottom on desktop */}
               <div
@@ -201,51 +451,54 @@ function Home() {
                 </div>
               </div>
 
-              {/* Mobile: Two-column grid layout */}
-              <div className="grid grid-cols-2 gap-2 h-full md:hidden p-2">
-                {/* Left Column - Text Content */}
-                <div className="flex flex-col justify-start pt-1">
-                  <h3 className="text-sm font-bold text-white mb-1">Build</h3>
-                  <p className="text-[9px] text-gray-400 mb-2">Weeks 1-4</p>
-                  <p className="text-[10px] text-gray-300 leading-relaxed mb-2">
+              {/* Mobile: Vertical stack layout */}
+              <div className="flex flex-col md:hidden">
+                {/* Text Content */}
+                <div className="p-6">
+                  <h3 className="text-[26px] font-bold text-white mb-2 leading-tight">Build</h3>
+                  <p className="text-[15px] text-gray-400 mb-4">Weeks 1-4</p>
+                  <p className="text-[16px] text-gray-300 leading-[1.6] mb-6">
                     Turn your idea into a working product with hands-on guidance
                   </p>
-
-                  {/* Learn More Button */}
-                  <button
-                    onClick={() => toggleCard('build')}
-                    className="flex items-center gap-1 cursor-pointer mt-auto"
-                  >
-                    <span className="text-[10px] font-medium" style={{ color: COLORS.primary }}>
-                      Learn More
-                    </span>
-                    <svg className="w-3 h-3" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
                 </div>
 
-                {/* Right Column - Code Editor Visual */}
-                <div className="relative rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkSection }}>
+                {/* Code Editor Visual */}
+                <div className="relative h-[220px] mx-6 mb-6 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkSection }}>
                   <div className="h-full flex flex-col">
-                    <div className="px-2 py-1.5 flex items-center gap-1.5 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
-                      <div className="flex gap-1">
-                        <div className="w-1.5 h-1.5 rounded-full bg-red-500"></div>
-                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
-                        <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                    <div className="px-3 py-2 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
+                      <div className="flex gap-1.5">
+                        <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                        <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
                       </div>
-                      <span className="text-[8px] text-gray-400 font-mono">startup.ts</span>
+                      <span className="text-[11px] text-gray-400 font-mono">startup.ts</span>
                     </div>
-                    <div className="p-2 font-mono text-[8px] leading-relaxed flex-1">
-                      <div className="space-y-0.5">
+                    <div className="p-4 font-mono text-[14px] leading-relaxed flex-1">
+                      <div className="space-y-1">
                         <div><span className="text-purple-400">const</span><span className="text-white"> mvp = {'{'}</span></div>
-                        <div className="pl-2"><span className="text-white">build: </span><span style={{ color: COLORS.primary }}>"fast"</span></div>
-                        <div className="pl-2"><span className="text-white">launch: </span><span className="text-purple-400">true</span></div>
-                        <div className="pl-2"><span className="text-white">status: </span><span style={{ color: COLORS.primary }}>"ready"</span></div>
+                        <div className="pl-4"><span className="text-white">build: </span><span style={{ color: COLORS.primary }}>"fast"</span><span className="text-gray-500">,</span></div>
+                        <div className="pl-4"><span className="text-white">launch: </span><span className="text-purple-400">true</span><span className="text-gray-500">,</span></div>
+                        <div className="pl-4"><span className="text-white">status: </span><span style={{ color: COLORS.primary }}>"ready"</span></div>
                         <div><span className="text-white">{'}'}</span></div>
                       </div>
                     </div>
                   </div>
+                </div>
+
+                {/* Learn More Button */}
+                <div className="px-6 pb-6">
+                  <button
+                    onClick={() => toggleCard('build')}
+                    className="w-full h-[52px] flex items-center justify-center gap-2 cursor-pointer rounded-lg transition-all active:scale-[0.98]"
+                    style={{ backgroundColor: COLORS.primary }}
+                  >
+                    <span className="text-[16px] font-semibold text-white">
+                      Learn More
+                    </span>
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
                 </div>
               </div>
 

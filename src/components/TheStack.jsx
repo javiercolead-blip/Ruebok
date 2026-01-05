@@ -1,51 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useCounterAnimation } from '../hooks/useCounterAnimation'
+import { COLORS, FONTS } from '../constants'
 
 function TheStack() {
   const [isHovered, setIsHovered] = useState(false)
-  const [revenue, setRevenue] = useState(0)
-  const [downloads, setDownloads] = useState(0)
-  const [users, setUsers] = useState(0)
 
-  useEffect(() => {
-    // Animate revenue to $100
-    const revenueInterval = setInterval(() => {
-      setRevenue(prev => {
-        if (prev >= 100) {
-          clearInterval(revenueInterval)
-          return 100
-        }
-        return prev + Math.ceil((100 - prev) / 10)
-      })
-    }, 50)
-
-    // Animate downloads to 1,247
-    const downloadsInterval = setInterval(() => {
-      setDownloads(prev => {
-        if (prev >= 1247) {
-          clearInterval(downloadsInterval)
-          return 1247
-        }
-        return prev + Math.ceil((1247 - prev) / 15)
-      })
-    }, 40)
-
-    // Animate users to 89
-    const usersInterval = setInterval(() => {
-      setUsers(prev => {
-        if (prev >= 89) {
-          clearInterval(usersInterval)
-          return 89
-        }
-        return prev + Math.ceil((89 - prev) / 12)
-      })
-    }, 60)
-
-    return () => {
-      clearInterval(revenueInterval)
-      clearInterval(downloadsInterval)
-      clearInterval(usersInterval)
-    }
-  }, [])
+  // Use counter animation hook for all animated numbers
+  const revenue = useCounterAnimation(100, 2000, 'easeOut')
+  const downloads = useCounterAnimation(1247, 2000, 'easeOut')
+  const users = useCounterAnimation(89, 2000, 'easeOut')
 
   return (
     <div
@@ -68,7 +31,7 @@ function TheStack() {
       >
         <div className="bg-[#0F0F0F] border border-gray-800 shadow-2xl opacity-90 h-full flex flex-col" style={{ borderRadius: '8px' }}>
           {/* Window Header */}
-          <div className="bg-[#1a1a1a] px-4 py-3 flex items-center gap-2 border-b border-gray-800" style={{ borderTopLeftRadius: '8px', borderTopRightRadius: '8px' }}>
+          <div className="px-4 py-3 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray, borderTopLeftRadius: '8px', borderTopRightRadius: '8px' }}>
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
               <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
@@ -86,12 +49,12 @@ function TheStack() {
               </div>
               <div className="pl-4">
                 <span className="text-white">region: </span>
-                <span className="text-[#ff6700]">"global"</span>
+                <span style={{ color: COLORS.primary }}>"global"</span>
                 <span className="text-white">,</span>
               </div>
               <div className="pl-4">
                 <span className="text-white">mode: </span>
-                <span className="text-[#ff6700]">"prod"</span>
+                <span style={{ color: COLORS.primary }}>"prod"</span>
                 <span className="text-white">,</span>
               </div>
               <div className="pl-4">
@@ -157,7 +120,7 @@ function TheStack() {
           {/* Bottom Overlay - Progress Bar */}
           <div className="absolute bottom-4 left-4 right-4">
             <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
-              <div className="h-full bg-[#ff6700] w-[40%] rounded-full"></div>
+              <div className="h-full w-[40%] rounded-full" style={{ backgroundColor: COLORS.primary }}></div>
             </div>
           </div>
         </div>
@@ -195,11 +158,11 @@ function TheStack() {
 
               {/* Histogram Bars */}
               <div className="absolute inset-0 flex items-end justify-around px-4 pb-1">
-                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '35%' }}></div>
-                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '48%' }}></div>
-                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '62%' }}></div>
-                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '71%' }}></div>
-                <div className="w-8 bg-[#ff6700] rounded-t" style={{ height: '88%' }}></div>
+                <div className="w-8 rounded-t" style={{ backgroundColor: COLORS.primary, height: '35%' }}></div>
+                <div className="w-8 rounded-t" style={{ backgroundColor: COLORS.primary, height: '48%' }}></div>
+                <div className="w-8 rounded-t" style={{ backgroundColor: COLORS.primary, height: '62%' }}></div>
+                <div className="w-8 rounded-t" style={{ backgroundColor: COLORS.primary, height: '71%' }}></div>
+                <div className="w-8 rounded-t" style={{ backgroundColor: COLORS.primary, height: '88%' }}></div>
               </div>
             </div>
 

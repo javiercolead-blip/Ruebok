@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Resources() {
   useEffect(() => {
@@ -39,23 +40,93 @@ function Resources() {
           <div>
             <h2 className="text-[32px] font-bold text-white mb-6">Tools & Templates</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                { name: "Financial Model Template", type: "Excel/Google Sheets", description: "Pre-built financial projection model for startups" },
-                { name: "Pitch Deck Framework", type: "PowerPoint/Keynote", description: "Proven pitch deck structure with examples" },
-                { name: "OKR Planning Template", type: "Notion/Docs", description: "Set and track objectives and key results" },
-                { name: "Due Diligence Checklist", type: "PDF", description: "Prepare for investor due diligence" },
-              ].map((tool, index) => (
-                <div key={index} className="bg-gray-900 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-green-500">
+              {/* Financial Model Card */}
+              <Link to="/resources/financial-model" className="bg-[#1a1a1a] border border-gray-800 shadow-2xl flex flex-col rounded-xl overflow-hidden hover:border-[#ff6700] transition-all group relative">
+                <div className="bg-[#1a1a1a] p-6 border-t border-gray-800 flex-1 relative">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-[18px] font-bold text-white">{tool.name}</h3>
-                    <span className="text-xs text-gray-400">{tool.type}</span>
+                    <h3 className="text-lg font-bold text-white">Financial Model Template</h3>
+                    <span className="text-xs text-gray-400">Excel/Sheets</span>
                   </div>
-                  <p className="text-gray-400 text-sm">{tool.description}</p>
-                  <button className="mt-4 text-sm font-semibold text-gray-400 hover:text-gray-300">
-                    Download →
-                  </button>
+                  <p className="text-sm text-gray-400 mb-3">Default Alive or Default Dead?</p>
+                  <p className="text-base text-gray-300 leading-relaxed mb-12">
+                    Pre-built financial projection model for startups
+                  </p>
+
+                  {/* Learn More Link */}
+                  <div className="absolute bottom-8 left-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-[#ff6700] text-sm font-medium">Learn More</span>
+                    <svg className="w-4 h-4 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
-              ))}
+              </Link>
+
+              {/* Pitch Deck Framework Card */}
+              <Link to="/resources/pitch-deck-framework" className="bg-[#1a1a1a] border border-gray-800 shadow-2xl flex flex-col rounded-xl overflow-hidden hover:border-[#ff6700] transition-all group relative">
+                <div className="bg-[#1a1a1a] p-6 border-t border-gray-800 flex-1 relative">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-lg font-bold text-white">Pitch Deck Framework</h3>
+                    <span className="text-xs text-gray-400">PowerPoint/Keynote</span>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-3">10 Slides. 3 Minutes. Pure Clarity.</p>
+                  <p className="text-base text-gray-300 leading-relaxed mb-12">
+                    Proven pitch deck structure with examples
+                  </p>
+
+                  {/* Learn More Link */}
+                  <div className="absolute bottom-8 left-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-[#ff6700] text-sm font-medium">Learn More</span>
+                    <svg className="w-4 h-4 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+
+              {/* OKR Guide Card */}
+              <Link to="/resources/okr-guide" className="bg-[#1a1a1a] border border-gray-800 shadow-2xl flex flex-col rounded-xl overflow-hidden hover:border-[#ff6700] transition-all group relative">
+                <div className="bg-[#1a1a1a] p-6 border-t border-gray-800 flex-1 relative">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-lg font-bold text-white">OKR Planning Template</h3>
+                    <span className="text-xs text-gray-400">Notion/Docs</span>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-3">How to Manage Execution Without Micro-Managing People</p>
+                  <p className="text-base text-gray-300 leading-relaxed mb-12">
+                    Set and track objectives and key results
+                  </p>
+
+                  {/* Learn More Link */}
+                  <div className="absolute bottom-8 left-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-[#ff6700] text-sm font-medium">Learn More</span>
+                    <svg className="w-4 h-4 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Due Diligence Checklist Card */}
+              <Link to="/resources/due-diligence-checklist" className="bg-[#1a1a1a] border border-gray-800 shadow-2xl flex flex-col rounded-xl overflow-hidden hover:border-[#ff6700] transition-all group relative">
+                <div className="bg-[#1a1a1a] p-6 border-t border-gray-800 flex-1 relative">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-lg font-bold text-white">Due Diligence Checklist</h3>
+                    <span className="text-xs text-gray-400">PDF</span>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-3">The Exam You Can Study For</p>
+                  <p className="text-base text-gray-300 leading-relaxed mb-12">
+                    Prepare for investor due diligence
+                  </p>
+
+                  {/* Learn More Link */}
+                  <div className="absolute bottom-8 left-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-[#ff6700] text-sm font-medium">Learn More</span>
+                    <svg className="w-4 h-4 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
 

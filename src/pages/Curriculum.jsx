@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { COLORS, FONTS } from '../constants'
 
 function Curriculum() {
   const [openFaq, setOpenFaq] = useState(null)
+  const [activeTab, setActiveTab] = useState('BUILD')
 
   useEffect(() => {
     document.title = 'Curriculum'
@@ -61,104 +63,281 @@ function Curriculum() {
 
   return (
     <div className="min-h-screen bg-[#111111] dark-grid pt-[70px]">
-      <div className="max-w-7xl mx-auto px-8 py-16">
+      <div className="max-w-7xl mx-auto px-8 py-8 pt-12">
         {/* Headline */}
         <h1 className="text-[56px] font-bold text-white mb-6">6 Weeks to Investor-Ready.</h1>
-        <p className="subheadline text-[20px] text-gray-300 max-w-3xl mb-16">
+        <p className="subheadline text-[20px] text-gray-300 max-w-3xl mb-12">
           A high-intensity sprint designed to kill bad assumptions, build a business engine, and refine your pitch. No fluff, just deliverables.
         </p>
 
-        {/* Week Flow - First Row (Weeks 1-3) */}
-        <div className="mb-32 relative">
-          <div className="grid grid-cols-3 gap-8">
-            {weeks.slice(0, 3).map((week, index) => (
-              <div key={week.week} className="relative">
-                {/* Week Content */}
-                <div className="space-y-3 pr-8">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[#ff6700] font-bold text-lg">WEEK {week.week}</span>
+        {/* Interactive Tabbed Curriculum */}
+        <div className="mb-12">
+          <div className="flex gap-8">
+            {/* Left Side - Vertical Tabs */}
+            <div className="w-1/4 flex flex-col gap-3">
+              {[
+                { id: 'BUILD', label: 'BUILD', subtitle: 'Weeks 1-2' },
+                { id: 'SHIP', label: 'SHIP', subtitle: 'Weeks 3-4' },
+                { id: 'PITCH', label: 'PITCH', subtitle: 'Weeks 5-6' },
+                { id: 'FUND', label: 'FUND', subtitle: 'Weeks 7-8' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`text-left py-4 px-5 transition-all duration-300 cursor-pointer border-l-4 ${
+                    activeTab === tab.id
+                      ? 'border-[#ff6700] bg-[#1a1a1a] text-white'
+                      : 'border-transparent text-gray-500 hover:text-gray-300 hover:bg-[#151515]'
+                  }`}
+                  style={{ fontFamily: "'Oswald', sans-serif" }}
+                >
+                  <div className="text-xl font-bold">{tab.label}</div>
+                  <div className="text-xs mt-1 opacity-70">{tab.subtitle}</div>
+                </button>
+              ))}
+            </div>
+
+            {/* Right Side - Content Cards */}
+            <div className="w-3/4 relative overflow-hidden flex items-stretch">
+              {/* BUILD Card */}
+              <div
+                className={`absolute inset-0 transition-all duration-600 ease-in-out ${
+                  activeTab === 'BUILD' ? 'opacity-100 translate-y-0 z-10' : 'opacity-0 -translate-y-5 z-0'
+                }`}
+              >
+                <div className="bg-[#1a1a1a] rounded-2xl p-8 h-full overflow-y-auto shadow-2xl">
+                  <div className="grid grid-cols-2 gap-10">
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-3">
+                        <span className="text-[#ff6700]">Week 1:</span> Foundation & Validation
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        Interview 20+ potential customers to validate your problem hypothesis using customer discovery frameworks. Map the problem space and create a value proposition canvas.
+                      </p>
+                      <h4 className="text-sm font-bold text-[#ff6700] mb-2.5 uppercase" style={{ fontFamily: "'Roboto Mono', monospace" }}>Deliverables</h4>
+                      <ul className="text-gray-400 text-sm space-y-2" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        <li>• Validated problem statement</li>
+                        <li>• 20+ customer interview insights</li>
+                        <li>• Value proposition canvas</li>
+                        <li>• Pivot-or-proceed decision</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-3">
+                        <span className="text-[#ff6700]">Week 2:</span> MVP Blueprint
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        Design your system architecture and choose your tech stack strategically. Learn to leverage no-code tools for rapid prototyping with mentor guidance.
+                      </p>
+                      <h4 className="text-sm font-bold text-[#ff6700] mb-2.5 uppercase" style={{ fontFamily: "'Roboto Mono', monospace" }}>Deliverables</h4>
+                      <ul className="text-gray-400 text-sm space-y-2" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        <li>• Complete MVP blueprint</li>
+                        <li>• Technical architecture diagrams</li>
+                        <li>• Resource allocation plan</li>
+                        <li>• 4-week development timeline</li>
+                      </ul>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white uppercase">
-                    {week.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {week.description}
-                  </p>
                 </div>
-
-                {/* Arrow to next week (except last in row) */}
-                {index < 2 && (
-                  <div className="absolute top-24 -right-6 flex items-center">
-                    <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </div>
-                )}
               </div>
-            ))}
-          </div>
 
-        </div>
-
-        {/* Week Flow - Second Row (Weeks 4-6) */}
-        <div className="mb-2">
-          <div className="grid grid-cols-3 gap-8">
-            {weeks.slice(3, 6).map((week, index) => (
-              <div key={week.week} className="relative">
-                {/* Week Content */}
-                <div className="space-y-3 pr-8">
-                  <div className="flex items-center gap-2">
-                    <span className={`font-bold text-lg ${week.week >= 5 ? 'text-blue-400' : 'text-[#ff6700]'}`}>WEEK {week.week}</span>
+              {/* SHIP Card */}
+              <div
+                className={`absolute inset-0 transition-all duration-600 ease-in-out ${
+                  activeTab === 'SHIP' ? 'opacity-100 translate-y-0 z-10' : 'opacity-0 -translate-y-5 z-0'
+                }`}
+              >
+                <div className="bg-[#1a1a1a] rounded-2xl p-8 h-full overflow-y-auto shadow-2xl">
+                  <div className="grid grid-cols-2 gap-10">
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-3">
+                        <span className="text-[#ff6700]">Week 3:</span> Build & Early Traction
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        Build a lean MVP using no-code tools and lightweight experiments. Learn to get Letters of Intent from real prospects and validate product-market fit.
+                      </p>
+                      <h4 className="text-sm font-bold text-[#ff6700] mb-2.5 uppercase" style={{ fontFamily: "'Roboto Mono', monospace" }}>Deliverables</h4>
+                      <ul className="text-gray-400 text-sm space-y-2" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        <li>• Functional MVP prototype</li>
+                        <li>• Letters of Intent (LOIs)</li>
+                        <li>• User testing results</li>
+                        <li>• First customer commitments</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-3">
+                        <span className="text-[#ff6700]">Week 4:</span> Unit Economics & GTM
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        Build a financial model investors care about. Calculate CAC, LTV, burn rate, and runway. Design a repeatable go-to-market playbook.
+                      </p>
+                      <h4 className="text-sm font-bold text-[#ff6700] mb-2.5 uppercase" style={{ fontFamily: "'Roboto Mono', monospace" }}>Deliverables</h4>
+                      <ul className="text-gray-400 text-sm space-y-2" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        <li>• Complete financial model</li>
+                        <li>• CAC/LTV calculations</li>
+                        <li>• Go-to-market strategy doc</li>
+                        <li>• Revenue projections</li>
+                      </ul>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white uppercase">
-                    {week.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {week.description}
-                  </p>
                 </div>
-
-                {/* Arrow to next week (except last) */}
-                {index < 2 && (
-                  <div className="absolute top-24 -right-6 flex items-center">
-                    <svg className="w-12 h-6 text-[#ff6700]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </div>
-                )}
               </div>
-            ))}
+
+              {/* PITCH Card */}
+              <div
+                className={`absolute inset-0 transition-all duration-600 ease-in-out ${
+                  activeTab === 'PITCH' ? 'opacity-100 translate-y-0 z-10' : 'opacity-0 -translate-y-5 z-0'
+                }`}
+              >
+                <div className="bg-[#1a1a1a] rounded-2xl p-8 h-full overflow-y-auto shadow-2xl">
+                  <div className="grid grid-cols-2 gap-10">
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-3">
+                        <span className="text-[#ff6700]">Week 5:</span> Narrative & Design
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        Transform your business into a compelling story. Master visual storytelling, investor psychology, and the art of the 3-minute pitch.
+                      </p>
+                      <h4 className="text-sm font-bold text-[#ff6700] mb-2.5 uppercase" style={{ fontFamily: "'Roboto Mono', monospace" }}>Deliverables</h4>
+                      <ul className="text-gray-400 text-sm space-y-2" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        <li>• Investor-ready pitch deck</li>
+                        <li>• Refined narrative framework</li>
+                        <li>• Traction slides</li>
+                        <li>• Financial projections deck</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-3">
+                        <span className="text-[#ff6700]">Week 6:</span> The Close
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        Prepare for tough investor questions through live roast sessions and mock pitches with experienced VCs. Refine delivery under pressure.
+                      </p>
+                      <h4 className="text-sm font-bold text-[#ff6700] mb-2.5 uppercase" style={{ fontFamily: "'Roboto Mono', monospace" }}>Deliverables</h4>
+                      <ul className="text-gray-400 text-sm space-y-2" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        <li>• Demo Day pitch performance</li>
+                        <li>• Polished Q&A responses</li>
+                        <li>• Scheduled investor meetings</li>
+                        <li>• Actionable investor feedback</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* FUND Card */}
+              <div
+                className={`absolute inset-0 transition-all duration-600 ease-in-out ${
+                  activeTab === 'FUND' ? 'opacity-100 translate-y-0 z-10' : 'opacity-0 -translate-y-5 z-0'
+                }`}
+              >
+                <div className="bg-[#1a1a1a] rounded-2xl p-8 h-full overflow-y-auto shadow-2xl">
+                  <div className="grid grid-cols-2 gap-10">
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-3">
+                        <span className="text-[#ff6700]">Week 7:</span> Investor Outreach
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        Launch your fundraising campaign by building a targeted investor list and securing intro meetings through warm connections.
+                      </p>
+                      <h4 className="text-sm font-bold text-[#ff6700] mb-2.5 uppercase" style={{ fontFamily: "'Roboto Mono', monospace" }}>Deliverables</h4>
+                      <ul className="text-gray-400 text-sm space-y-2" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        <li>• Targeted investor list (50+)</li>
+                        <li>• Personalized outreach emails</li>
+                        <li>• 90-day fundraising timeline</li>
+                        <li>• Scheduled intro meetings</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-3">
+                        <span className="text-[#ff6700]">Week 8:</span> Demo Day & Beyond
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-5" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        Present to 50+ VCs and angel investors in a high-stakes Demo Day format. Network with backers and begin term sheet negotiations.
+                      </p>
+                      <h4 className="text-sm font-bold text-[#ff6700] mb-2.5 uppercase" style={{ fontFamily: "'Roboto Mono', monospace" }}>Deliverables</h4>
+                      <ul className="text-gray-400 text-sm space-y-2" style={{ fontFamily: "'Roboto Mono', monospace" }}>
+                        <li>• Live investor pitch (5 min)</li>
+                        <li>• Follow-up meeting schedule</li>
+                        <li>• Term sheet negotiations</li>
+                        <li>• Clear funding roadmap</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
 
       {/* FAQ Section */}
-      <div className="max-w-7xl mx-auto px-8 py-16">
-        <h2 className="text-[32px] font-bold text-white mb-8">Frequently Asked Questions</h2>
+      <div className="max-w-7xl mx-auto px-8 pt-2 pb-20">
+        <div className="text-center mb-12">
+          <h2 className="text-[40px] lg:text-[48px] font-bold text-white mb-4" style={{ fontFamily: FONTS.heading }}>
+            Frequently Asked Questions
+          </h2>
+          <p className="text-gray-400 text-lg" style={{ fontFamily: FONTS.mono }}>
+            Everything you need to know about the program
+          </p>
+        </div>
 
-        <div className="space-y-4">
+        <div className="max-w-4xl mx-auto space-y-3">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-gray-900 rounded-lg overflow-hidden shadow-md">
+            <div
+              key={index}
+              className="border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:border-gray-700"
+              style={{ backgroundColor: COLORS.darkGray }}
+            >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-800 transition-colors"
+                className="w-full px-6 py-5 text-left flex items-center justify-between group transition-colors"
+                style={{
+                  backgroundColor: openFaq === index ? COLORS.darkerGray : 'transparent'
+                }}
               >
-                <span className="font-semibold text-white">{faq.question}</span>
-                <svg
-                  className={`w-5 h-5 text-gray-400 transition-transform ${openFaq === index ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <span
+                  className="font-semibold text-lg pr-8 transition-colors"
+                  style={{
+                    color: openFaq === index ? COLORS.primary : '#ffffff',
+                    fontFamily: FONTS.heading
+                  }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+                  {faq.question}
+                </span>
+                <div className="flex-shrink-0">
+                  <svg
+                    className="w-6 h-6 transition-all duration-300"
+                    style={{
+                      color: openFaq === index ? COLORS.primary : '#9ca3af',
+                      transform: openFaq === index ? 'rotate(180deg)' : 'rotate(0deg)'
+                    }}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
               </button>
-              {openFaq === index && (
-                <div className="px-6 pb-4 text-gray-300 bg-gray-800">
+              <div
+                className="overflow-hidden transition-all duration-300 ease-in-out"
+                style={{
+                  maxHeight: openFaq === index ? '500px' : '0',
+                  opacity: openFaq === index ? 1 : 0
+                }}
+              >
+                <div
+                  className="px-6 pb-5 pt-2 text-gray-300 leading-relaxed border-t"
+                  style={{
+                    fontFamily: FONTS.mono,
+                    borderColor: COLORS.border
+                  }}
+                >
                   {faq.answer}
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

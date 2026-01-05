@@ -6,6 +6,11 @@ import Resources from './pages/Resources'
 import About from './pages/About'
 import Apply from './pages/Apply'
 import Curriculum from './pages/Curriculum'
+import PitchDeckFramework from './pages/PitchDeckFramework'
+import FinancialModel from './pages/FinancialModel'
+import OKRGuide from './pages/OKRGuide'
+import DueDiligenceChecklist from './pages/DueDiligenceChecklist'
+import ScrollToTop from './components/ScrollToTop'
 
 function NavBar() {
   const location = useLocation()
@@ -93,6 +98,7 @@ function NavBar() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-[#111111] font-sans">
         <NavBar />
 
@@ -103,6 +109,10 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/curriculum" element={<Curriculum />} />
+          <Route path="/resources/pitch-deck-framework" element={<PitchDeckFramework />} />
+          <Route path="/resources/financial-model" element={<FinancialModel />} />
+          <Route path="/resources/okr-guide" element={<OKRGuide />} />
+          <Route path="/resources/due-diligence-checklist" element={<DueDiligenceChecklist />} />
         </Routes>
       </div>
     </Router>
