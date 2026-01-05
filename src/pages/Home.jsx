@@ -204,26 +204,17 @@ function Home() {
               {/* Mobile: Two-column grid layout */}
               <div className="grid grid-cols-2 gap-2 h-full md:hidden p-2">
                 {/* Left Column - Text Content */}
-                <div className="flex flex-col justify-between">
-                  {/* Badge */}
-                  <div className="mb-2">
-                    <div className="inline-block px-2 py-0.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
-                      <span className="text-[9px] text-white font-semibold uppercase tracking-wider">Build</span>
-                    </div>
-                  </div>
-
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-sm font-bold text-white mb-1">Build</h3>
-                    <p className="text-[9px] text-gray-400 mb-2">Weeks 1-4</p>
-                    <p className="text-[10px] text-gray-300 leading-relaxed mb-3">
-                      Turn your idea into a working product with hands-on guidance
-                    </p>
-                  </div>
+                <div className="flex flex-col justify-start pt-1">
+                  <h3 className="text-sm font-bold text-white mb-1">Build</h3>
+                  <p className="text-[9px] text-gray-400 mb-2">Weeks 1-4</p>
+                  <p className="text-[10px] text-gray-300 leading-relaxed mb-2">
+                    Turn your idea into a working product with hands-on guidance
+                  </p>
 
                   {/* Learn More Button */}
                   <button
                     onClick={() => toggleCard('build')}
-                    className="flex items-center gap-1 cursor-pointer"
+                    className="flex items-center gap-1 cursor-pointer mt-auto"
                   >
                     <span className="text-[10px] font-medium" style={{ color: COLORS.primary }}>
                       Learn More
@@ -368,26 +359,17 @@ function Home() {
               {/* Mobile: Two-column grid layout */}
               <div className="grid grid-cols-2 gap-2 h-full md:hidden p-2">
                 {/* Left Column - Text Content */}
-                <div className="flex flex-col justify-between">
-                  {/* Badge */}
-                  <div className="mb-2">
-                    <div className="inline-block px-2 py-0.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
-                      <span className="text-[9px] text-white font-semibold uppercase tracking-wider">Mentorship</span>
-                    </div>
-                  </div>
-
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-sm font-bold text-white mb-1">Mentorship</h3>
-                    <p className="text-[9px] text-gray-400 mb-2">Ongoing Support</p>
-                    <p className="text-[10px] text-gray-300 leading-relaxed mb-3">
-                      Get personalized feedback from founders who've scaled startups
-                    </p>
-                  </div>
+                <div className="flex flex-col justify-start pt-1">
+                  <h3 className="text-sm font-bold text-white mb-1">Mentorship</h3>
+                  <p className="text-[9px] text-gray-400 mb-2">Ongoing Support</p>
+                  <p className="text-[10px] text-gray-300 leading-relaxed mb-2">
+                    Get personalized feedback from founders who've scaled startups
+                  </p>
 
                   {/* Learn More Button */}
                   <button
                     onClick={() => toggleCard('mentorship')}
-                    className="flex items-center gap-1 cursor-pointer"
+                    className="flex items-center gap-1 cursor-pointer mt-auto"
                   >
                     <span className="text-[10px] font-medium text-orange-600">
                       Learn More
@@ -505,26 +487,17 @@ function Home() {
               {/* Mobile: Two-column grid layout */}
               <div className="grid grid-cols-2 gap-2 h-full md:hidden p-2">
                 {/* Left Column - Text Content */}
-                <div className="flex flex-col justify-between">
-                  {/* Badge */}
-                  <div className="mb-2">
-                    <div className="inline-block px-2 py-0.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
-                      <span className="text-[9px] text-white font-semibold uppercase tracking-wider">Funding</span>
-                    </div>
-                  </div>
-
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-sm font-bold text-white mb-1">Funding</h3>
-                    <p className="text-[9px] text-gray-400 mb-2">Investor Connections</p>
-                    <p className="text-[10px] text-gray-300 leading-relaxed mb-3">
-                      Refine your pitch and connect with global investors seeking deals
-                    </p>
-                  </div>
+                <div className="flex flex-col justify-start pt-1">
+                  <h3 className="text-sm font-bold text-white mb-1">Funding</h3>
+                  <p className="text-[9px] text-gray-400 mb-2">Investor Connections</p>
+                  <p className="text-[10px] text-gray-300 leading-relaxed mb-2">
+                    Refine your pitch and connect with global investors seeking deals
+                  </p>
 
                   {/* Learn More Button */}
                   <button
                     onClick={() => toggleCard('funding')}
-                    className="flex items-center gap-1 cursor-pointer"
+                    className="flex items-center gap-1 cursor-pointer mt-auto"
                   >
                     <span className="text-[10px] font-medium text-orange-600">
                       Learn More
@@ -662,26 +635,17 @@ function Home() {
               {/* Mobile: Two-column grid layout */}
               <div className="grid grid-cols-2 gap-2 h-full md:hidden p-2">
                 {/* Left Column - Text Content */}
-                <div className="flex flex-col justify-between">
-                  {/* Badge */}
-                  <div className="mb-2">
-                    <div className="inline-block px-2 py-0.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
-                      <span className="text-[9px] text-white font-semibold uppercase tracking-wider">Network</span>
-                    </div>
-                  </div>
-
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-sm font-bold text-white mb-1">Network</h3>
-                    <p className="text-[9px] text-gray-400 mb-2">Lifetime Access</p>
-                    <p className="text-[10px] text-gray-300 leading-relaxed mb-3">
-                      Join a global community of founders and investors building together
-                    </p>
-                  </div>
+                <div className="flex flex-col justify-start pt-1">
+                  <h3 className="text-sm font-bold text-white mb-1">Network</h3>
+                  <p className="text-[9px] text-gray-400 mb-2">Lifetime Access</p>
+                  <p className="text-[10px] text-gray-300 leading-relaxed mb-2">
+                    Join a global community of founders and investors building together
+                  </p>
 
                   {/* Learn More Button */}
                   <button
                     onClick={() => toggleCard('network')}
-                    className="flex items-center gap-1 cursor-pointer"
+                    className="flex items-center gap-1 cursor-pointer mt-auto"
                   >
                     <span className="text-[10px] font-medium text-orange-600">
                       Learn More
