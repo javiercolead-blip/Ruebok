@@ -969,30 +969,30 @@ function Home() {
             </h2>
 
             {/* Founder Card - Horizontal Layout */}
-            <div className="w-[85%] mx-auto bg-[#1a1a1a] rounded-xl p-4 flex items-center gap-4 mb-5">
+            <div className="w-[90%] mx-auto bg-[#1a1a1a] rounded-xl p-5 flex items-center gap-5 mb-8">
               {/* Circular Photo */}
               <div className="flex-shrink-0">
-                <div className="w-[130px] h-[130px] rounded-full overflow-hidden border-2 border-gray-800">
+                <div className="w-[160px] h-[160px] rounded-full overflow-hidden border-2 border-gray-800">
                   <img src="/ruebokguy.png" alt="Ruebok Founder" className="w-full h-full object-cover object-top" />
                 </div>
               </div>
 
               {/* Text Content */}
               <div className="flex-1 min-w-0">
-                <p className="text-white font-bold text-[19px] leading-tight mb-1">
+                <p className="text-white font-bold text-[22px] leading-tight mb-2">
                   Rajesh Patel
                 </p>
-                <p className="text-[#5db0ff] font-semibold text-[16px] mb-1">
+                <p className="text-[#5db0ff] font-semibold text-[18px] mb-2">
                   SwiftLogix
                 </p>
-                <p className="text-[#b8b8b8] text-[14px]">
+                <p className="text-[#b8b8b8] text-[16px]">
                   Raised $2.5M Series A
                 </p>
               </div>
             </div>
 
             {/* Description - Single Combined Paragraph */}
-            <p className="text-[17px] text-[#b8b8b8] leading-[1.5] mb-5 px-2" style={{ fontFamily: FONTS.mono }}>
+            <p className="text-[17px] text-[#b8b8b8] leading-[1.5] mb-8 px-2" style={{ fontFamily: FONTS.mono }}>
               We invest in people with vision and resilience who deeply understand their markets. No matter who you are or where you're at—we'll help you build.
             </p>
 
