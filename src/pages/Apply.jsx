@@ -60,7 +60,10 @@ function Apply() {
       // Show back button after 2 seconds
       setTimeout(() => setShowBackButton(true), 2000)
     } catch (error) {
-      setMessage({ type: 'error', text: 'Error submitting application. Please try again.' })
+      setMessage({
+        type: 'error',
+        text: `Error submitting application: ${error.message || 'Please try again.'}`
+      })
       console.error('Error:', error)
     } finally {
       setLoading(false)
