@@ -179,22 +179,22 @@ function Home() {
         </div>
 
         {/* RIGHT COLUMN - Social Proof Statistics */}
-        <div className="hidden lg:flex flex-col justify-center pl-16">
+        <div className="hidden lg:flex flex-col justify-center pl-24">
           {/* Stat 1 - Investment Raised */}
-          <div className="mb-10" style={{
+          <div className="mb-12" style={{
             opacity: totalRaised > 0 ? 1 : 0.7,
             transform: `scale(${totalRaised > 0 ? 1 : 0.95})`,
             transition: 'all 0.3s ease-out'
           }}>
-            <div className="flex items-baseline gap-2 mb-3">
+            <div className="flex items-baseline gap-3 mb-4">
               {/* Dollar Icon */}
-              <svg className="w-7 h-7 flex-shrink-0" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-9 h-9 flex-shrink-0" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <div
                 className="font-bold"
                 style={{
-                  fontSize: '52px',
+                  fontSize: '64px',
                   color: COLORS.primary,
                   fontFamily: FONTS.heading,
                   textShadow: totalRaised > 840 ? '0 0 20px rgba(255, 103, 0, 0.3)' : 'none',
@@ -204,26 +204,26 @@ function Home() {
                 ${totalRaised}K+
               </div>
             </div>
-            <p className="text-white text-[16px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
+            <p className="text-white text-[18px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
               Raised by Our Founders
             </p>
           </div>
 
           {/* Stat 2 - Success Metric */}
-          <div className="mb-10" style={{
+          <div className="mb-12" style={{
             opacity: successRate > 0 ? 1 : 0.7,
             transform: `scale(${successRate > 0 ? 1 : 0.95})`,
             transition: 'all 0.3s ease-out'
           }}>
-            <div className="flex items-baseline gap-2 mb-3">
+            <div className="flex items-baseline gap-3 mb-4">
               {/* Check/Success Icon */}
-              <svg className="w-7 h-7 flex-shrink-0 text-[#50c878]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-9 h-9 flex-shrink-0 text-[#50c878]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <div
                 className="font-bold"
                 style={{
-                  fontSize: '52px',
+                  fontSize: '64px',
                   color: '#50c878',
                   fontFamily: FONTS.heading,
                   textShadow: successRate > 85 ? '0 0 20px rgba(80, 200, 120, 0.2)' : 'none',
@@ -233,7 +233,7 @@ function Home() {
                 {successRate}%
               </div>
             </div>
-            <p className="text-white text-[16px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
+            <p className="text-white text-[18px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
               Get Investor Meetings
             </p>
           </div>
@@ -244,15 +244,15 @@ function Home() {
             transform: `scale(${spotsLeft > 0 ? 1 : 0.95})`,
             transition: 'all 0.3s ease-out'
           }}>
-            <div className="flex items-baseline gap-2 mb-3">
+            <div className="flex items-baseline gap-3 mb-4">
               {/* Users Icon */}
-              <svg className="w-7 h-7 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-9 h-9 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
               <div
                 className="font-bold relative"
                 style={{
-                  fontSize: '52px',
+                  fontSize: '64px',
                   color: 'white',
                   fontFamily: FONTS.heading,
                   lineHeight: 1
@@ -269,10 +269,10 @@ function Home() {
                 />
               </div>
             </div>
-            <p className="text-white text-[16px] leading-[1.4] mb-2" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
+            <p className="text-white text-[18px] leading-[1.4] mb-2" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
               Spots Available
             </p>
-            <p className="text-[14px]" style={{ color: COLORS.primary, fontFamily: FONTS.mono }}>
+            <p className="text-[16px]" style={{ color: COLORS.primary, fontFamily: FONTS.mono }}>
               Applications closing soon
             </p>
           </div>
