@@ -67,20 +67,6 @@ function NavBar() {
               >
                 Mission
               </Link>
-              <Link
-                to="/curriculum"
-                className={`block py-2 text-[13px] font-medium uppercase transition-colors tracking-wider ${isActive('/curriculum') ? 'text-[#ff6700]' : 'text-white hover:text-[#ff6700]'}`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Curriculum
-              </Link>
-              <Link
-                to="/resources"
-                className={`block py-2 text-[13px] font-medium uppercase transition-colors tracking-wider ${isActive('/resources') ? 'text-[#ff6700]' : 'text-white hover:text-[#ff6700]'}`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Our Resources
-              </Link>
               <a
                 href="#login"
                 className="block py-2 text-[13px] font-medium uppercase text-[#ff6700] hover:text-[#ff7f1f] transition-colors border-t border-[#333333] mt-2 pt-4 tracking-wider underline"
