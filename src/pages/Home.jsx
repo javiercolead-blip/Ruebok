@@ -960,52 +960,49 @@ function Home() {
 
       {/* Backing Founders Section */}
       <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] pb-8 flex flex-col overflow-hidden">
-        <div className="flex-1 max-w-7xl mx-auto px-6 pt-8 sm:pt-10 lg:pt-12 w-full">
+        <div className="flex-1 max-w-7xl mx-auto px-6 pt-10 sm:pt-10 lg:pt-12 w-full">
           {/* Mobile Layout */}
           <div className="lg:hidden flex flex-col">
             {/* Title */}
-            <h2 className="text-[38px] font-bold text-white leading-[1.2] mb-6" style={{ fontFamily: FONTS.heading }}>
+            <h2 className="text-[30px] font-bold text-white leading-[1.1] mb-5" style={{ fontFamily: FONTS.heading }}>
               Backing Founders With Purpose
             </h2>
 
-            {/* Image */}
-            <div className="relative flex items-center justify-center mb-4">
-              <div className="relative w-full max-w-[280px]">
-                <div className="aspect-[2/3] rounded-2xl shadow-2xl overflow-hidden">
-                  <img src="/ruebokguy.png" alt="Ruebok Founder" className="w-full h-[120%] object-cover object-top" />
+            {/* Founder Card - Horizontal Layout */}
+            <div className="w-[85%] mx-auto bg-[#1a1a1a] rounded-xl p-4 flex items-center gap-4 mb-5">
+              {/* Circular Photo */}
+              <div className="flex-shrink-0">
+                <div className="w-[130px] h-[130px] rounded-full overflow-hidden border-2 border-gray-800">
+                  <img src="/ruebokguy.png" alt="Ruebok Founder" className="w-full h-full object-cover object-top" />
                 </div>
-                {/* Floating Description */}
-                <div className="absolute -bottom-5 left-0 right-0 px-4">
-                  <div className="bg-black/80 backdrop-blur-sm rounded-lg p-3">
-                    <p className="text-white font-bold text-[22px] leading-tight">
-                      Rajesh Patel
-                    </p>
-                    <p className="text-[#5db0ff] font-semibold text-[18px] mt-1">
-                      SwiftLogix
-                    </p>
-                    <p className="text-[#b8b8b8] text-[16px] mt-1">
-                      Raised $2.5M Series A
-                    </p>
-                  </div>
-                </div>
+              </div>
+
+              {/* Text Content */}
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold text-[19px] leading-tight mb-1">
+                  Rajesh Patel
+                </p>
+                <p className="text-[#5db0ff] font-semibold text-[16px] mb-1">
+                  SwiftLogix
+                </p>
+                <p className="text-[#b8b8b8] text-[14px]">
+                  Raised $2.5M Series A
+                </p>
               </div>
             </div>
 
-            {/* Description */}
-            <div className="space-y-4 mt-8">
-              <p className="text-[19px] text-[#b8b8b8] leading-[1.6]" style={{ fontFamily: FONTS.mono }}>
-                We invest in people with vision and resilience who deeply understand their markets.
-              </p>
-              <p className="text-[19px] text-[#b8b8b8] leading-[1.6]" style={{ fontFamily: FONTS.mono }}>
-                No matter who you are or where you're at—we'll help you build.
-              </p>
-              <Link
-                to="/apply"
-                className="block w-[90%] mx-auto text-center py-5 bg-white text-orange-600 font-bold uppercase text-[19px] hover:bg-gray-100 active:scale-[0.98] transition-all rounded-md shadow-lg mt-6"
-              >
-                APPLY TODAY
-              </Link>
-            </div>
+            {/* Description - Single Combined Paragraph */}
+            <p className="text-[17px] text-[#b8b8b8] leading-[1.5] mb-5 px-2" style={{ fontFamily: FONTS.mono }}>
+              We invest in people with vision and resilience who deeply understand their markets. No matter who you are or where you're at—we'll help you build.
+            </p>
+
+            {/* CTA Button */}
+            <Link
+              to="/apply"
+              className="block w-[90%] mx-auto text-center py-[14px] bg-white text-orange-600 font-bold uppercase text-[18px] hover:bg-gray-100 active:scale-[0.98] transition-all rounded-lg shadow-lg"
+            >
+              APPLY TODAY
+            </Link>
           </div>
 
           {/* Desktop Layout */}
