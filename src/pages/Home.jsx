@@ -1122,8 +1122,8 @@ function Home() {
       </section>
 
       {/* Backing Founders Section */}
-      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] pb-8 flex flex-col overflow-hidden">
-        <div className="flex-1 max-w-7xl mx-auto px-6 pt-10 sm:pt-10 lg:pt-12 w-full">
+      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
+        <div className="flex-1 max-w-7xl mx-auto px-6 pt-10 sm:pt-10 lg:pt-12 pb-8 w-full">
           {/* Mobile Layout */}
           <div className="lg:hidden flex flex-col">
             {/* Title */}
@@ -1146,9 +1146,9 @@ function Home() {
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden lg:flex lg:flex-col lg:items-center lg:justify-center">
+          <div className="hidden lg:flex lg:flex-col">
             {/* Content */}
-            <div className="space-y-4 sm:space-y-6 max-w-2xl text-center">
+            <div className="space-y-4 sm:space-y-6 max-w-2xl">
               <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight" style={{ fontFamily: FONTS.heading }}>
                 Backing Founders With Purpose
               </h2>
@@ -1166,7 +1166,7 @@ function Home() {
         </div>
 
         {/* Bottom Footer Bar */}
-        <div className="w-full bg-black border-t border-gray-800 px-4 sm:px-8 py-4">
+        <div className="w-full mt-auto bg-black border-t border-gray-800 px-4 sm:px-8 py-4">
           <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm text-gray-400">
             <Link to="/about" className="hover:text-orange-600 transition-colors">About</Link>
             <Link to="/faq" className="hover:text-orange-600 transition-colors">FAQ</Link>
