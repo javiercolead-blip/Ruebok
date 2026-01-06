@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import TheStack from '../components/TheStack'
 import { COLORS, FONTS } from '../constants'
 import { useCounterAnimation } from '../hooks/useCounterAnimation'
+import { useStatsCounter } from '../hooks/useStatsCounter'
 
 function Home() {
   const [carouselIndex, setCarouselIndex] = useState(0)
@@ -16,6 +17,11 @@ function Home() {
   const agriGrowth = useCounterAnimation(340, 2000, 'easeInOut')
   const fintechProgress = useCounterAnimation(85, 2000, 'easeInOut')
   const fintechGrowth = useCounterAnimation(220, 2000, 'easeInOut')
+
+  // Hero stats counters with staggered delays
+  const totalRaised = useStatsCounter(850, 2500, 0, 'easeOut')
+  const successRate = useStatsCounter(87, 2500, 300, 'easeOut')
+  const spotsLeft = useStatsCounter(50, 2500, 600, 'easeOut')
 
   // Carousel navigation
   const totalCards = 4
@@ -168,6 +174,170 @@ function Home() {
             {/* Trust Signal */}
             <p className="text-sm text-neutral-500" style={{ fontFamily: FONTS.mono }}>
               Applications closing for Cohort 2026.
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT COLUMN - Social Proof Statistics */}
+        <div className="hidden lg:flex flex-col justify-center">
+          <div
+            className="bg-[#1a1a1a]/50 backdrop-blur-sm rounded-[20px] p-10 border border-orange-600/15 shadow-2xl"
+            style={{
+              boxShadow: '0 0 40px rgba(255, 103, 0, 0.1)'
+            }}
+          >
+            {/* Stat 1 - Investment Raised */}
+            <div className="mb-10" style={{
+              opacity: totalRaised > 0 ? 1 : 0.7,
+              transform: `scale(${totalRaised > 0 ? 1 : 0.95})`,
+              transition: 'all 0.3s ease-out'
+            }}>
+              <div className="flex items-baseline gap-2 mb-3">
+                {/* Dollar Icon */}
+                <svg className="w-7 h-7 flex-shrink-0" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div
+                  className="font-bold"
+                  style={{
+                    fontSize: '52px',
+                    color: COLORS.primary,
+                    fontFamily: FONTS.heading,
+                    textShadow: totalRaised > 840 ? '0 0 20px rgba(255, 103, 0, 0.3)' : 'none',
+                    lineHeight: 1
+                  }}
+                >
+                  ${totalRaised}K+
+                </div>
+              </div>
+              <p className="text-white text-[16px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
+                Raised by Our Founders
+              </p>
+            </div>
+
+            {/* Stat 2 - Success Metric */}
+            <div className="mb-10" style={{
+              opacity: successRate > 0 ? 1 : 0.7,
+              transform: `scale(${successRate > 0 ? 1 : 0.95})`,
+              transition: 'all 0.3s ease-out'
+            }}>
+              <div className="flex items-baseline gap-2 mb-3">
+                {/* Check/Success Icon */}
+                <svg className="w-7 h-7 flex-shrink-0 text-[#50c878]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div
+                  className="font-bold"
+                  style={{
+                    fontSize: '52px',
+                    color: '#50c878',
+                    fontFamily: FONTS.heading,
+                    textShadow: successRate > 85 ? '0 0 20px rgba(80, 200, 120, 0.2)' : 'none',
+                    lineHeight: 1
+                  }}
+                >
+                  {successRate}%
+                </div>
+              </div>
+              <p className="text-white text-[16px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
+                Get Investor Meetings
+              </p>
+            </div>
+
+            {/* Stat 3 - Scarcity */}
+            <div style={{
+              opacity: spotsLeft > 0 ? 1 : 0.7,
+              transform: `scale(${spotsLeft > 0 ? 1 : 0.95})`,
+              transition: 'all 0.3s ease-out'
+            }}>
+              <div className="flex items-baseline gap-2 mb-3">
+                {/* Users Icon */}
+                <svg className="w-7 h-7 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <div
+                  className="font-bold relative"
+                  style={{
+                    fontSize: '52px',
+                    color: 'white',
+                    fontFamily: FONTS.heading,
+                    lineHeight: 1
+                  }}
+                >
+                  {spotsLeft}
+                  <div
+                    className="absolute -bottom-1 left-0 right-0 h-1 rounded-full"
+                    style={{
+                      backgroundColor: COLORS.primary,
+                      width: spotsLeft > 45 ? '100%' : '0%',
+                      transition: 'width 0.5s ease-out 1s'
+                    }}
+                  />
+                </div>
+              </div>
+              <p className="text-white text-[16px] leading-[1.4] mb-2" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
+                Spots Available
+              </p>
+              <p className="text-[14px]" style={{ color: COLORS.primary, fontFamily: FONTS.mono }}>
+                Applications closing soon
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Stats - Horizontal Row Below Hero Content */}
+        <div className="lg:hidden mt-12 grid grid-cols-3 gap-4">
+          {/* Stat 1 */}
+          <div className="text-center">
+            <div
+              className="font-bold mb-2"
+              style={{
+                fontSize: '36px',
+                color: COLORS.primary,
+                fontFamily: FONTS.heading,
+                lineHeight: 1
+              }}
+            >
+              ${totalRaised}K+
+            </div>
+            <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
+              Raised by Founders
+            </p>
+          </div>
+
+          {/* Stat 2 */}
+          <div className="text-center">
+            <div
+              className="font-bold mb-2"
+              style={{
+                fontSize: '36px',
+                color: '#50c878',
+                fontFamily: FONTS.heading,
+                lineHeight: 1
+              }}
+            >
+              {successRate}%
+            </div>
+            <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
+              Get Meetings
+            </p>
+          </div>
+
+          {/* Stat 3 */}
+          <div className="text-center">
+            <div
+              className="font-bold mb-2"
+              style={{
+                fontSize: '36px',
+                color: 'white',
+                fontFamily: FONTS.heading,
+                lineHeight: 1
+              }}
+            >
+              {spotsLeft}
+            </div>
+            <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
+              Spots Left
             </p>
           </div>
         </div>

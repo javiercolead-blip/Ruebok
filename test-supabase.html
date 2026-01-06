@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supabase Connection Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 40px;
+            background: #111;
+            color: #fff;
+        }
+        .result {
+            margin: 20px 0;
+            padding: 20px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+        }
+        .success { border-color: #00ff00; }
+        .error { border-color: #ff0000; }
+        button {
+            background: #ff6700;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background: #ff8533; }
+    </style>
+</head>
+<body>
+    <h1>Supabase Connection Test</h1>
+
+    <button onclick="testConnection()">Test Connection</button>
+    <button onclick="testInsert()">Test Insert</button>
+
+    <div id="results"></div>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+
+        const supabaseUrl = 'https://ysdzwynhnpjyoefwjyfg.supabase.co'
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlzZHp3eW5obnBqeW9lZndqeWZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyMTMwODgsImV4cCI6MjA4MTc4OTA4OH0.2K5oM9WSdeIbVHqwH_ybULZetY4UIx3XQcvudAK3T78'
+
+        window.supabase = createClient(supabaseUrl, supabaseKey)
+
+        window.testConnection = async function() {
+            const resultsDiv = document.getElementById('results')
+            resultsDiv.innerHTML = '<div class="result">Testing connection...</div>'
+
+            try {
+                // Test 1: Can we reach Supabase at all?
+                const response = await fetch(supabaseUrl + '/rest/v1/')
+                resultsDiv.innerHTML += `<div class="result success">✓ Supabase URL is reachable (Status: ${response.status})</div>`
+
+                // Test 2: Can we query (even if table doesn't exist)?
+                const { data, error } = await window.supabase
+                    .from('applicants')
+                    .select('*')
+                    .limit(1)
+
+                if (error) {
+                    resultsDiv.innerHTML += `<div class="result error">✗ Query Error: ${error.message}</div>`
+                    resultsDiv.innerHTML += `<div class="result">Error Code: ${error.code}</div>`
+                    resultsDiv.innerHTML += `<div class="result">Error Details: ${error.details}</div>`
+                    resultsDiv.innerHTML += `<div class="result">Hint: ${error.hint}</div>`
+                } else {
+                    resultsDiv.innerHTML += `<div class="result success">✓ Table query successful! Found ${data?.length || 0} rows</div>`
+                }
+            } catch (err) {
+                resultsDiv.innerHTML += `<div class="result error">✗ Network Error: ${err.message}</div>`
+                resultsDiv.innerHTML += `<div class="result">Full Error: ${JSON.stringify(err, null, 2)}</div>`
+            }
+        }
+
+        window.testInsert = async function() {
+            const resultsDiv = document.getElementById('results')
+            resultsDiv.innerHTML = '<div class="result">Testing insert...</div>'
+
+            try {
+                const testData = {
+                    first_name: 'Test',
+                    last_name: 'User',
+                    email: 'test@example.com',
+                    start_up_name: 'Test Startup',
+                    one_line_description: 'This is a test',
+                    what_problem_are_you_solving: 'Testing the form',
+                    biggest_challenge: 'Making it work'
+                }
+
+                const { data, error } = await window.supabase
+                    .from('applicants')
+                    .insert([testData])
+
+                if (error) {
+                    resultsDiv.innerHTML += `<div class="result error">✗ Insert Error: ${error.message}</div>`
+                    resultsDiv.innerHTML += `<div class="result">Error Code: ${error.code}</div>`
+                    resultsDiv.innerHTML += `<div class="result">Error Details: ${error.details}</div>`
+                    resultsDiv.innerHTML += `<div class="result">Hint: ${error.hint}</div>`
+                } else {
+                    resultsDiv.innerHTML += `<div class="result success">✓ Insert successful!</div>`
+                    resultsDiv.innerHTML += `<div class="result">Data: ${JSON.stringify(data, null, 2)}</div>`
+                }
+            } catch (err) {
+                resultsDiv.innerHTML += `<div class="result error">✗ Network Error: ${err.message}</div>`
+                resultsDiv.innerHTML += `<div class="result">Stack: ${err.stack}</div>`
+            }
+        }
+    </script>
+</body>
+</html>
