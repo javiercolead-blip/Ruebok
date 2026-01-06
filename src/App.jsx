@@ -11,6 +11,7 @@ import FinancialModel from './pages/FinancialModel'
 import OKRGuide from './pages/OKRGuide'
 import DueDiligenceChecklist from './pages/DueDiligenceChecklist'
 import ScrollToTop from './components/ScrollToTop'
+import { initAnalytics } from './analytics'
 
 function NavBar() {
   const location = useLocation()
@@ -82,6 +83,11 @@ function NavBar() {
 }
 
 function App() {
+  useEffect(() => {
+    // Initialize analytics when app mounts
+    initAnalytics()
+  }, [])
+
   return (
     <Router>
       <ScrollToTop />

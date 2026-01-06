@@ -5,6 +5,23 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ruebok</title>
+
+    <!-- Google Analytics 4 -->
+    <!-- Replace G-XXXXXXXXXX with your actual GA4 Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        // Track referrer and campaign data
+        'send_page_view': true,
+        'campaign_source': new URLSearchParams(window.location.search).get('utm_source'),
+        'campaign_medium': new URLSearchParams(window.location.search).get('utm_medium'),
+        'campaign_name': new URLSearchParams(window.location.search).get('utm_campaign'),
+      });
+    </script>
+
     <style>
       body {
         background-color: #111111;
