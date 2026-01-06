@@ -1134,32 +1134,9 @@ function Home() {
           {/* Mobile Layout */}
           <div className="lg:hidden flex flex-col">
             {/* Title */}
-            <h2 className="text-[30px] font-bold text-white leading-[1.1] mb-5" style={{ fontFamily: FONTS.heading }}>
+            <h2 className="text-[30px] font-bold text-white leading-[1.1] mb-8" style={{ fontFamily: FONTS.heading }}>
               Backing Founders With Purpose
             </h2>
-
-            {/* Founder Card - Horizontal Layout */}
-            <div className="w-[90%] mx-auto bg-[#1a1a1a] rounded-xl p-5 flex items-center gap-5 mb-8">
-              {/* Circular Photo */}
-              <div className="flex-shrink-0">
-                <div className="w-[160px] h-[160px] rounded-full overflow-hidden border-2 border-gray-800">
-                  <img src="/ruebokguy.png" alt="Ruebok Founder" className="w-full h-full object-cover object-top" />
-                </div>
-              </div>
-
-              {/* Text Content */}
-              <div className="flex-1 min-w-0">
-                <p className="text-white font-bold text-[22px] leading-tight mb-2">
-                  Rajesh Patel
-                </p>
-                <p className="text-[#5db0ff] font-semibold text-[18px] mb-2">
-                  SwiftLogix
-                </p>
-                <p className="text-[#b8b8b8] text-[16px]">
-                  Raised $2.5M Series A
-                </p>
-              </div>
-            </div>
 
             {/* Description - Single Combined Paragraph */}
             <p className="text-[17px] text-[#b8b8b8] leading-[1.5] mb-8 px-2" style={{ fontFamily: FONTS.mono }}>
@@ -1176,9 +1153,9 @@ function Home() {
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden lg:grid grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
-            {/* Left Side - Content */}
-            <div className="space-y-4 sm:space-y-6 max-w-lg pt-0 lg:pt-4 pl-7">
+          <div className="hidden lg:flex lg:flex-col lg:items-center lg:justify-center">
+            {/* Content */}
+            <div className="space-y-4 sm:space-y-6 max-w-2xl text-center">
               <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight" style={{ fontFamily: FONTS.heading }}>
                 Backing Founders With Purpose
               </h2>
@@ -1191,21 +1168,6 @@ function Home() {
               <Link to="/apply" className="inline-block px-10 py-5 bg-white text-orange-600 font-bold uppercase text-lg hover:bg-gray-100 transition-colors" style={{ borderRadius: 0 }}>
                 APPLY TODAY
               </Link>
-            </div>
-
-            {/* Right Side - Image */}
-            <div className="relative flex items-end justify-start lg:justify-start pl-10">
-              <div className="relative w-2/3 max-w-sm">
-                <div className="aspect-[2/3] rounded-2xl shadow-2xl overflow-hidden">
-                  <img src="/ruebokguy.png" alt="Ruebok Founder" className="w-full h-[120%] object-cover object-top" />
-                </div>
-                {/* Floating Description */}
-                <div className="absolute -bottom-4 left-0 right-0 px-6">
-                  <p className="text-white font-semibold text-base">
-                    Rajesh Patel <span className="text-[#4a9eff]">SwiftLogix</span> <span className="text-gray-400">— Raised $2.5M Series A</span>
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
