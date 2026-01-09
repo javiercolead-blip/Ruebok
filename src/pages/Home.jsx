@@ -343,7 +343,7 @@ function Home() {
                 style={{ transform: `translateX(-${carouselIndex * 100}%)` }}
               >
                 {/* Build Card */}
-                <div className="w-full flex-shrink-0 px-3">
+                <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
                     <div className="p-6 pb-0">
@@ -396,7 +396,7 @@ function Home() {
                 </div>
 
                 {/* Mentorship Card */}
-                <div className="w-full flex-shrink-0 px-3">
+                <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
                     <div className="p-6 pb-0">
@@ -436,7 +436,7 @@ function Home() {
                 </div>
 
                 {/* Funding Card */}
-                <div className="w-full flex-shrink-0 px-3">
+                <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
                     <div className="p-6 pb-0">
@@ -491,7 +491,7 @@ function Home() {
                 </div>
 
                 {/* Network Card */}
-                <div className="w-full flex-shrink-0 px-3">
+                <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
                     <div className="p-6 pb-0">
