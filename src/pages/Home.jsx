@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import TheStack from '../components/TheStack'
 import { COLORS, FONTS } from '../constants'
@@ -11,6 +11,8 @@ function Home() {
   const [touchEnd, setTouchEnd] = useState(0)
   const [selectedCards, setSelectedCards] = useState([])
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
+  const [isCarouselVisible, setIsCarouselVisible] = useState(false)
+  const carouselSectionRef = useRef(null)
 
   // Use counter animation hook for all animated numbers
   const count = useCounterAnimation(50, 2000, 'easeOut')
@@ -137,16 +139,38 @@ function Home() {
     document.title = 'Ruebok'
   }, [])
 
-  // Auto-scroll carousel every 3 seconds
+  // Intersection Observer to detect when carousel section is visible
   useEffect(() => {
-    if (!autoScrollEnabled) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsCarouselVisible(entry.isIntersecting)
+        })
+      },
+      { threshold: 0.5 } // Trigger when 50% of section is visible
+    )
+
+    if (carouselSectionRef.current) {
+      observer.observe(carouselSectionRef.current)
+    }
+
+    return () => {
+      if (carouselSectionRef.current) {
+        observer.unobserve(carouselSectionRef.current)
+      }
+    }
+  }, [])
+
+  // Auto-scroll carousel every 3 seconds when section is visible
+  useEffect(() => {
+    if (!autoScrollEnabled || !isCarouselVisible) return
 
     const interval = setInterval(() => {
       setCarouselIndex((prev) => (prev + 1) % totalCards)
     }, 3000)
 
     return () => clearInterval(interval)
-  }, [autoScrollEnabled, totalCards])
+  }, [autoScrollEnabled, isCarouselVisible, totalCards])
 
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
@@ -297,7 +321,7 @@ function Home() {
     </section>
 
       {/* How We Help Section */}
-      <section className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
+      <section ref={carouselSectionRef} className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10 sm:py-12 lg:py-16 w-full">
           <div className="mb-10 sm:mb-12 lg:mb-16">
             <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
@@ -320,15 +344,15 @@ function Home() {
               >
                 {/* Build Card */}
                 <div className="w-full flex-shrink-0 px-2">
-                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a]">
                     {/* Header */}
                     <div className="p-4 pb-0">
-                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Build</h3>
-                      <p className="text-[14px] text-gray-400 mb-3">Weeks 1-4</p>
+                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Build</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Weeks 1-4</p>
                     </div>
 
                     {/* Code Editor Visual */}
-                    <div className="relative h-[140px] mx-4 mb-3 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkSection }}>
+                    <div className="relative h-[140px] mx-4 mb-3 overflow-hidden bg-[#0d0d0d]">
                       <div className="h-full flex flex-col">
                         <div className="px-3 py-2 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
                           <div className="flex gap-1.5">
@@ -373,15 +397,15 @@ function Home() {
 
                 {/* Mentorship Card */}
                 <div className="w-full flex-shrink-0 px-2">
-                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a]">
                     {/* Header */}
                     <div className="p-4 pb-0">
-                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Mentorship</h3>
-                      <p className="text-[14px] text-gray-400 mb-3">Ongoing Support</p>
+                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Mentorship</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Ongoing Support</p>
                     </div>
 
                     {/* Mentor Image */}
-                    <div className="relative h-[140px] mx-4 mb-3 rounded-lg overflow-hidden">
+                    <div className="relative h-[140px] mx-4 mb-3 overflow-hidden">
                       <img
                         src="/mentorpic.png"
                         alt="Mentor"
@@ -413,15 +437,15 @@ function Home() {
 
                 {/* Funding Card */}
                 <div className="w-full flex-shrink-0 px-2">
-                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a]">
                     {/* Header */}
                     <div className="p-4 pb-0">
-                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Funding</h3>
-                      <p className="text-[14px] text-gray-400 mb-3">Investor Connections</p>
+                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Funding</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Investor Connections</p>
                     </div>
 
                     {/* Chart Visual */}
-                    <div className="relative h-[140px] mx-4 mb-3 bg-neutral-950 rounded-lg p-4 flex flex-col">
+                    <div className="relative h-[140px] mx-4 mb-3 bg-[#0d0d0d] p-4 flex flex-col">
                       <div className="text-[10px] text-gray-400 font-semibold mb-3 uppercase tracking-wide">Traction</div>
                       <div className="flex-1 relative flex items-end justify-between gap-1.5">
                         <div className="flex flex-col items-center gap-1 flex-1">
@@ -468,15 +492,15 @@ function Home() {
 
                 {/* Network Card */}
                 <div className="w-full flex-shrink-0 px-2">
-                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a]">
                     {/* Header */}
                     <div className="p-4 pb-0">
-                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Network</h3>
-                      <p className="text-[14px] text-gray-400 mb-3">Lifetime Access</p>
+                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Network</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Lifetime Access</p>
                     </div>
 
                     {/* Network Image */}
-                    <div className="relative h-[140px] mx-4 mb-3 rounded-lg overflow-hidden bg-gradient-to-br from-gray-900 to-black p-6 flex items-center justify-center">
+                    <div className="relative h-[140px] mx-4 mb-3 overflow-hidden bg-gradient-to-br from-gray-900 to-black p-6 flex items-center justify-center">
                       <div className="grid grid-cols-3 gap-3">
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600"></div>
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600"></div>
