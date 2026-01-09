@@ -179,7 +179,7 @@ function Home() {
         </div>
 
         {/* RIGHT COLUMN - Social Proof Statistics */}
-        <div className="hidden lg:flex flex-col justify-center pl-24">
+        <div className="hidden lg:flex flex-col justify-center pl-32">
           {/* Stat 1 - Investment Raised */}
           <div className="mb-12" style={{
             opacity: totalRaised > 0 ? 1 : 0.7,
