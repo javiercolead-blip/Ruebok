@@ -404,14 +404,71 @@ function Home() {
                       <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Ongoing Support</p>
                     </div>
 
-                    {/* Mentor Image - LARGER */}
-                    <div className="relative h-[200px] mx-5 mb-3 overflow-hidden">
-                      <img
-                        src="/mentorpic.png"
-                        alt="Mentor"
-                        className="absolute inset-0 w-full h-full object-cover object-center brightness-125"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    {/* Mentorship Visual - Icon-based */}
+                    <div className="relative h-[200px] mx-5 mb-3 overflow-hidden bg-[#0d0d0d] flex items-center justify-center">
+                      {/* Mentor-Founder Connection Diagram */}
+                      <div className="relative w-full h-full flex items-center justify-center p-6">
+                        {/* Center Founder Icon */}
+                        <div className="relative z-10">
+                          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-xl">
+                            <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                          </div>
+                          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-orange-500 whitespace-nowrap" style={{ fontFamily: FONTS.mono }}>
+                            YOU
+                          </div>
+                        </div>
+
+                        {/* Connecting Lines and Mentor Icons */}
+                        {/* Top Left Mentor */}
+                        <div className="absolute top-4 left-4">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
+                            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/>
+                            </svg>
+                          </div>
+                          <svg className="absolute top-6 left-6 w-16 h-16 text-blue-500/30" fill="none" stroke="currentColor" strokeWidth="2">
+                            <line x1="8" y1="8" x2="36" y2="36" strokeDasharray="2,2"/>
+                          </svg>
+                        </div>
+
+                        {/* Top Right Mentor */}
+                        <div className="absolute top-4 right-4">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-lg">
+                            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                            </svg>
+                          </div>
+                          <svg className="absolute top-6 right-6 w-16 h-16 text-purple-500/30" fill="none" stroke="currentColor" strokeWidth="2">
+                            <line x1="48" y1="8" x2="20" y2="36" strokeDasharray="2,2"/>
+                          </svg>
+                        </div>
+
+                        {/* Bottom Left Mentor */}
+                        <div className="absolute bottom-4 left-4">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center shadow-lg">
+                            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                            </svg>
+                          </div>
+                          <svg className="absolute bottom-6 left-6 w-16 h-16 text-green-500/30" fill="none" stroke="currentColor" strokeWidth="2">
+                            <line x1="8" y1="48" x2="36" y2="20" strokeDasharray="2,2"/>
+                          </svg>
+                        </div>
+
+                        {/* Bottom Right Mentor */}
+                        <div className="absolute bottom-4 right-4">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center shadow-lg">
+                            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                          </div>
+                          <svg className="absolute bottom-6 right-6 w-16 h-16 text-pink-500/30" fill="none" stroke="currentColor" strokeWidth="2">
+                            <line x1="48" y1="48" x2="20" y2="20" strokeDasharray="2,2"/>
+                          </svg>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Text Content Below Visual - Tighter */}
