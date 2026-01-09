@@ -346,7 +346,7 @@ function Home() {
                 <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
-                    <div className="p-5 pb-0">
+                    <div className="px-5 pt-4 pb-0">
                       <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Build</h3>
                       <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Weeks 1-4</p>
                     </div>
@@ -399,7 +399,7 @@ function Home() {
                 <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
-                    <div className="p-5 pb-0">
+                    <div className="px-5 pt-4 pb-0">
                       <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Mentorship</h3>
                       <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Ongoing Support</p>
                     </div>
@@ -439,7 +439,7 @@ function Home() {
                 <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
-                    <div className="p-5 pb-0">
+                    <div className="px-5 pt-4 pb-0">
                       <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Funding</h3>
                       <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Investor Connections</p>
                     </div>
@@ -494,7 +494,7 @@ function Home() {
                 <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
-                    <div className="p-5 pb-0">
+                    <div className="px-5 pt-4 pb-0">
                       <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Network</h3>
                       <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Lifetime Access</p>
                     </div>
