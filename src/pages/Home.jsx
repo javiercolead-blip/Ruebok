@@ -322,7 +322,7 @@ function Home() {
 
       {/* How We Help Section */}
       <section ref={carouselSectionRef} className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10 sm:py-12 lg:py-16 w-full">
+        <div className="max-w-7xl mx-auto px-8 py-10 sm:py-12 lg:py-16 w-full">
           <div className="mb-10 sm:mb-12 lg:mb-16">
             <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
               How we help you succeed
