@@ -1120,76 +1120,84 @@ function Home() {
       </section>
 
       {/* Results-Focused Section */}
-      <section className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
-        <div className="flex-1 max-w-7xl mx-auto px-6 pt-10 sm:pt-10 lg:pt-12 pb-8 w-full">
+      <section className="snap-center relative h-screen bg-[#0a0a0a] dark-grid pt-[70px] flex flex-col overflow-hidden">
+        <div className="flex-1 max-w-7xl mx-auto px-6 pt-16 sm:pt-10 lg:pt-12 pb-16 w-full">
           {/* Mobile Layout */}
           <div className="lg:hidden flex flex-col">
-            {/* Social Proof Statistics - Now on Mobile Third Section */}
-            <div className="mb-12 grid grid-cols-3 gap-4">
-              {/* Stat 1 */}
-              <div className="text-center">
+            {/* Main Headline */}
+            <h2 className="text-[34px] font-bold text-white leading-[1.2] mb-5 text-left" style={{ fontFamily: FONTS.heading }}>
+              Proven Results, Wherever You Are
+            </h2>
+
+            {/* Subheading Paragraph */}
+            <p className="text-[17px] text-[#b0b0b0] leading-[1.6] mb-12 text-left max-w-[90%]" style={{ fontFamily: FONTS.mono }}>
+              Your location doesn't limit your potential. With the right guidance and support, we help founders from anywhere build companies that attract real investment and create lasting impact.
+            </p>
+
+            {/* Stats Section - Vertical Stack */}
+            <div className="flex flex-col gap-8 mb-16">
+              {/* Stat 1 - Capital Raised */}
+              <div className="flex flex-col">
                 <div
-                  className="font-bold mb-2"
+                  className="font-extrabold mb-2"
                   style={{
-                    fontSize: '36px',
+                    fontSize: '45px',
                     color: COLORS.primary,
-                    fontFamily: FONTS.heading,
-                    lineHeight: 1
+                    fontFamily: FONTS.mono,
+                    lineHeight: 1.1,
+                    fontWeight: 800
                   }}
                 >
                   ${totalRaised}K+
                 </div>
-                <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
+                <p className="text-white text-[16px] leading-[1.4]" style={{ fontFamily: FONTS.mono, letterSpacing: '0.5px' }}>
                   Raised by Founders
                 </p>
+                <div className="w-[60%] h-[1px] bg-[#333333] mt-4"></div>
               </div>
 
-              {/* Stat 2 */}
-              <div className="text-center">
+              {/* Stat 2 - Success Rate */}
+              <div className="flex flex-col">
                 <div
-                  className="font-bold mb-2"
+                  className="font-extrabold mb-2"
                   style={{
-                    fontSize: '36px',
+                    fontSize: '45px',
                     color: '#50c878',
-                    fontFamily: FONTS.heading,
-                    lineHeight: 1
+                    fontFamily: FONTS.mono,
+                    lineHeight: 1.1,
+                    fontWeight: 800
                   }}
                 >
                   {successRate}%
                 </div>
-                <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
-                  Get Meetings
+                <p className="text-white text-[16px] leading-[1.4]" style={{ fontFamily: FONTS.mono, letterSpacing: '0.5px' }}>
+                  Get Investor Meetings
                 </p>
+                <div className="w-[60%] h-[1px] bg-[#333333] mt-4"></div>
               </div>
 
-              {/* Stat 3 */}
-              <div className="text-center">
+              {/* Stat 3 - Scarcity */}
+              <div className="flex flex-col">
                 <div
-                  className="font-bold mb-2"
+                  className="font-extrabold mb-2"
                   style={{
-                    fontSize: '36px',
-                    color: 'white',
-                    fontFamily: FONTS.heading,
-                    lineHeight: 1
+                    fontSize: '45px',
+                    color: '#ffffff',
+                    fontFamily: FONTS.mono,
+                    lineHeight: 1.1,
+                    fontWeight: 800
                   }}
                 >
                   {spotsLeft}
                 </div>
-                <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
-                  Spots Left
+                <p className="text-white text-[16px] leading-[1.4] mb-1" style={{ fontFamily: FONTS.mono, letterSpacing: '0.5px' }}>
+                  Spots Left This Cohort
+                </p>
+                <p className="text-[14px] font-medium mt-1" style={{ color: COLORS.primary, fontFamily: FONTS.mono }}>
+                  Applications closing soon
                 </p>
               </div>
             </div>
-
-            {/* Title */}
-            <h2 className="text-[30px] font-bold text-white leading-[1.1] mb-8" style={{ fontFamily: FONTS.heading }}>
-              Proven Results, Wherever You Are
-            </h2>
-
-            {/* Description - Single Combined Paragraph */}
-            <p className="text-[17px] text-[#b8b8b8] leading-[1.5] px-2" style={{ fontFamily: FONTS.mono }}>
-              Your location doesn't limit your potential. With the right guidance and support, we help founders from anywhere build companies that attract real investment and create lasting impact.
-            </p>
           </div>
 
           {/* Desktop Layout */}
