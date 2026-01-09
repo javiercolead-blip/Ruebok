@@ -1214,17 +1214,6 @@ function Home() {
           </div>
         </div>
 
-        {/* CTA Button - Bottom of Page */}
-        <div className="w-full px-6 pb-6">
-          <Link
-            to="/apply"
-            className="block w-[90%] lg:w-auto mx-auto lg:mx-0 lg:inline-block text-center px-10 py-[14px] lg:py-5 bg-white text-orange-600 font-bold uppercase text-[18px] lg:text-lg hover:bg-gray-100 transition-colors"
-            style={{ borderRadius: 0 }}
-          >
-            APPLY TODAY
-          </Link>
-        </div>
-
         {/* Bottom Footer Bar */}
         <div className="w-full mt-auto bg-black border-t border-gray-800 px-4 sm:px-8 py-4">
           <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm text-gray-400">
