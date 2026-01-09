@@ -346,24 +346,24 @@ function Home() {
                 <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
-                    <div className="p-6 pb-0">
-                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Build</h3>
-                      <p className="text-[16px] text-gray-400 mb-4" style={{ fontFamily: FONTS.mono }}>Weeks 1-4</p>
+                    <div className="p-5 pb-0">
+                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Build</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Weeks 1-4</p>
                     </div>
 
-                    {/* Code Editor Visual */}
-                    <div className="relative h-[120px] mx-6 mb-4 overflow-hidden bg-[#0d0d0d]">
+                    {/* Code Editor Visual - LARGER */}
+                    <div className="relative h-[200px] mx-5 mb-3 overflow-hidden bg-[#0d0d0d]">
                       <div className="h-full flex flex-col">
                         <div className="px-3 py-2 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
                           <div className="flex gap-1.5">
-                            <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                            <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
                           </div>
-                          <span className="text-[11px] text-gray-400 font-mono">startup.ts</span>
+                          <span className="text-[12px] text-gray-400 font-mono">startup.ts</span>
                         </div>
-                        <div className="p-4 font-mono text-[14px] leading-relaxed flex-1">
-                          <div className="space-y-1">
+                        <div className="p-5 font-mono text-[15px] leading-relaxed flex-1">
+                          <div className="space-y-1.5">
                             <div><span className="text-purple-400">const</span><span className="text-white"> mvp = {'{'}</span></div>
                             <div className="pl-4"><span className="text-white">build: </span><span style={{ color: COLORS.primary }}>"fast"</span><span className="text-gray-500">,</span></div>
                             <div className="pl-4"><span className="text-white">launch: </span><span className="text-purple-400">true</span><span className="text-gray-500">,</span></div>
@@ -374,20 +374,20 @@ function Home() {
                       </div>
                     </div>
 
-                    {/* Text Content Below Visual */}
-                    <div className="px-6 pb-6">
-                      <p className="text-[17px] text-gray-300 leading-[1.6] mb-4">
+                    {/* Text Content Below Visual - Tighter */}
+                    <div className="px-5 pb-5 flex-1">
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
                         Transform your idea into a working product with hands-on guidance and weekly milestones.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-2">
+                      <ul className="space-y-1.5">
                         {cardDetails.build.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
-                            <svg className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[15px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -399,13 +399,13 @@ function Home() {
                 <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
-                    <div className="p-6 pb-0">
-                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Mentorship</h3>
-                      <p className="text-[16px] text-gray-400 mb-4" style={{ fontFamily: FONTS.mono }}>Ongoing Support</p>
+                    <div className="p-5 pb-0">
+                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Mentorship</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Ongoing Support</p>
                     </div>
 
-                    {/* Mentor Image */}
-                    <div className="relative h-[120px] mx-6 mb-4 overflow-hidden">
+                    {/* Mentor Image - LARGER */}
+                    <div className="relative h-[200px] mx-5 mb-3 overflow-hidden">
                       <img
                         src="/mentorpic.png"
                         alt="Mentor"
@@ -414,20 +414,20 @@ function Home() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
 
-                    {/* Text Content Below Visual */}
-                    <div className="px-6 pb-6">
-                      <p className="text-[17px] text-gray-300 leading-[1.6] mb-4">
+                    {/* Text Content Below Visual - Tighter */}
+                    <div className="px-5 pb-5 flex-1">
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
                         Get personalized feedback from founders who've scaled startups and VCs who've funded successful companies.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-2">
+                      <ul className="space-y-1.5">
                         {cardDetails.mentorship.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
-                            <svg className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[15px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -439,50 +439,50 @@ function Home() {
                 <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
-                    <div className="p-6 pb-0">
-                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Funding</h3>
-                      <p className="text-[16px] text-gray-400 mb-4" style={{ fontFamily: FONTS.mono }}>Investor Connections</p>
+                    <div className="p-5 pb-0">
+                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Funding</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Investor Connections</p>
                     </div>
 
-                    {/* Chart Visual */}
-                    <div className="relative h-[120px] mx-6 mb-4 bg-[#0d0d0d] p-6 flex flex-col">
-                      <div className="text-[10px] text-gray-400 font-semibold mb-3 uppercase tracking-wide">Traction</div>
-                      <div className="flex-1 relative flex items-end justify-between gap-1.5">
-                        <div className="flex flex-col items-center gap-1 flex-1">
+                    {/* Chart Visual - LARGER */}
+                    <div className="relative h-[200px] mx-5 mb-3 bg-[#0d0d0d] p-6 flex flex-col">
+                      <div className="text-[11px] text-gray-400 font-semibold mb-4 uppercase tracking-wide">Traction</div>
+                      <div className="flex-1 relative flex items-end justify-between gap-2">
+                        <div className="flex flex-col items-center gap-1.5 flex-1">
                           <div className="w-full rounded-t" style={{ height: '60%', backgroundColor: COLORS.primary }}></div>
-                          <span className="text-[9px] text-gray-500">Q1</span>
+                          <span className="text-[10px] text-gray-500">Q1</span>
                         </div>
-                        <div className="flex flex-col items-center gap-1 flex-1">
+                        <div className="flex flex-col items-center gap-1.5 flex-1">
                           <div className="w-full rounded-t" style={{ height: '75%', backgroundColor: COLORS.primary }}></div>
-                          <span className="text-[9px] text-gray-500">Q2</span>
+                          <span className="text-[10px] text-gray-500">Q2</span>
                         </div>
-                        <div className="flex flex-col items-center gap-1 flex-1">
+                        <div className="flex flex-col items-center gap-1.5 flex-1">
                           <div className="w-full rounded-t" style={{ height: '90%', backgroundColor: COLORS.primary }}></div>
-                          <span className="text-[9px] text-gray-500">Q3</span>
+                          <span className="text-[10px] text-gray-500">Q3</span>
                         </div>
-                        <div className="flex flex-col items-center gap-1 flex-1">
+                        <div className="flex flex-col items-center gap-1.5 flex-1">
                           <div className="w-full rounded-t relative" style={{ height: '100%', backgroundColor: COLORS.primary }}>
-                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[11px] font-bold text-white">2.5x</div>
+                            <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-[13px] font-bold text-white">2.5x</div>
                           </div>
-                          <span className="text-[9px] text-gray-500">Q4</span>
+                          <span className="text-[10px] text-gray-500">Q4</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Text Content Below Visual */}
-                    <div className="px-6 pb-6">
-                      <p className="text-[17px] text-gray-300 leading-[1.6] mb-4">
+                    {/* Text Content Below Visual - Tighter */}
+                    <div className="px-5 pb-5 flex-1">
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
                         Refine your pitch and connect directly with global investors actively seeking deals.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-2">
+                      <ul className="space-y-1.5">
                         {cardDetails.funding.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
-                            <svg className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[15px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -494,37 +494,37 @@ function Home() {
                 <div className="w-full flex-shrink-0">
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
-                    <div className="p-6 pb-0">
-                      <h3 className="text-[28px] font-bold text-white mb-2 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Network</h3>
-                      <p className="text-[16px] text-gray-400 mb-4" style={{ fontFamily: FONTS.mono }}>Lifetime Access</p>
+                    <div className="p-5 pb-0">
+                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Network</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Lifetime Access</p>
                     </div>
 
-                    {/* Network Image */}
-                    <div className="relative h-[120px] mx-6 mb-4 overflow-hidden bg-gradient-to-br from-gray-900 to-black p-6 flex items-center justify-center">
-                      <div className="grid grid-cols-3 gap-3">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600"></div>
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600"></div>
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-teal-600"></div>
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600"></div>
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 ring-2 ring-white"></div>
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600"></div>
+                    {/* Network Visual - LARGER */}
+                    <div className="relative h-[200px] mx-5 mb-3 overflow-hidden bg-gradient-to-br from-gray-900 to-black p-8 flex items-center justify-center">
+                      <div className="grid grid-cols-3 gap-4">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-red-600 shadow-lg"></div>
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg"></div>
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-teal-600 shadow-lg"></div>
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600 shadow-lg"></div>
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 ring-2 ring-white shadow-lg"></div>
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 shadow-lg"></div>
                       </div>
                     </div>
 
-                    {/* Text Content Below Visual */}
-                    <div className="px-6 pb-6">
-                      <p className="text-[17px] text-gray-300 leading-[1.6] mb-4">
+                    {/* Text Content Below Visual - Tighter */}
+                    <div className="px-5 pb-5 flex-1">
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
                         Join a community of ambitious founders and gain lifetime access to our network of mentors and alumni.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-2">
+                      <ul className="space-y-1.5">
                         {cardDetails.network.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
-                            <svg className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[15px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
