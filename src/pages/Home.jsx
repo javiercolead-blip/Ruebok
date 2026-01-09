@@ -278,62 +278,6 @@ function Home() {
           </div>
         </div>
 
-        {/* Mobile Stats - Horizontal Row Below Hero Content */}
-        <div className="lg:hidden mt-12 grid grid-cols-3 gap-4">
-          {/* Stat 1 */}
-          <div className="text-center">
-            <div
-              className="font-bold mb-2"
-              style={{
-                fontSize: '36px',
-                color: COLORS.primary,
-                fontFamily: FONTS.heading,
-                lineHeight: 1
-              }}
-            >
-              ${totalRaised}K+
-            </div>
-            <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
-              Raised by Founders
-            </p>
-          </div>
-
-          {/* Stat 2 */}
-          <div className="text-center">
-            <div
-              className="font-bold mb-2"
-              style={{
-                fontSize: '36px',
-                color: '#50c878',
-                fontFamily: FONTS.heading,
-                lineHeight: 1
-              }}
-            >
-              {successRate}%
-            </div>
-            <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
-              Get Meetings
-            </p>
-          </div>
-
-          {/* Stat 3 */}
-          <div className="text-center">
-            <div
-              className="font-bold mb-2"
-              style={{
-                fontSize: '36px',
-                color: 'white',
-                fontFamily: FONTS.heading,
-                lineHeight: 1
-              }}
-            >
-              {spotsLeft}
-            </div>
-            <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
-              Spots Left
-            </p>
-          </div>
-        </div>
 
       </div>
     </section>
@@ -1121,19 +1065,76 @@ function Home() {
         </div>
       </section>
 
-      {/* Backing Founders Section */}
+      {/* Results-Focused Section */}
       <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
         <div className="flex-1 max-w-7xl mx-auto px-6 pt-10 sm:pt-10 lg:pt-12 pb-8 w-full">
           {/* Mobile Layout */}
           <div className="lg:hidden flex flex-col">
+            {/* Social Proof Statistics - Now on Mobile Third Section */}
+            <div className="mb-12 grid grid-cols-3 gap-4">
+              {/* Stat 1 */}
+              <div className="text-center">
+                <div
+                  className="font-bold mb-2"
+                  style={{
+                    fontSize: '36px',
+                    color: COLORS.primary,
+                    fontFamily: FONTS.heading,
+                    lineHeight: 1
+                  }}
+                >
+                  ${totalRaised}K+
+                </div>
+                <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
+                  Raised by Founders
+                </p>
+              </div>
+
+              {/* Stat 2 */}
+              <div className="text-center">
+                <div
+                  className="font-bold mb-2"
+                  style={{
+                    fontSize: '36px',
+                    color: '#50c878',
+                    fontFamily: FONTS.heading,
+                    lineHeight: 1
+                  }}
+                >
+                  {successRate}%
+                </div>
+                <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
+                  Get Meetings
+                </p>
+              </div>
+
+              {/* Stat 3 */}
+              <div className="text-center">
+                <div
+                  className="font-bold mb-2"
+                  style={{
+                    fontSize: '36px',
+                    color: 'white',
+                    fontFamily: FONTS.heading,
+                    lineHeight: 1
+                  }}
+                >
+                  {spotsLeft}
+                </div>
+                <p className="text-white text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono }}>
+                  Spots Left
+                </p>
+              </div>
+            </div>
+
             {/* Title */}
             <h2 className="text-[30px] font-bold text-white leading-[1.1] mb-8" style={{ fontFamily: FONTS.heading }}>
-              Backing Founders With Purpose
+              Proven Results, Wherever You Are
             </h2>
 
             {/* Description - Single Combined Paragraph */}
             <p className="text-[17px] text-[#b8b8b8] leading-[1.5] mb-8 px-2" style={{ fontFamily: FONTS.mono }}>
-              We invest in people with vision and resilience who deeply understand their markets. No matter who you are or where you're at—we'll help you build.
+              Your location doesn't limit your potential. With the right guidance and support, we help founders from anywhere build companies that attract real investment and create lasting impact.
             </p>
 
             {/* CTA Button */}
@@ -1150,13 +1151,10 @@ function Home() {
             {/* Content */}
             <div className="space-y-4 sm:space-y-6 max-w-2xl">
               <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight" style={{ fontFamily: FONTS.heading }}>
-                Backing Founders With Purpose
+                Proven Results, Wherever You Are
               </h2>
               <p className="text-[15px] sm:text-[17px] lg:text-[19px] text-gray-400 leading-relaxed" style={{ fontFamily: FONTS.mono }}>
-                We invest in people with vision and resilience who deeply understand their markets.
-              </p>
-              <p className="text-[15px] sm:text-[17px] lg:text-[19px] text-gray-400 leading-relaxed" style={{ fontFamily: FONTS.mono }}>
-                No matter who you are or where you're at—we'll help you build.
+                Your location doesn't limit your potential. With the right guidance and support, we help founders from anywhere build companies that attract real investment and create lasting impact.
               </p>
               <Link to="/apply" className="inline-block px-10 py-5 bg-white text-orange-600 font-bold uppercase text-lg hover:bg-gray-100 transition-colors" style={{ borderRadius: 0 }}>
                 APPLY TODAY
