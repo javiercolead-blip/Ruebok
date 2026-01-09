@@ -157,7 +157,7 @@ function Home() {
           </h1>
 
           {/* Sub-Header */}
-          <p className="text-lg max-w-lg" style={{ color: COLORS.textLight, fontFamily: FONTS.mono, fontWeight: 300 }}>
+          <p className="text-lg max-w-lg text-white" style={{ fontFamily: FONTS.mono, fontWeight: 300 }}>
             Turn your SaaS idea into a startup in 8 weeks, then pitch it to real investors. Global founders welcome. No equity taken.
           </p>
 
@@ -168,7 +168,7 @@ function Home() {
               className="inline-block px-10 py-5 bg-white text-orange-600 font-bold uppercase text-lg hover:bg-gray-100 transition-colors"
               style={{ borderRadius: 0 }}
             >
-              START BUILDING
+              APPLY TO 2026 Q1 COHORT
             </Link>
 
             {/* Trust Signal */}
@@ -280,13 +280,6 @@ function Home() {
 
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce lg:hidden">
-        <span className="text-gray-400 text-xs uppercase tracking-wider" style={{ fontFamily: FONTS.mono }}>Swipe Up</span>
-        <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
     </section>
 
       {/* How We Help Section */}
