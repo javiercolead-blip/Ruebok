@@ -7,9 +7,9 @@ export const initAnalytics = () => {
   if (typeof window !== 'undefined') {
     posthog.init(
       // TODO: Replace 'YOUR_POSTHOG_API_KEY' with your actual PostHog API key
-      process.env.VITE_POSTHOG_API_KEY || 'YOUR_POSTHOG_API_KEY',
+      import.meta.env.VITE_POSTHOG_API_KEY || 'YOUR_POSTHOG_API_KEY',
       {
-        api_host: process.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com',
+        api_host: import.meta.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com',
         person_profiles: 'identified_only', // Only create profiles for identified users
         capture_pageview: true, // Automatically capture pageviews
         capture_pageleave: true, // Track when users leave pages

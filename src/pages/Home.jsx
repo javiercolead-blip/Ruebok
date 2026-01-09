@@ -135,7 +135,7 @@ function Home() {
   }, [])
 
   return (
-    <div className="snap-y snap-proximity h-screen overflow-y-scroll">
+    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
       {/* Hero Section - Industrial Design */}
       <section className="snap-center relative h-screen dark-grid pt-[70px] flex items-center justify-center overflow-hidden">
       {/* Two-Column Industrial Layout */}
@@ -290,7 +290,7 @@ function Home() {
     </section>
 
       {/* How We Help Section */}
-      <section className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-y-auto overflow-x-hidden">
+      <section className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10 sm:py-12 lg:py-16 w-full">
           <div className="mb-10 sm:mb-12 lg:mb-16">
             <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
