@@ -137,7 +137,7 @@ function Home() {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
       {/* Hero Section - Industrial Design */}
-      <section className="snap-start relative min-h-screen dark-grid pt-[70px] flex items-center justify-center overflow-hidden">
+      <section className="snap-start snap-always relative h-screen dark-grid pt-[70px] flex items-center justify-center overflow-hidden">
       {/* Two-Column Industrial Layout */}
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -283,7 +283,7 @@ function Home() {
     </section>
 
       {/* How We Help Section */}
-      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
+      <section className="snap-start snap-always relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-y-auto overflow-x-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10 sm:py-12 lg:py-16 w-full">
           <div className="mb-10 sm:mb-12 lg:mb-16">
             <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
@@ -1066,7 +1066,7 @@ function Home() {
       </section>
 
       {/* Results-Focused Section */}
-      <section className="snap-start relative min-h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
+      <section className="snap-start snap-always relative h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
         <div className="flex-1 max-w-7xl mx-auto px-6 pt-10 sm:pt-10 lg:pt-12 pb-8 w-full">
           {/* Mobile Layout */}
           <div className="lg:hidden flex flex-col">
