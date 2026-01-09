@@ -1187,18 +1187,9 @@ function Home() {
             </h2>
 
             {/* Description - Single Combined Paragraph */}
-            <p className="text-[17px] text-[#b8b8b8] leading-[1.5] mb-8 px-2" style={{ fontFamily: FONTS.mono }}>
+            <p className="text-[17px] text-[#b8b8b8] leading-[1.5] px-2" style={{ fontFamily: FONTS.mono }}>
               Your location doesn't limit your potential. With the right guidance and support, we help founders from anywhere build companies that attract real investment and create lasting impact.
             </p>
-
-            {/* CTA Button */}
-            <Link
-              to="/apply"
-              className="block w-[90%] mx-auto text-center py-[14px] bg-white text-orange-600 font-bold uppercase text-[18px] hover:bg-gray-100 transition-colors"
-              style={{ borderRadius: 0 }}
-            >
-              APPLY TODAY
-            </Link>
           </div>
 
           {/* Desktop Layout */}
@@ -1211,11 +1202,19 @@ function Home() {
               <p className="text-[15px] sm:text-[17px] lg:text-[19px] text-gray-400 leading-relaxed" style={{ fontFamily: FONTS.mono }}>
                 Your location doesn't limit your potential. With the right guidance and support, we help founders from anywhere build companies that attract real investment and create lasting impact.
               </p>
-              <Link to="/apply" className="inline-block px-10 py-5 bg-white text-orange-600 font-bold uppercase text-lg hover:bg-gray-100 transition-colors" style={{ borderRadius: 0 }}>
-                APPLY TODAY
-              </Link>
             </div>
           </div>
+        </div>
+
+        {/* CTA Button - Bottom of Page */}
+        <div className="w-full px-6 pb-6">
+          <Link
+            to="/apply"
+            className="block w-[90%] lg:w-auto mx-auto lg:mx-0 lg:inline-block text-center px-10 py-[14px] lg:py-5 bg-white text-orange-600 font-bold uppercase text-[18px] lg:text-lg hover:bg-gray-100 transition-colors"
+            style={{ borderRadius: 0 }}
+          >
+            APPLY TODAY
+          </Link>
         </div>
 
         {/* Bottom Footer Bar */}
