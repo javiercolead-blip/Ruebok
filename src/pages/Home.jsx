@@ -503,25 +503,27 @@ function Home() {
 
                     {/* Chart Visual - LARGER */}
                     <div className="relative h-[200px] mx-5 mb-3 bg-[#0d0d0d] p-6 flex flex-col">
-                      <div className="text-[11px] text-gray-400 font-semibold mb-4 uppercase tracking-wide">Traction</div>
-                      <div className="flex-1 relative flex items-end justify-between gap-2">
-                        <div className="flex flex-col items-center gap-1.5 flex-1">
-                          <div className="w-full rounded-t" style={{ height: '60%', backgroundColor: COLORS.primary }}></div>
-                          <span className="text-[10px] text-gray-500">Q1</span>
+                      <div className="text-[11px] text-gray-400 font-semibold mb-2 uppercase tracking-wide">Traction Growth</div>
+                      <div className="flex-1 relative flex items-end justify-between gap-3 pb-6">
+                        <div className="flex flex-col items-center gap-2 flex-1">
+                          <div className="w-full rounded-t" style={{ height: '50px', backgroundColor: COLORS.primary }}></div>
+                          <span className="text-[11px] text-gray-400 font-medium">Q1</span>
                         </div>
-                        <div className="flex flex-col items-center gap-1.5 flex-1">
-                          <div className="w-full rounded-t" style={{ height: '75%', backgroundColor: COLORS.primary }}></div>
-                          <span className="text-[10px] text-gray-500">Q2</span>
+                        <div className="flex flex-col items-center gap-2 flex-1">
+                          <div className="w-full rounded-t" style={{ height: '70px', backgroundColor: COLORS.primary }}></div>
+                          <span className="text-[11px] text-gray-400 font-medium">Q2</span>
                         </div>
-                        <div className="flex flex-col items-center gap-1.5 flex-1">
-                          <div className="w-full rounded-t" style={{ height: '90%', backgroundColor: COLORS.primary }}></div>
-                          <span className="text-[10px] text-gray-500">Q3</span>
+                        <div className="flex flex-col items-center gap-2 flex-1">
+                          <div className="w-full rounded-t" style={{ height: '95px', backgroundColor: COLORS.primary }}></div>
+                          <span className="text-[11px] text-gray-400 font-medium">Q3</span>
                         </div>
-                        <div className="flex flex-col items-center gap-1.5 flex-1">
-                          <div className="w-full rounded-t relative" style={{ height: '100%', backgroundColor: COLORS.primary }}>
-                            <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-[13px] font-bold text-white">2.5x</div>
+                        <div className="flex flex-col items-center gap-2 flex-1 relative">
+                          <div className="w-full rounded-t relative" style={{ height: '120px', backgroundColor: COLORS.primary }}>
+                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[14px] font-bold text-white whitespace-nowrap">
+                              2.5x
+                            </div>
                           </div>
-                          <span className="text-[10px] text-gray-500">Q4</span>
+                          <span className="text-[11px] text-gray-400 font-medium">Q4</span>
                         </div>
                       </div>
                     </div>
