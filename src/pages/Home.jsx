@@ -344,7 +344,7 @@ function Home() {
               >
                 {/* Build Card */}
                 <div className="w-full flex-shrink-0 px-3">
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl">
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
                     <div className="p-6 pb-0">
                       <h3 className="text-[28px] font-bold text-white mb-2 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Build</h3>
@@ -397,7 +397,7 @@ function Home() {
 
                 {/* Mentorship Card */}
                 <div className="w-full flex-shrink-0 px-3">
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl">
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
                     <div className="p-6 pb-0">
                       <h3 className="text-[28px] font-bold text-white mb-2 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Mentorship</h3>
@@ -437,7 +437,7 @@ function Home() {
 
                 {/* Funding Card */}
                 <div className="w-full flex-shrink-0 px-3">
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl">
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
                     <div className="p-6 pb-0">
                       <h3 className="text-[28px] font-bold text-white mb-2 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Funding</h3>
@@ -492,7 +492,7 @@ function Home() {
 
                 {/* Network Card */}
                 <div className="w-full flex-shrink-0 px-3">
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl">
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
                     {/* Header */}
                     <div className="p-6 pb-0">
                       <h3 className="text-[28px] font-bold text-white mb-2 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Network</h3>
