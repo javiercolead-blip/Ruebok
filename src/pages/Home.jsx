@@ -10,6 +10,7 @@ function Home() {
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
   const [selectedCards, setSelectedCards] = useState([])
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
 
   // Use counter animation hook for all animated numbers
   const count = useCounterAnimation(50, 2000, 'easeOut')
@@ -35,11 +36,13 @@ function Home() {
   }
 
   const goToCard = (index) => {
+    setAutoScrollEnabled(false) // Disable auto-scroll when user clicks dots
     setCarouselIndex(index)
   }
 
   // Handle touch events for swipe
   const handleTouchStart = (e) => {
+    setAutoScrollEnabled(false) // Disable auto-scroll when user interacts
     setTouchStart(e.targetTouches[0].clientX)
   }
 
@@ -133,6 +136,17 @@ function Home() {
     // Set page title
     document.title = 'Ruebok'
   }, [])
+
+  // Auto-scroll carousel every 3 seconds
+  useEffect(() => {
+    if (!autoScrollEnabled) return
+
+    const interval = setInterval(() => {
+      setCarouselIndex((prev) => (prev + 1) % totalCards)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [autoScrollEnabled, totalCards])
 
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
@@ -1184,7 +1198,6 @@ function Home() {
           <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm text-gray-400">
             <Link to="/about" className="hover:text-orange-600 transition-colors">About</Link>
             <Link to="/faq" className="hover:text-orange-600 transition-colors">FAQ</Link>
-            <Link to="/contact" className="hover:text-orange-600 transition-colors">Contact</Link>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">Twitter</a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">LinkedIn</a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">Instagram</a>
