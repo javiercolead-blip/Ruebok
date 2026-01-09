@@ -135,9 +135,9 @@ function Home() {
   }, [])
 
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+    <div className="snap-y snap-proximity h-screen overflow-y-scroll">
       {/* Hero Section - Industrial Design */}
-      <section className="snap-start snap-always relative h-screen dark-grid pt-[70px] flex items-center justify-center overflow-hidden">
+      <section className="snap-center relative h-screen dark-grid pt-[70px] flex items-center justify-center overflow-hidden">
       {/* Two-Column Industrial Layout */}
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -278,12 +278,19 @@ function Home() {
           </div>
         </div>
 
+      </div>
 
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce lg:hidden">
+        <span className="text-gray-400 text-xs uppercase tracking-wider" style={{ fontFamily: FONTS.mono }}>Swipe Up</span>
+        <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
       </div>
     </section>
 
       {/* How We Help Section */}
-      <section className="snap-start snap-always relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-y-auto overflow-x-hidden">
+      <section className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-y-auto overflow-x-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10 sm:py-12 lg:py-16 w-full">
           <div className="mb-10 sm:mb-12 lg:mb-16">
             <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
@@ -307,29 +314,14 @@ function Home() {
                 {/* Build Card */}
                 <div className="w-full flex-shrink-0 px-2">
                   <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
-                    {/* Text Content */}
-                    <div className="p-4">
+                    {/* Header */}
+                    <div className="p-4 pb-0">
                       <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Build</h3>
                       <p className="text-[14px] text-gray-400 mb-3">Weeks 1-4</p>
-                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
-                        Transform your idea into a working product with hands-on guidance and weekly milestones.
-                      </p>
-
-                      {/* Features List */}
-                      <ul className="space-y-1.5 mb-4">
-                        {cardDetails.build.features.map((feature, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-[13px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
 
                     {/* Code Editor Visual */}
-                    <div className="relative h-[140px] mx-4 mb-4 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkSection }}>
+                    <div className="relative h-[140px] mx-4 mb-3 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkSection }}>
                       <div className="h-full flex flex-col">
                         <div className="px-3 py-2 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
                           <div className="flex gap-1.5">
@@ -350,22 +342,55 @@ function Home() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Text Content Below Visual */}
+                    <div className="px-4 pb-4">
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
+                        Transform your idea into a working product with hands-on guidance and weekly milestones.
+                      </p>
+
+                      {/* Features List */}
+                      <ul className="space-y-1.5">
+                        {cardDetails.build.features.map((feature, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[13px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
 
                 {/* Mentorship Card */}
                 <div className="w-full flex-shrink-0 px-2">
                   <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
-                    {/* Text Content */}
-                    <div className="p-4">
+                    {/* Header */}
+                    <div className="p-4 pb-0">
                       <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Mentorship</h3>
                       <p className="text-[14px] text-gray-400 mb-3">Ongoing Support</p>
+                    </div>
+
+                    {/* Mentor Image */}
+                    <div className="relative h-[140px] mx-4 mb-3 rounded-lg overflow-hidden">
+                      <img
+                        src="/mentorpic.png"
+                        alt="Mentor"
+                        className="absolute inset-0 w-full h-full object-cover object-center brightness-125"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+
+                    {/* Text Content Below Visual */}
+                    <div className="px-4 pb-4">
                       <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
                         Get personalized feedback from founders who've scaled startups and VCs who've funded successful companies.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-1.5 mb-4">
+                      <ul className="space-y-1.5">
                         {cardDetails.mentorship.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -376,45 +401,20 @@ function Home() {
                         ))}
                       </ul>
                     </div>
-
-                    {/* Mentor Image */}
-                    <div className="relative h-[140px] mx-4 mb-4 rounded-lg overflow-hidden">
-                      <img
-                        src="/mentorpic.png"
-                        alt="Mentor"
-                        className="absolute inset-0 w-full h-full object-cover object-center brightness-125"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    </div>
                   </div>
                 </div>
 
                 {/* Funding Card */}
                 <div className="w-full flex-shrink-0 px-2">
                   <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
-                    {/* Text Content */}
-                    <div className="p-4">
+                    {/* Header */}
+                    <div className="p-4 pb-0">
                       <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Funding</h3>
                       <p className="text-[14px] text-gray-400 mb-3">Investor Connections</p>
-                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
-                        Refine your pitch and connect directly with global investors actively seeking deals.
-                      </p>
-
-                      {/* Features List */}
-                      <ul className="space-y-1.5 mb-4">
-                        {cardDetails.funding.features.map((feature, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-[13px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
 
                     {/* Chart Visual */}
-                    <div className="relative h-[140px] mx-4 mb-4 bg-neutral-950 rounded-lg p-4 flex flex-col">
+                    <div className="relative h-[140px] mx-4 mb-3 bg-neutral-950 rounded-lg p-4 flex flex-col">
                       <div className="text-[10px] text-gray-400 font-semibold mb-3 uppercase tracking-wide">Traction</div>
                       <div className="flex-1 relative flex items-end justify-between gap-1.5">
                         <div className="flex flex-col items-center gap-1 flex-1">
@@ -437,23 +437,16 @@ function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                {/* Network Card */}
-                <div className="w-full flex-shrink-0 px-2">
-                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
-                    {/* Text Content */}
-                    <div className="p-4">
-                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Network</h3>
-                      <p className="text-[14px] text-gray-400 mb-3">Lifetime Access</p>
+                    {/* Text Content Below Visual */}
+                    <div className="px-4 pb-4">
                       <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
-                        Join a community of ambitious founders and gain lifetime access to our network of mentors and alumni.
+                        Refine your pitch and connect directly with global investors actively seeking deals.
                       </p>
 
                       {/* Features List */}
-                      <ul className="space-y-1.5 mb-4">
-                        {cardDetails.network.features.map((feature, index) => (
+                      <ul className="space-y-1.5">
+                        {cardDetails.funding.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -463,9 +456,20 @@ function Home() {
                         ))}
                       </ul>
                     </div>
+                  </div>
+                </div>
+
+                {/* Network Card */}
+                <div className="w-full flex-shrink-0 px-2">
+                  <div className="border border-gray-800 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkGray }}>
+                    {/* Header */}
+                    <div className="p-4 pb-0">
+                      <h3 className="text-[24px] font-bold text-white mb-1 leading-tight">Network</h3>
+                      <p className="text-[14px] text-gray-400 mb-3">Lifetime Access</p>
+                    </div>
 
                     {/* Network Image */}
-                    <div className="relative h-[140px] mx-4 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-gray-900 to-black p-6 flex items-center justify-center">
+                    <div className="relative h-[140px] mx-4 mb-3 rounded-lg overflow-hidden bg-gradient-to-br from-gray-900 to-black p-6 flex items-center justify-center">
                       <div className="grid grid-cols-3 gap-3">
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600"></div>
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600"></div>
@@ -474,6 +478,25 @@ function Home() {
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 ring-2 ring-white"></div>
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600"></div>
                       </div>
+                    </div>
+
+                    {/* Text Content Below Visual */}
+                    <div className="px-4 pb-4">
+                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
+                        Join a community of ambitious founders and gain lifetime access to our network of mentors and alumni.
+                      </p>
+
+                      {/* Features List */}
+                      <ul className="space-y-1.5">
+                        {cardDetails.network.features.map((feature, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-[13px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -1066,7 +1089,7 @@ function Home() {
       </section>
 
       {/* Results-Focused Section */}
-      <section className="snap-start snap-always relative h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
+      <section className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
         <div className="flex-1 max-w-7xl mx-auto px-6 pt-10 sm:pt-10 lg:pt-12 pb-8 w-full">
           {/* Mobile Layout */}
           <div className="lg:hidden flex flex-col">
