@@ -1194,7 +1194,8 @@ function Home() {
             {/* CTA Button */}
             <Link
               to="/apply"
-              className="block w-[90%] mx-auto text-center py-[14px] bg-white text-orange-600 font-bold uppercase text-[18px] hover:bg-gray-100 active:scale-[0.98] transition-all rounded-lg shadow-lg"
+              className="block w-[90%] mx-auto text-center py-[14px] bg-white text-orange-600 font-bold uppercase text-[18px] hover:bg-gray-100 transition-colors"
+              style={{ borderRadius: 0 }}
             >
               APPLY TODAY
             </Link>
