@@ -322,8 +322,8 @@ function Home() {
 
       {/* How We Help Section */}
       <section ref={carouselSectionRef} className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 pt-8 pb-10 w-full">
-          <div className="mb-8">
+        <div className="max-w-7xl mx-auto px-8 pt-6 pb-10 w-full">
+          <div className="mb-6">
             <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
               How we help you succeed
             </h2>
@@ -352,7 +352,7 @@ function Home() {
                     </div>
 
                     {/* Code Editor Visual - LARGER */}
-                    <div className="relative h-[200px] mx-5 mb-3 overflow-hidden bg-[#0d0d0d]">
+                    <div className="relative h-[240px] mx-5 mb-3 overflow-hidden bg-[#0d0d0d]">
                       <div className="h-full flex flex-col">
                         <div className="px-3 py-2 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
                           <div className="flex gap-1.5">
@@ -362,8 +362,8 @@ function Home() {
                           </div>
                           <span className="text-[12px] text-gray-400 font-mono">startup.ts</span>
                         </div>
-                        <div className="p-5 font-mono text-[15px] leading-relaxed flex-1">
-                          <div className="space-y-1.5">
+                        <div className="p-6 font-mono text-[16px] leading-relaxed flex-1">
+                          <div className="space-y-2">
                             <div><span className="text-purple-400">const</span><span className="text-white"> mvp = {'{'}</span></div>
                             <div className="pl-4"><span className="text-white">build: </span><span style={{ color: COLORS.primary }}>"fast"</span><span className="text-gray-500">,</span></div>
                             <div className="pl-4"><span className="text-white">launch: </span><span className="text-purple-400">true</span><span className="text-gray-500">,</span></div>
@@ -376,8 +376,8 @@ function Home() {
 
                     {/* Text Content Below Visual - Tighter */}
                     <div className="px-5 pb-5 flex-1">
-                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
-                        Transform your idea into a working product with hands-on guidance and weekly milestones.
+                      <p className="text-[17px] text-gray-300 leading-[1.5] mb-3">
+                        Ship your MVP in 4 weeks with expert guidance.
                       </p>
 
                       {/* Features List */}
@@ -405,9 +405,9 @@ function Home() {
                     </div>
 
                     {/* Mentorship Visual - Icon-based */}
-                    <div className="relative h-[200px] mx-5 mb-3 overflow-hidden bg-[#0d0d0d] flex items-center justify-center">
+                    <div className="relative h-[240px] mx-5 mb-3 overflow-hidden bg-[#0d0d0d] flex items-center justify-center">
                       {/* Mentor-Founder Connection Diagram */}
-                      <div className="relative w-full h-full flex items-center justify-center p-6">
+                      <div className="relative w-full h-full flex items-center justify-center p-8">
                         {/* Center Founder Icon */}
                         <div className="relative z-10">
                           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-xl">
@@ -473,8 +473,8 @@ function Home() {
 
                     {/* Text Content Below Visual - Tighter */}
                     <div className="px-5 pb-5 flex-1">
-                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
-                        Get personalized feedback from founders who've scaled startups and VCs who've funded successful companies.
+                      <p className="text-[17px] text-gray-300 leading-[1.5] mb-3">
+                        Learn from founders who've built and scaled companies.
                       </p>
 
                       {/* Features List */}
@@ -502,36 +502,36 @@ function Home() {
                     </div>
 
                     {/* Chart Visual - LARGER */}
-                    <div className="relative h-[200px] mx-5 mb-3 bg-[#0d0d0d] p-6 flex flex-col">
-                      <div className="text-[11px] text-gray-400 font-semibold mb-2 uppercase tracking-wide">Traction Growth</div>
-                      <div className="flex-1 relative flex items-end justify-between gap-3 pb-6">
+                    <div className="relative h-[240px] mx-5 mb-3 bg-[#0d0d0d] p-7 flex flex-col">
+                      <div className="text-[12px] text-gray-400 font-semibold mb-3 uppercase tracking-wide">Traction Growth</div>
+                      <div className="flex-1 relative flex items-end justify-between gap-4 pb-7">
                         <div className="flex flex-col items-center gap-2 flex-1">
-                          <div className="w-full rounded-t" style={{ height: '50px', backgroundColor: COLORS.primary }}></div>
-                          <span className="text-[11px] text-gray-400 font-medium">Q1</span>
+                          <div className="w-full rounded-t" style={{ height: '60px', backgroundColor: COLORS.primary }}></div>
+                          <span className="text-[12px] text-gray-400 font-medium">Q1</span>
                         </div>
                         <div className="flex flex-col items-center gap-2 flex-1">
-                          <div className="w-full rounded-t" style={{ height: '70px', backgroundColor: COLORS.primary }}></div>
-                          <span className="text-[11px] text-gray-400 font-medium">Q2</span>
+                          <div className="w-full rounded-t" style={{ height: '85px', backgroundColor: COLORS.primary }}></div>
+                          <span className="text-[12px] text-gray-400 font-medium">Q2</span>
                         </div>
                         <div className="flex flex-col items-center gap-2 flex-1">
-                          <div className="w-full rounded-t" style={{ height: '95px', backgroundColor: COLORS.primary }}></div>
-                          <span className="text-[11px] text-gray-400 font-medium">Q3</span>
+                          <div className="w-full rounded-t" style={{ height: '115px', backgroundColor: COLORS.primary }}></div>
+                          <span className="text-[12px] text-gray-400 font-medium">Q3</span>
                         </div>
                         <div className="flex flex-col items-center gap-2 flex-1 relative">
-                          <div className="w-full rounded-t relative" style={{ height: '120px', backgroundColor: COLORS.primary }}>
-                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[14px] font-bold text-white whitespace-nowrap">
+                          <div className="w-full rounded-t relative" style={{ height: '145px', backgroundColor: COLORS.primary }}>
+                            <div className="absolute -top-7 left-1/2 -translate-x-1/2 text-[16px] font-bold text-white whitespace-nowrap">
                               2.5x
                             </div>
                           </div>
-                          <span className="text-[11px] text-gray-400 font-medium">Q4</span>
+                          <span className="text-[12px] text-gray-400 font-medium">Q4</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Text Content Below Visual - Tighter */}
                     <div className="px-5 pb-5 flex-1">
-                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
-                        Refine your pitch and connect directly with global investors actively seeking deals.
+                      <p className="text-[17px] text-gray-300 leading-[1.5] mb-3">
+                        Connect with investors actively seeking deals.
                       </p>
 
                       {/* Features List */}
@@ -559,21 +559,21 @@ function Home() {
                     </div>
 
                     {/* Network Visual - LARGER */}
-                    <div className="relative h-[200px] mx-5 mb-3 overflow-hidden bg-gradient-to-br from-gray-900 to-black p-8 flex items-center justify-center">
-                      <div className="grid grid-cols-3 gap-4">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-red-600 shadow-lg"></div>
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg"></div>
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-teal-600 shadow-lg"></div>
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600 shadow-lg"></div>
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 ring-2 ring-white shadow-lg"></div>
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 shadow-lg"></div>
+                    <div className="relative h-[240px] mx-5 mb-3 overflow-hidden bg-gradient-to-br from-gray-900 to-black p-10 flex items-center justify-center">
+                      <div className="grid grid-cols-3 gap-5">
+                        <div className="w-18 h-18 rounded-full bg-gradient-to-br from-orange-500 to-red-600 shadow-lg"></div>
+                        <div className="w-18 h-18 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg"></div>
+                        <div className="w-18 h-18 rounded-full bg-gradient-to-br from-green-500 to-teal-600 shadow-lg"></div>
+                        <div className="w-18 h-18 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600 shadow-lg"></div>
+                        <div className="w-18 h-18 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 ring-2 ring-white shadow-lg"></div>
+                        <div className="w-18 h-18 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 shadow-lg"></div>
                       </div>
                     </div>
 
                     {/* Text Content Below Visual - Tighter */}
                     <div className="px-5 pb-5 flex-1">
-                      <p className="text-[15px] text-gray-300 leading-[1.5] mb-3">
-                        Join a community of ambitious founders and gain lifetime access to our network of mentors and alumni.
+                      <p className="text-[17px] text-gray-300 leading-[1.5] mb-3">
+                        Lifetime access to our community of founders and mentors.
                       </p>
 
                       {/* Features List */}
