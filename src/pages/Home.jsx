@@ -322,8 +322,8 @@ function Home() {
 
       {/* How We Help Section */}
       <section ref={carouselSectionRef} className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 py-10 sm:py-12 lg:py-16 w-full">
-          <div className="mb-10 sm:mb-12 lg:mb-16">
+        <div className="max-w-7xl mx-auto px-8 pt-8 pb-10 w-full">
+          <div className="mb-8">
             <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
               How we help you succeed
             </h2>
@@ -344,7 +344,7 @@ function Home() {
               >
                 {/* Build Card */}
                 <div className="w-full flex-shrink-0">
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
                     {/* Header */}
                     <div className="px-5 pt-4 pb-0">
                       <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Build</h3>
@@ -397,7 +397,7 @@ function Home() {
 
                 {/* Mentorship Card */}
                 <div className="w-full flex-shrink-0">
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
                     {/* Header */}
                     <div className="px-5 pt-4 pb-0">
                       <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Mentorship</h3>
@@ -494,7 +494,7 @@ function Home() {
 
                 {/* Funding Card */}
                 <div className="w-full flex-shrink-0">
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
                     {/* Header */}
                     <div className="px-5 pt-4 pb-0">
                       <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Funding</h3>
@@ -551,7 +551,7 @@ function Home() {
 
                 {/* Network Card */}
                 <div className="w-full flex-shrink-0">
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[480px] flex flex-col">
+                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
                     {/* Header */}
                     <div className="px-5 pt-4 pb-0">
                       <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Network</h3>
