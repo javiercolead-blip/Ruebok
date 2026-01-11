@@ -24,7 +24,7 @@ function Home() {
   // Hero stats counters with staggered delays
   const totalRaised = useStatsCounter(850, 2500, 0, 'easeOut')
   const successRate = useStatsCounter(87, 2500, 300, 'easeOut')
-  const spotsLeft = useStatsCounter(50, 2500, 600, 'easeOut')
+  const spotsLeft = useStatsCounter(14, 2500, 600, 'easeOut')
 
   // Carousel navigation
   const totalCards = 4
@@ -325,29 +325,32 @@ function Home() {
         <div className="max-w-7xl mx-auto px-8 pt-6 pb-10 w-full">
           <div className="mb-6">
             <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
-              How we help you succeed
+              Your Launch Timeline
             </h2>
           </div>
 
           {/* Mobile: Carousel */}
           <div className="md:hidden">
-            {/* Carousel Container */}
+            {/* Carousel Container with Peek */}
             <div
-              className="relative overflow-hidden max-w-6xl mx-auto"
+              className="relative overflow-visible -mx-8"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
               <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${carouselIndex * 100}%)` }}
+                className="flex gap-4 transition-transform duration-500 ease-in-out pl-8"
+                style={{
+                  transform: `translateX(calc(-${carouselIndex * 85}vw - ${carouselIndex * 16}px))`,
+                  scrollSnapType: 'x mandatory'
+                }}
               >
                 {/* Build Card */}
-                <div className="w-full flex-shrink-0">
+                <div className="w-[85vw] flex-shrink-0" style={{ scrollSnapAlign: 'center' }}>
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
                     {/* Header */}
                     <div className="px-5 pt-4 pb-0">
-                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Build</h3>
+                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.mono }}>Phase 1: Build</h3>
                       <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Weeks 1-4</p>
                     </div>
 
@@ -396,12 +399,12 @@ function Home() {
                 </div>
 
                 {/* Mentorship Card */}
-                <div className="w-full flex-shrink-0">
+                <div className="w-[85vw] flex-shrink-0" style={{ scrollSnapAlign: 'center' }}>
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
                     {/* Header */}
                     <div className="px-5 pt-4 pb-0">
-                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Mentorship</h3>
-                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Ongoing Support</p>
+                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.mono }}>Phase 2: Mentorship</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Weeks 5-8</p>
                     </div>
 
                     {/* Mentorship Visual - Icon-based */}
@@ -493,12 +496,17 @@ function Home() {
                 </div>
 
                 {/* Funding Card */}
-                <div className="w-full flex-shrink-0">
+                <div className="w-[85vw] flex-shrink-0" style={{ scrollSnapAlign: 'center' }}>
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
                     {/* Header */}
                     <div className="px-5 pt-4 pb-0">
-                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Funding</h3>
-                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Investor Connections</p>
+                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.mono }}>Phase 3: Funding</h3>
+                      <p className="text-[14px] text-gray-400 mb-3 flex items-center gap-2" style={{ fontFamily: FONTS.mono }}>
+                        Demo Day
+                        <svg className="w-4 h-4 text-yellow-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </p>
                     </div>
 
                     {/* Chart Visual - LARGER */}
@@ -550,12 +558,12 @@ function Home() {
                 </div>
 
                 {/* Network Card */}
-                <div className="w-full flex-shrink-0">
+                <div className="w-[85vw] flex-shrink-0" style={{ scrollSnapAlign: 'center' }}>
                   <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
                     {/* Header */}
                     <div className="px-5 pt-4 pb-0">
-                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.heading }}>Network</h3>
-                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Lifetime Access</p>
+                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.mono }}>Lifetime Access</h3>
+                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Forever Network</p>
                     </div>
 
                     {/* Network Visual - LARGER */}
@@ -593,21 +601,51 @@ function Home() {
               </div>
             </div>
 
-            {/* Carousel Dots */}
-            <div className="flex justify-center gap-2 mt-8">
-              {[0, 1, 2, 3].map((index) => (
-                <button
-                  key={index}
-                  onClick={() => goToCard(index)}
-                  className="transition-all"
-                  style={{
-                    width: carouselIndex === index ? '32px' : '8px',
-                    height: '8px',
-                    borderRadius: '4px',
-                    backgroundColor: carouselIndex === index ? COLORS.primary : '#444'
-                  }}
-                />
-              ))}
+            {/* Launch Timeline Progress Bar */}
+            <div className="mt-8 px-4">
+              {/* Dynamic Phase Label */}
+              <div className="text-center mb-4">
+                <p className="text-[14px] font-bold uppercase tracking-wider transition-all duration-300" style={{ fontFamily: FONTS.mono, color: COLORS.primary }}>
+                  {carouselIndex === 0 && "Phase 1: The MVP (Weeks 1-4)"}
+                  {carouselIndex === 1 && "Phase 2: Refine & Prep (Weeks 5-8)"}
+                  {carouselIndex === 2 && (
+                    <span className="flex items-center justify-center gap-2">
+                      Phase 3: Demo Day (The Goal)
+                      <svg className="w-4 h-4 text-yellow-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    </span>
+                  )}
+                  {carouselIndex === 3 && "Phase 4: Scale & Network (Lifetime)"}
+                </p>
+              </div>
+
+              {/* Segmented Progress Bar */}
+              <div className="flex gap-2 max-w-md mx-auto">
+                {[0, 1, 2, 3].map((index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToCard(index)}
+                    className="flex-1 h-2 transition-all duration-300 relative"
+                    style={{
+                      backgroundColor: index <= carouselIndex ? COLORS.primary : 'rgba(255, 255, 255, 0.2)',
+                      opacity: index <= carouselIndex ? 1 : 0.3
+                    }}
+                  >
+                    {/* Glow effect on active segment tip */}
+                    {index === carouselIndex && (
+                      <div
+                        className="absolute top-0 right-0 h-full w-1"
+                        style={{
+                          backgroundColor: COLORS.primary,
+                          boxShadow: `0 0 8px ${COLORS.primary}, 0 0 12px ${COLORS.primary}`,
+                          filter: 'brightness(1.5)'
+                        }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
