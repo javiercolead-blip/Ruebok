@@ -9,6 +9,10 @@ function Home() {
   const [carouselIndex, setCarouselIndex] = useState(0)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
+  const [touchStartY, setTouchStartY] = useState(0)
+  const [dragOffset, setDragOffset] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const [isHorizontalSwipe, setIsHorizontalSwipe] = useState(false)
   const [selectedCards, setSelectedCards] = useState([])
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const [isCarouselVisible, setIsCarouselVisible] = useState(false)
@@ -37,37 +41,67 @@ function Home() {
     setCarouselIndex((prev) => (prev - 1 + totalCards) % totalCards)
   }
 
-  const goToCard = (index) => {
-    setAutoScrollEnabled(false) // Disable auto-scroll when user clicks dots
-    setCarouselIndex(index)
-  }
-
   // Handle touch events for swipe
   const handleTouchStart = (e) => {
     setAutoScrollEnabled(false) // Disable auto-scroll when user interacts
+    setIsDragging(true)
+    setIsHorizontalSwipe(false)
     setTouchStart(e.targetTouches[0].clientX)
+    setTouchEnd(e.targetTouches[0].clientX)
+    setTouchStartY(e.targetTouches[0].clientY)
   }
 
   const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX)
+    if (!isDragging) return
+
+    const currentTouchX = e.targetTouches[0].clientX
+    const currentTouchY = e.targetTouches[0].clientY
+
+    const deltaX = Math.abs(currentTouchX - touchStart)
+    const deltaY = Math.abs(currentTouchY - touchStartY)
+
+    // Determine if this is a horizontal swipe (only on first significant movement)
+    // Require horizontal movement to be more dominant, or vertical to be very obvious
+    if (!isHorizontalSwipe && (deltaX > 5 || deltaY > 5)) {
+      if (deltaX > deltaY * 1.5 || (deltaX > 10 && deltaY < 40)) {
+        setIsHorizontalSwipe(true)
+      }
+    }
+
+    // Only prevent default and handle horizontal drag if it's a horizontal swipe
+    if (isHorizontalSwipe) {
+      e.preventDefault()
+      setTouchEnd(currentTouchX)
+
+      // Calculate drag offset (multiply by 0.6 to add some resistance)
+      const offset = (currentTouchX - touchStart) * 0.6
+      setDragOffset(offset)
+    }
   }
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return
+    setIsDragging(false)
 
-    const distance = touchStart - touchEnd
-    const isLeftSwipe = distance > 50
-    const isRightSwipe = distance < -50
+    // Only change slides if it was a horizontal swipe
+    if (isHorizontalSwipe) {
+      const distance = touchStart - touchEnd
+      const isLeftSwipe = distance > 50
+      const isRightSwipe = distance < -50
 
-    if (isLeftSwipe) {
-      nextCard()
+      if (isLeftSwipe) {
+        nextCard()
+      }
+      if (isRightSwipe) {
+        prevCard()
+      }
     }
-    if (isRightSwipe) {
-      prevCard()
-    }
 
+    setDragOffset(0)
     setTouchStart(0)
     setTouchEnd(0)
+    setTouchStartY(0)
+    setIsHorizontalSwipe(false)
   }
 
   // Desktop card overlay functions
@@ -322,40 +356,115 @@ function Home() {
 
       {/* How We Help Section */}
       <section ref={carouselSectionRef} className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 pt-6 pb-10 w-full">
-          <div className="mb-6">
-            <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
-              Your Launch Timeline
-            </h2>
-          </div>
+        {/* Header */}
+        <div className="mb-6 px-8 pt-6">
+          <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
+            Launch Timeline<span style={{ color: COLORS.primary }}>:</span>
+          </h2>
+        </div>
 
-          {/* Mobile: Carousel */}
-          <div className="md:hidden">
-            {/* Carousel Container with Peek */}
+        {/* Mobile: Carousel */}
+        <div className="md:hidden">
+          {/* Progress Bar */}
+          <div className="flex mb-6 px-8 justify-center" style={{ gap: '44px' }}>
+              <div className="relative py-3 text-center">
+                <span
+                  className="text-[16px] font-bold uppercase tracking-wide transition-all duration-300"
+                  style={{
+                    fontFamily: "'Roboto Mono', monospace",
+                    color: '#fff'
+                  }}
+                >
+                  Build
+                </span>
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-[3px] transition-all duration-300"
+                  style={{
+                    backgroundColor: COLORS.primary,
+                    transform: carouselIndex === 0 ? 'scaleX(1)' : 'scaleX(0)',
+                    transformOrigin: 'left'
+                  }}
+                />
+              </div>
+              <div className="relative py-3 text-center">
+                <span
+                  className="text-[16px] font-bold uppercase tracking-wide transition-all duration-300"
+                  style={{
+                    fontFamily: "'Roboto Mono', monospace",
+                    color: '#fff'
+                  }}
+                >
+                  Ship
+                </span>
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-[3px] transition-all duration-300"
+                  style={{
+                    backgroundColor: COLORS.primary,
+                    transform: carouselIndex === 1 ? 'scaleX(1)' : 'scaleX(0)',
+                    transformOrigin: 'left'
+                  }}
+                />
+              </div>
+              <div className="relative py-3 text-center">
+                <span
+                  className="text-[16px] font-bold uppercase tracking-wide transition-all duration-300"
+                  style={{
+                    fontFamily: "'Roboto Mono', monospace",
+                    color: '#fff'
+                  }}
+                >
+                  Pitch
+                </span>
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-[3px] transition-all duration-300"
+                  style={{
+                    backgroundColor: COLORS.primary,
+                    transform: carouselIndex === 2 ? 'scaleX(1)' : 'scaleX(0)',
+                    transformOrigin: 'left'
+                  }}
+                />
+              </div>
+              <div className="relative py-3 text-center">
+                <span
+                  className="text-[16px] font-bold uppercase tracking-wide transition-all duration-300"
+                  style={{
+                    fontFamily: "'Roboto Mono', monospace",
+                    color: '#fff'
+                  }}
+                >
+                  Scale
+                </span>
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-[3px] transition-all duration-300"
+                  style={{
+                    backgroundColor: COLORS.primary,
+                    transform: carouselIndex === 3 ? 'scaleX(1)' : 'scaleX(0)',
+                    transformOrigin: 'left'
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Carousel Container */}
             <div
-              className="relative overflow-visible -mx-8"
+              className="relative overflow-hidden"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
               <div
-                className="flex gap-4 transition-transform duration-500 ease-in-out pl-8"
+                className="flex"
                 style={{
-                  transform: `translateX(calc(-${carouselIndex * 85}vw - ${carouselIndex * 16}px))`,
+                  transform: `translateX(calc(-${carouselIndex * 100}vw + ${dragOffset}px))`,
+                  transition: isDragging ? 'none' : 'transform 500ms ease-out',
                   scrollSnapType: 'x mandatory'
                 }}
               >
                 {/* Build Card */}
-                <div className="w-[85vw] flex-shrink-0" style={{ scrollSnapAlign: 'center' }}>
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
-                    {/* Header */}
-                    <div className="px-5 pt-4 pb-0">
-                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.mono }}>Phase 1: Build</h3>
-                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Weeks 1-4</p>
-                    </div>
-
+                <div className="flex-shrink-0" style={{ scrollSnapAlign: 'center', width: '100vw' }}>
+                  <div className="overflow-hidden h-[520px] flex flex-col px-8">
                     {/* Code Editor Visual - LARGER */}
-                    <div className="relative h-[240px] mx-5 mb-3 overflow-hidden bg-[#0d0d0d]">
+                    <div className="relative h-[240px] mb-3 overflow-hidden bg-[#0d0d0d]">
                       <div className="h-full flex flex-col">
                         <div className="px-3 py-2 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
                           <div className="flex gap-1.5">
@@ -377,9 +486,12 @@ function Home() {
                       </div>
                     </div>
 
+                    {/* Spacer */}
+                    <div className="mb-3"></div>
+
                     {/* Text Content Below Visual - Tighter */}
-                    <div className="px-5 pb-5 flex-1">
-                      <p className="text-[17px] text-gray-300 leading-[1.5] mb-3">
+                    <div className="pb-5 flex-1">
+                      <p className="text-[19px] text-white leading-[1.5] mb-3">
                         Ship your MVP in 4 weeks with expert guidance.
                       </p>
 
@@ -390,7 +502,7 @@ function Home() {
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[16px] text-white" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -399,16 +511,10 @@ function Home() {
                 </div>
 
                 {/* Mentorship Card */}
-                <div className="w-[85vw] flex-shrink-0" style={{ scrollSnapAlign: 'center' }}>
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
-                    {/* Header */}
-                    <div className="px-5 pt-4 pb-0">
-                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.mono }}>Phase 2: Mentorship</h3>
-                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Weeks 5-8</p>
-                    </div>
-
+                <div className="flex-shrink-0" style={{ scrollSnapAlign: 'center', width: '100vw' }}>
+                  <div className="overflow-hidden h-[520px] flex flex-col px-8">
                     {/* Mentorship Visual - Icon-based */}
-                    <div className="relative h-[240px] mx-5 mb-3 overflow-hidden bg-[#0d0d0d] flex items-center justify-center">
+                    <div className="relative h-[240px] mb-3 overflow-hidden bg-[#0d0d0d] flex items-center justify-center">
                       {/* Mentor-Founder Connection Diagram */}
                       <div className="relative w-full h-full flex items-center justify-center p-8">
                         {/* Center Founder Icon */}
@@ -474,9 +580,12 @@ function Home() {
                       </div>
                     </div>
 
+                    {/* Spacer */}
+                    <div className="mb-3"></div>
+
                     {/* Text Content Below Visual - Tighter */}
-                    <div className="px-5 pb-5 flex-1">
-                      <p className="text-[17px] text-gray-300 leading-[1.5] mb-3">
+                    <div className="pb-5 flex-1">
+                      <p className="text-[19px] text-white leading-[1.5] mb-3">
                         Learn from founders who've built and scaled companies.
                       </p>
 
@@ -487,7 +596,7 @@ function Home() {
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[16px] text-white" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -496,21 +605,10 @@ function Home() {
                 </div>
 
                 {/* Funding Card */}
-                <div className="w-[85vw] flex-shrink-0" style={{ scrollSnapAlign: 'center' }}>
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
-                    {/* Header */}
-                    <div className="px-5 pt-4 pb-0">
-                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.mono }}>Phase 3: Funding</h3>
-                      <p className="text-[14px] text-gray-400 mb-3 flex items-center gap-2" style={{ fontFamily: FONTS.mono }}>
-                        Demo Day
-                        <svg className="w-4 h-4 text-yellow-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      </p>
-                    </div>
-
+                <div className="flex-shrink-0" style={{ scrollSnapAlign: 'center', width: '100vw' }}>
+                  <div className="overflow-hidden h-[520px] flex flex-col px-8">
                     {/* Chart Visual - LARGER */}
-                    <div className="relative h-[240px] mx-5 mb-3 bg-[#0d0d0d] p-7 flex flex-col">
+                    <div className="relative h-[240px] mb-3 bg-[#0d0d0d] p-7 flex flex-col">
                       <div className="text-[12px] text-gray-400 font-semibold mb-3 uppercase tracking-wide">Traction Growth</div>
                       <div className="flex-1 relative flex items-end justify-between gap-4 pb-7">
                         <div className="flex flex-col items-center gap-2 flex-1">
@@ -536,9 +634,12 @@ function Home() {
                       </div>
                     </div>
 
+                    {/* Spacer */}
+                    <div className="mb-3"></div>
+
                     {/* Text Content Below Visual - Tighter */}
-                    <div className="px-5 pb-5 flex-1">
-                      <p className="text-[17px] text-gray-300 leading-[1.5] mb-3">
+                    <div className="pb-5 flex-1">
+                      <p className="text-[19px] text-white leading-[1.5] mb-3">
                         Connect with investors actively seeking deals.
                       </p>
 
@@ -549,7 +650,7 @@ function Home() {
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[16px] text-white" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -558,16 +659,10 @@ function Home() {
                 </div>
 
                 {/* Network Card */}
-                <div className="w-[85vw] flex-shrink-0" style={{ scrollSnapAlign: 'center' }}>
-                  <div className="border border-neutral-800 overflow-hidden bg-[#1a1a1a] shadow-xl h-[520px] flex flex-col">
-                    {/* Header */}
-                    <div className="px-5 pt-4 pb-0">
-                      <h3 className="text-[26px] font-bold text-white mb-1 leading-tight uppercase" style={{ fontFamily: FONTS.mono }}>Lifetime Access</h3>
-                      <p className="text-[14px] text-gray-400 mb-3" style={{ fontFamily: FONTS.mono }}>Forever Network</p>
-                    </div>
-
+                <div className="flex-shrink-0" style={{ scrollSnapAlign: 'center', width: '100vw' }}>
+                  <div className="overflow-hidden h-[520px] flex flex-col px-8">
                     {/* Network Visual - LARGER */}
-                    <div className="relative h-[240px] mx-5 mb-3 overflow-hidden bg-gradient-to-br from-gray-900 to-black p-10 flex items-center justify-center">
+                    <div className="relative h-[240px] mb-3 overflow-hidden bg-gradient-to-br from-gray-900 to-black p-10 flex items-center justify-center">
                       <div className="grid grid-cols-3 gap-5">
                         <div className="w-18 h-18 rounded-full bg-gradient-to-br from-orange-500 to-red-600 shadow-lg"></div>
                         <div className="w-18 h-18 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg"></div>
@@ -578,9 +673,12 @@ function Home() {
                       </div>
                     </div>
 
+                    {/* Spacer */}
+                    <div className="mb-3"></div>
+
                     {/* Text Content Below Visual - Tighter */}
-                    <div className="px-5 pb-5 flex-1">
-                      <p className="text-[17px] text-gray-300 leading-[1.5] mb-3">
+                    <div className="pb-5 flex-1">
+                      <p className="text-[19px] text-white leading-[1.5] mb-3">
                         Lifetime access to our community of founders and mentors.
                       </p>
 
@@ -591,7 +689,7 @@ function Home() {
                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            <span className="text-[14px] text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
+                            <span className="text-[16px] text-white" style={{ fontFamily: FONTS.mono }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -601,55 +699,10 @@ function Home() {
               </div>
             </div>
 
-            {/* Launch Timeline Progress Bar */}
-            <div className="mt-8 px-4">
-              {/* Dynamic Phase Label */}
-              <div className="text-center mb-4">
-                <p className="text-[14px] font-bold uppercase tracking-wider transition-all duration-300" style={{ fontFamily: FONTS.mono, color: COLORS.primary }}>
-                  {carouselIndex === 0 && "Phase 1: The MVP (Weeks 1-4)"}
-                  {carouselIndex === 1 && "Phase 2: Refine & Prep (Weeks 5-8)"}
-                  {carouselIndex === 2 && (
-                    <span className="flex items-center justify-center gap-2">
-                      Phase 3: Demo Day (The Goal)
-                      <svg className="w-4 h-4 text-yellow-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    </span>
-                  )}
-                  {carouselIndex === 3 && "Phase 4: Scale & Network (Lifetime)"}
-                </p>
-              </div>
-
-              {/* Segmented Progress Bar */}
-              <div className="flex gap-2 max-w-md mx-auto">
-                {[0, 1, 2, 3].map((index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToCard(index)}
-                    className="flex-1 h-2 transition-all duration-300 relative"
-                    style={{
-                      backgroundColor: index <= carouselIndex ? COLORS.primary : 'rgba(255, 255, 255, 0.2)',
-                      opacity: index <= carouselIndex ? 1 : 0.3
-                    }}
-                  >
-                    {/* Glow effect on active segment tip */}
-                    {index === carouselIndex && (
-                      <div
-                        className="absolute top-0 right-0 h-full w-1"
-                        style={{
-                          backgroundColor: COLORS.primary,
-                          boxShadow: `0 0 8px ${COLORS.primary}, 0 0 12px ${COLORS.primary}`,
-                          filter: 'brightness(1.5)'
-                        }}
-                      />
-                    )}
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Desktop: Grid - Vertical stack on mobile, horizontal on desktop */}
+        {/* Desktop: Grid - Vertical stack on mobile, horizontal on desktop */}
+        <div className="max-w-7xl mx-auto px-8">
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-5">
             {/* Card 1 - Build */}
             <div className="border border-gray-800 shadow-2xl rounded-lg overflow-hidden transition-all group relative flex flex-col" style={{ backgroundColor: COLORS.darkGray, borderColor: COLORS.border }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.border}>
