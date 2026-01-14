@@ -63,7 +63,7 @@ function Home() {
     // Determine if this is a horizontal swipe (only on first significant movement)
     // Require horizontal movement to be more dominant, or vertical to be very obvious
     if (!isHorizontalSwipe && (deltaX > 5 || deltaY > 5)) {
-      if (deltaX > deltaY * 1.5 || (deltaX > 10 && deltaY < 40)) {
+      if (deltaX > deltaY * 2 || (deltaX > 10 && deltaY < 60)) {
         setIsHorizontalSwipe(true)
       }
     }
