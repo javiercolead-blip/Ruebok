@@ -62,11 +62,11 @@ function Home() {
 
     // Determine if this is a horizontal swipe (only on first significant movement)
     // Horizontal swipes should be easy and sensitive
-    // Vertical scrolling should require more intentional movement
+    // Vertical scrolling should require more intentional movement with a dead zone
     if (!isHorizontalSwipe && (deltaX > 5 || deltaY > 5)) {
-      // Only allow vertical scroll if it's clearly vertical (2x more than horizontal)
-      if (deltaY > deltaX * 2) {
-        // This is a clearly vertical scroll, allow it
+      // Only allow vertical scroll if it's clearly vertical AND exceeds dead zone threshold
+      if (deltaY > deltaX * 2 && deltaY > 30) {
+        // This is a clearly vertical scroll with enough movement, allow it
       } else {
         // Default to horizontal swipe for everything else
         setIsHorizontalSwipe(true)
