@@ -61,9 +61,11 @@ function Home() {
     const deltaY = Math.abs(currentTouchY - touchStartY)
 
     // Determine if this is a horizontal swipe (only on first significant movement)
-    // Require horizontal movement to be more dominant, or vertical to be very obvious
+    // Inversed logic: make horizontal easier, vertical harder
     if (!isHorizontalSwipe && (deltaX > 5 || deltaY > 5)) {
-      if (deltaX > deltaY * 2 || (deltaX > 10 && deltaY < 60)) {
+      if (deltaY > deltaX * 2 || (deltaY > 10 && deltaX < 60)) {
+        // This is a vertical scroll, don't set horizontal swipe
+      } else {
         setIsHorizontalSwipe(true)
       }
     }
@@ -207,7 +209,7 @@ function Home() {
   }, [autoScrollEnabled, isCarouselVisible, totalCards])
 
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
+    <div className="snap-y snap-mandatory h-screen overflow-y-scroll" style={{ scrollBehavior: 'smooth' }}>
       {/* Hero Section - Industrial Design */}
       <section className="snap-center relative h-screen dark-grid pt-[70px] flex items-center justify-center overflow-hidden">
       {/* Two-Column Industrial Layout */}
