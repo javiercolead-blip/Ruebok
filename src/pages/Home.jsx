@@ -738,9 +738,9 @@ function Home() {
                   {tab}
                   {/* Active underline indicator */}
                   <span
-                    className="absolute bottom-0 left-0 right-0 h-[2px] transition-all duration-300"
+                    className="absolute bottom-0 left-0 right-0 h-[3px] transition-all duration-300"
                     style={{
-                      backgroundColor: '#ffffff',
+                      backgroundColor: COLORS.primary,
                       transform: activeTab === tab ? 'scaleX(1)' : 'scaleX(0)',
                       transformOrigin: 'center'
                     }}
