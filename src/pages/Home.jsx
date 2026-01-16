@@ -217,7 +217,7 @@ function Home() {
       {/* Hero Section - Industrial Design */}
       <section className="snap-center relative h-screen dark-grid pt-[70px] flex items-center overflow-hidden">
       {/* Two-Column Industrial Layout */}
-      <div className="max-w-[1400px] mx-auto px-8 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+      <div className="max-w-[1400px] mx-auto px-8 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
 
         {/* LEFT COLUMN - Copy/CTA */}
         <div className="space-y-8">
