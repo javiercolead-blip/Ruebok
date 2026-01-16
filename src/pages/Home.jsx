@@ -371,7 +371,7 @@ function Home() {
         {/* Mobile: Carousel */}
         <div className="md:hidden">
           {/* Progress Bar */}
-          <div className="flex mb-6 px-8 justify-center" style={{ gap: '52px' }}>
+          <div className="flex mb-6 px-8 justify-center" style={{ gap: '48px' }}>
               <div className="relative py-3 text-center">
                 <span
                   className="text-[18px] font-bold uppercase tracking-wide transition-all duration-300"
