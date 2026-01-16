@@ -363,7 +363,7 @@ function Home() {
       {/* Tabbed Navigation Section - What We Offer */}
       <section ref={carouselSectionRef} className="snap-center relative h-screen bg-[#111111] pt-[70px] overflow-hidden">
         {/* Header */}
-        <div className="px-8 lg:px-20 pt-6 md:pt-10">
+        <div className="px-8 lg:px-20 pt-10 md:pt-16">
           <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight max-w-[1400px] mx-auto">
             Launch Timeline
           </h2>
