@@ -16,6 +16,7 @@ function Home() {
   const [selectedCards, setSelectedCards] = useState([])
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const [isCarouselVisible, setIsCarouselVisible] = useState(false)
+  const [activeTab, setActiveTab] = useState('build')
   const carouselSectionRef = useRef(null)
 
   // Use counter animation hook for all animated numbers
@@ -214,21 +215,21 @@ function Home() {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll" style={{ scrollBehavior: 'smooth' }}>
       {/* Hero Section - Industrial Design */}
-      <section className="snap-center relative h-screen dark-grid pt-[70px] flex items-center justify-center overflow-hidden">
+      <section className="snap-center relative h-screen dark-grid pt-[70px] flex items-center overflow-hidden">
       {/* Two-Column Industrial Layout */}
-      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-[1400px] mx-auto px-8 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
 
         {/* LEFT COLUMN - Copy/CTA */}
         <div className="space-y-8">
           {/* Main Headline */}
           <h1 className="uppercase leading-none" style={{ fontFamily: FONTS.heading }}>
-            <span className="block text-[64px] lg:text-[96px] font-black text-white">
+            <span className="block text-[72px] lg:text-[96px] font-black text-white leading-[1.1]">
               BUILD<span style={{ color: COLORS.primary }}>.</span>
             </span>
-            <span className="block text-[64px] lg:text-[96px] font-black text-white">
+            <span className="block text-[72px] lg:text-[96px] font-black text-white leading-[1.1]">
               SHIP<span style={{ color: COLORS.primary }}>.</span>
             </span>
-            <span className="block text-[64px] lg:text-[96px] font-black text-white">
+            <span className="block text-[72px] lg:text-[96px] font-black text-white leading-[1.1]">
               PITCH<span style={{ color: COLORS.primary }}>.</span>
             </span>
           </h1>
@@ -359,12 +360,12 @@ function Home() {
 
     </section>
 
-      {/* How We Help Section */}
-      <section ref={carouselSectionRef} className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
+      {/* Tabbed Navigation Section - What We Offer */}
+      <section ref={carouselSectionRef} className="snap-center relative h-screen bg-[#111111] pt-[70px] overflow-hidden">
         {/* Header */}
-        <div className="mb-6 px-8 pt-6">
-          <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight">
-            Launch Timeline<span style={{ color: COLORS.primary }}>:</span>
+        <div className="px-8 lg:px-20 pt-6 md:pt-10">
+          <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight max-w-[1400px] mx-auto">
+            Launch Timeline
           </h2>
         </div>
 
@@ -706,568 +707,308 @@ function Home() {
 
           </div>
 
-        {/* Desktop: Grid - Vertical stack on mobile, horizontal on desktop */}
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-5">
-            {/* Card 1 - Build */}
-            <div className="border border-gray-800 shadow-2xl rounded-lg overflow-hidden transition-all group relative flex flex-col" style={{ backgroundColor: COLORS.darkGray, borderColor: COLORS.border }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.border}>
-
-              {/* Detail Overlay - slides from left on mobile, bottom on desktop */}
-              <div
-                className="absolute inset-0 z-20 flex flex-col rounded-xl transition-all duration-500 ease-out"
-                style={{
-                  backgroundColor: COLORS.darkGray,
-                  transform: isCardSelected('build')
-                    ? 'translate(0, 0)'
-                    : window.innerWidth < 768
-                      ? 'translateX(-100%)'
-                      : 'translateY(100%)',
-                  opacity: isCardSelected('build') ? 1 : 0
-                }}
-              >
-                {/* Close Button */}
+        {/* Desktop: Tab Navigation Bar */}
+        <nav
+          className="hidden md:block border-b border-gray-800 mt-6"
+          style={{ backgroundColor: '#111111' }}
+          role="tablist"
+          aria-label="Program offerings"
+        >
+          <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
+            <div className="flex justify-start gap-8 md:gap-12">
+              {['build', 'mentorship', 'funding', 'network'].map((tab) => (
                 <button
-                  onClick={() => toggleCard('build')}
-                  className="absolute top-3 right-3 z-30 w-8 h-8 flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+                  key={tab}
+                  role="tab"
+                  aria-selected={activeTab === tab}
+                  aria-controls={`${tab}-panel`}
+                  onClick={() => setActiveTab(tab)}
+                  className="relative py-4 text-[16px] md:text-[20px] font-medium transition-colors duration-300 cursor-pointer capitalize"
+                  style={{
+                    color: activeTab === tab ? '#ffffff' : '#999999',
+                    fontFamily: FONTS.mono
+                  }}
+                  onMouseEnter={(e) => {
+                    if (activeTab !== tab) e.currentTarget.style.color = '#cccccc'
+                  }}
+                  onMouseLeave={(e) => {
+                    if (activeTab !== tab) e.currentTarget.style.color = '#999999'
+                  }}
                 >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  {tab}
+                  {/* Active underline indicator */}
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2px] transition-all duration-300"
+                    style={{
+                      backgroundColor: '#ffffff',
+                      transform: activeTab === tab ? 'scaleX(1)' : 'scaleX(0)',
+                      transformOrigin: 'center'
+                    }}
+                  />
                 </button>
+              ))}
+            </div>
+          </div>
+        </nav>
 
-                {/* Detail Content */}
-                <div className="p-4 md:p-6 flex flex-col justify-center h-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3" style={{ fontFamily: FONTS.heading }}>
-                    {cardDetails.build.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-gray-300 leading-relaxed mb-4" style={{ fontFamily: FONTS.mono }}>
-                    {cardDetails.build.description}
-                  </p>
-
-                  {/* Features List */}
-                  <ul className="space-y-1.5">
-                    {cardDetails.build.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <svg className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-[10px] md:text-xs text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+        {/* Tab Content Panels - Desktop only */}
+        <div className="hidden md:block relative flex-1">
+          {/* Build Panel */}
+          <div
+            id="build-panel"
+            role="tabpanel"
+            aria-labelledby="build-tab"
+            className={`transition-all duration-500 ${activeTab === 'build' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 absolute inset-0 pointer-events-none'}`}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-5 h-[calc(100vh-220px)]">
+              {/* Text Column - 3/5 width */}
+              <div className="lg:col-span-3 flex flex-col justify-start px-8 lg:px-20 pt-8 lg:pt-12 pb-8" style={{ backgroundColor: '#111111' }}>
+                <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight mb-4 max-w-[550px]" style={{ fontFamily: FONTS.heading }}>
+                  Transform your idea into reality
+                </h2>
+                <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
+                  Our 10-week intensive program helps founders move from concept to market-ready startup with hands-on guidance for product development and go-to-market strategy.
+                </p>
+                <div className="flex flex-wrap gap-3 mt-6">
+                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>Product Development</span>
+                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>Market Validation</span>
+                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>MVP Launch</span>
                 </div>
               </div>
-
-              {/* Mobile: Vertical stack layout */}
-              <div className="flex flex-col md:hidden">
-                {/* Text Content */}
-                <div className="p-6">
-                  <h3 className="text-[26px] font-bold text-white mb-2 leading-tight">Build</h3>
-                  <p className="text-[15px] text-gray-400 mb-4">Weeks 1-4</p>
-                  <p className="text-[16px] text-gray-300 leading-[1.6] mb-6">
-                    Turn your idea into a working product with hands-on guidance
-                  </p>
-                </div>
-
-                {/* Code Editor Visual */}
-                <div className="relative h-[220px] mx-6 mb-6 rounded-lg overflow-hidden" style={{ backgroundColor: COLORS.darkSection }}>
-                  <div className="h-full flex flex-col">
-                    <div className="px-3 py-2 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
-                      <div className="flex gap-1.5">
-                        <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                        <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                      </div>
-                      <span className="text-[11px] text-gray-400 font-mono">startup.ts</span>
-                    </div>
-                    <div className="p-4 font-mono text-[14px] leading-relaxed flex-1">
-                      <div className="space-y-1">
-                        <div><span className="text-purple-400">const</span><span className="text-white"> mvp = {'{'}</span></div>
-                        <div className="pl-4"><span className="text-white">build: </span><span style={{ color: COLORS.primary }}>"fast"</span><span className="text-gray-500">,</span></div>
-                        <div className="pl-4"><span className="text-white">launch: </span><span className="text-purple-400">true</span><span className="text-gray-500">,</span></div>
-                        <div className="pl-4"><span className="text-white">status: </span><span style={{ color: COLORS.primary }}>"ready"</span></div>
-                        <div><span className="text-white">{'}'}</span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Learn More Button */}
-                <div className="px-6 pb-6">
-                  <button
-                    onClick={() => toggleCard('build')}
-                    className="w-full h-[52px] flex items-center justify-center gap-2 cursor-pointer rounded-lg transition-all active:scale-[0.98]"
-                    style={{ backgroundColor: COLORS.primary }}
-                  >
-                    <span className="text-[16px] font-semibold text-white">
-                      Learn More
-                    </span>
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              {/* Image Column - 2/5 width */}
+              <div className="lg:col-span-2 relative hidden lg:block">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center rounded-l-xl overflow-hidden m-4">
+                  <div className="text-center p-6">
+                    <svg className="w-16 h-16 mx-auto mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                  </button>
-                </div>
-              </div>
-
-              {/* Desktop: Original vertical layout */}
-              <div className="hidden md:flex md:flex-col md:h-full">
-                {/* Visual Area - Code Editor */}
-                <div className="relative h-64" style={{ backgroundColor: COLORS.darkSection }}>
-                  {/* Badge */}
-                  <div className="absolute top-3 left-3 z-10">
-                    <div className="inline-block px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
-                      <span className="text-[10px] text-white font-semibold uppercase tracking-wider">Build</span>
-                    </div>
+                    <span className="text-xs text-gray-500 font-mono">build-workspace.jpg</span>
                   </div>
-
-                  {/* Code Editor */}
-                  <div className="h-full flex flex-col">
-                    <div className="px-4 py-2.5 flex items-center gap-2 border-b border-gray-800" style={{ backgroundColor: COLORS.darkGray }}>
-                      <div className="flex gap-2">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-                      </div>
-                      <span className="text-xs text-gray-400 font-mono">startup.ts</span>
-                    </div>
-                    <div className="p-6 font-mono text-sm leading-relaxed flex-1">
-                      <div className="space-y-1.5">
-                        <div><span className="text-purple-400">const</span><span className="text-white"> mvp = {'{'}</span></div>
-                        <div className="pl-4"><span className="text-white">build: </span><span style={{ color: COLORS.primary }}>"fast"</span><span className="text-gray-500">,</span></div>
-                        <div className="pl-4"><span className="text-white">launch: </span><span className="text-purple-400">true</span><span className="text-gray-500">,</span></div>
-                        <div className="pl-4"><span className="text-white">status: </span><span style={{ color: COLORS.primary }}>"ready"</span></div>
-                        <div><span className="text-white">{'}'}</span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content Area */}
-                <div className="p-4 border-t border-gray-800 flex-1 relative" style={{ backgroundColor: COLORS.darkGray }}>
-                  <h3 className="text-lg font-bold text-white mb-1">Build</h3>
-                  <p className="text-xs text-gray-400 mb-2">Weeks 1-4</p>
-                  <p className="text-sm text-gray-300 leading-relaxed mb-6">
-                    Turn your idea into a working product with hands-on guidance
-                  </p>
-
-                  {/* Learn More Link */}
-                  <button
-                    onClick={() => toggleCard('build')}
-                    className="absolute bottom-4 left-4 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-                  >
-                    <span className="text-sm font-medium relative group/link" style={{ color: COLORS.primary }}>
-                      Learn More
-                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
-                    </span>
-                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Card 2 - Mentorship */}
-            <div className="border border-gray-700 shadow-2xl rounded-xl overflow-hidden hover:border-orange-600 transition-all h-[140px] md:min-h-[420px] group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray }}>
-
-              {/* Detail Overlay - slides from left on mobile, bottom on desktop */}
-              <div
-                className="absolute inset-0 z-20 flex flex-col rounded-xl transition-all duration-500 ease-out"
-                style={{
-                  backgroundColor: COLORS.darkGray,
-                  transform: isCardSelected('mentorship')
-                    ? 'translate(0, 0)'
-                    : window.innerWidth < 768
-                      ? 'translateX(-100%)'
-                      : 'translateY(100%)',
-                  opacity: isCardSelected('mentorship') ? 1 : 0
-                }}
-              >
-                {/* Close Button */}
-                <button
-                  onClick={() => toggleCard('mentorship')}
-                  className="absolute top-3 right-3 z-30 w-8 h-8 flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-
-                {/* Detail Content */}
-                <div className="p-4 md:p-6 flex flex-col justify-center h-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3" style={{ fontFamily: FONTS.heading }}>
-                    {cardDetails.mentorship.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-gray-300 leading-relaxed mb-4" style={{ fontFamily: FONTS.mono }}>
-                    {cardDetails.mentorship.description}
-                  </p>
-
-                  {/* Features List */}
-                  <ul className="space-y-1.5">
-                    {cardDetails.mentorship.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <svg className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-[10px] md:text-xs text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Mobile: Two-column grid layout */}
-              <div className="grid grid-cols-2 gap-2 h-full md:hidden p-2">
-                {/* Left Column - Text Content */}
-                <div className="flex flex-col justify-start pt-1">
-                  <h3 className="text-sm font-bold text-white mb-1">Mentorship</h3>
-                  <p className="text-[9px] text-gray-400 mb-2">Ongoing Support</p>
-                  <p className="text-[10px] text-gray-300 leading-relaxed mb-2">
-                    Get personalized feedback from founders who've scaled startups
-                  </p>
-
-                  {/* Learn More Button */}
-                  <button
-                    onClick={() => toggleCard('mentorship')}
-                    className="flex items-center gap-1 cursor-pointer mt-auto"
-                  >
-                    <span className="text-[10px] font-medium text-orange-600">
-                      Learn More
-                    </span>
-                    <svg className="w-3 h-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Right Column - Mentor Image */}
-                <div className="relative rounded-lg overflow-hidden">
-                  <img
-                    src="/mentorpic.png"
-                    alt="Mentor"
-                    className="absolute inset-0 w-full h-full object-cover object-center brightness-125"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                </div>
-              </div>
-
-              {/* Desktop: Original vertical layout */}
-              <div className="hidden md:flex md:flex-col md:h-full">
-                {/* Visual Area - Mentor */}
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src="/mentorpic.png"
-                    alt="Mentor"
-                    className="absolute inset-0 w-full h-full object-cover object-center brightness-125"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-
-                  {/* Badge */}
-                  <div className="absolute top-3 left-3 z-10">
-                    <div className="inline-block px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
-                      <span className="text-[10px] text-white font-semibold uppercase tracking-wider">Mentorship</span>
-                    </div>
+          {/* Mentorship Panel */}
+          <div
+            id="mentorship-panel"
+            role="tabpanel"
+            aria-labelledby="mentorship-tab"
+            className={`transition-all duration-500 ${activeTab === 'mentorship' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 absolute inset-0 pointer-events-none'}`}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-5 h-[calc(100vh-220px)]">
+              {/* Text Column */}
+              <div className="lg:col-span-3 flex flex-col justify-start px-8 lg:px-20 pt-8 lg:pt-12 pb-8" style={{ backgroundColor: '#111111' }}>
+                <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight mb-4 max-w-[550px]" style={{ fontFamily: FONTS.heading }}>
+                  Learn from founders who've been there
+                </h2>
+                <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
+                  Connect with mentors who have scaled startups. Get 1-on-1 sessions, weekly office hours, and strategic guidance throughout your journey.
+                </p>
+                <div className="flex flex-wrap gap-6 mt-6">
+                  <div className="text-center">
+                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>50+</div>
+                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Active Mentors</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>100+</div>
+                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Hours of Guidance</div>
                   </div>
                 </div>
-
-                {/* Content Area */}
-                <div className="p-4 border-t border-gray-800 flex-1 relative" style={{ backgroundColor: COLORS.darkGray }}>
-                  <h3 className="text-lg font-bold text-white mb-1">Mentorship</h3>
-                  <p className="text-xs text-gray-400 mb-2">Ongoing Support</p>
-                  <p className="text-sm text-gray-300 leading-relaxed mb-6">
-                    Get personalized feedback from founders who've scaled startups
-                  </p>
-
-                  {/* Learn More Link */}
-                  <button
-                    onClick={() => toggleCard('mentorship')}
-                    className="absolute bottom-4 left-4 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-                  >
-                    <span className="text-orange-600 text-sm font-medium relative group/link">
-                      Learn More
-                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
-                    </span>
-                    <svg className="w-4 h-4 text-orange-600 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </div>
+              {/* Image Column */}
+              <div className="lg:col-span-2 relative hidden lg:block">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center rounded-l-xl overflow-hidden m-4">
+                  <div className="text-center p-6">
+                    <svg className="w-16 h-16 mx-auto mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                  </button>
+                    <span className="text-xs text-gray-500 font-mono">mentorship-session.jpg</span>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Card 3 - Funding */}
-            <div className="shadow-2xl rounded-xl overflow-hidden hover:border hover:border-orange-600 transition-all h-[140px] md:min-h-[420px] border border-gray-800 group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray }}>
-
-              {/* Detail Overlay - slides from left on mobile, bottom on desktop */}
-              <div
-                className="absolute inset-0 z-20 flex flex-col rounded-xl transition-all duration-500 ease-out"
-                style={{
-                  backgroundColor: COLORS.darkGray,
-                  transform: isCardSelected('funding')
-                    ? 'translate(0, 0)'
-                    : window.innerWidth < 768
-                      ? 'translateX(-100%)'
-                      : 'translateY(100%)',
-                  opacity: isCardSelected('funding') ? 1 : 0
-                }}
-              >
-                {/* Close Button */}
-                <button
-                  onClick={() => toggleCard('funding')}
-                  className="absolute top-3 right-3 z-30 w-8 h-8 flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-
-                {/* Detail Content */}
-                <div className="p-4 md:p-6 flex flex-col justify-center h-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3" style={{ fontFamily: FONTS.heading }}>
-                    {cardDetails.funding.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-gray-300 leading-relaxed mb-4" style={{ fontFamily: FONTS.mono }}>
-                    {cardDetails.funding.description}
-                  </p>
-
-                  {/* Features List */}
-                  <ul className="space-y-1.5">
-                    {cardDetails.funding.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <svg className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-[10px] md:text-xs text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Mobile: Two-column grid layout */}
-              <div className="grid grid-cols-2 gap-2 h-full md:hidden p-2">
-                {/* Left Column - Text Content */}
-                <div className="flex flex-col justify-start pt-1">
-                  <h3 className="text-sm font-bold text-white mb-1">Funding</h3>
-                  <p className="text-[9px] text-gray-400 mb-2">Investor Connections</p>
-                  <p className="text-[10px] text-gray-300 leading-relaxed mb-2">
-                    Refine your pitch and connect with global investors seeking deals
-                  </p>
-
-                  {/* Learn More Button */}
-                  <button
-                    onClick={() => toggleCard('funding')}
-                    className="flex items-center gap-1 cursor-pointer mt-auto"
-                  >
-                    <span className="text-[10px] font-medium text-orange-600">
-                      Learn More
-                    </span>
-                    <svg className="w-3 h-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Right Column - Chart */}
-                <div className="relative bg-neutral-950 rounded-lg p-2 flex flex-col">
-                  <div className="text-[7px] text-gray-400 font-semibold mb-2 uppercase tracking-wide">Traction</div>
-                  <div className="flex-1 relative">
-                    <div className="absolute inset-0 flex flex-col justify-between py-0.5">
-                      <div className="border-t border-gray-700"></div>
-                      <div className="border-t border-gray-700"></div>
-                      <div className="border-t border-gray-700"></div>
-                    </div>
-                    <div className="absolute inset-0 flex items-end justify-around px-2">
-                      <div className="w-4 rounded-t-sm" style={{ backgroundColor: COLORS.primary, height: '35%' }}></div>
-                      <div className="w-4 rounded-t-sm" style={{ backgroundColor: COLORS.primary, height: '52%' }}></div>
-                      <div className="w-4 rounded-t-sm" style={{ backgroundColor: COLORS.primary, height: '68%' }}></div>
-                      <div className="w-4 rounded-t-sm" style={{ backgroundColor: COLORS.primary, height: '85%' }}></div>
-                    </div>
+          {/* Funding Panel */}
+          <div
+            id="funding-panel"
+            role="tabpanel"
+            aria-labelledby="funding-tab"
+            className={`transition-all duration-500 ${activeTab === 'funding' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 absolute inset-0 pointer-events-none'}`}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-5 h-[calc(100vh-220px)]">
+              {/* Text Column */}
+              <div className="lg:col-span-3 flex flex-col justify-start px-8 lg:px-20 pt-8 lg:pt-12 pb-8" style={{ backgroundColor: '#111111' }}>
+                <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight mb-4 max-w-[550px]" style={{ fontFamily: FONTS.heading }}>
+                  Access capital to fuel your growth
+                </h2>
+                <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
+                  Eligible startups can receive up to $100K in pre-seed funding. We also provide pitch coaching and warm introductions to our investor network.
+                </p>
+                <div className="flex flex-wrap gap-4 mt-6">
+                  <div className="px-4 py-3 border border-gray-700 rounded-lg">
+                    <div className="text-[20px] font-bold text-white">$100K</div>
+                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Initial Investment</div>
+                  </div>
+                  <div className="px-4 py-3 border border-gray-700 rounded-lg">
+                    <div className="text-[20px] font-bold text-white">10%</div>
+                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Equity</div>
                   </div>
                 </div>
               </div>
-
-              {/* Desktop: Original vertical layout */}
-              <div className="hidden md:flex md:flex-col md:h-full">
-                {/* Visual Area - Chart */}
-                <div className="relative h-64 bg-neutral-950 p-5 flex flex-col">
-                  {/* Badge */}
-                  <div className="absolute top-3 left-3 z-10">
-                    <div className="inline-block px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
-                      <span className="text-[10px] text-white font-semibold uppercase tracking-wider">Funding</span>
-                    </div>
-                  </div>
-
-                  {/* Chart */}
-                  <div className="pt-10 h-full flex flex-col">
-                    <div className="text-[10px] text-gray-400 font-semibold mb-3 uppercase tracking-wide">Traction</div>
-                    <div className="flex-1 relative">
-                      <div className="absolute inset-0 flex flex-col justify-between py-1">
-                        <div className="border-t border-gray-700"></div>
-                        <div className="border-t border-gray-700"></div>
-                        <div className="border-t border-gray-700"></div>
-                        <div className="border-t border-gray-700"></div>
-                      </div>
-                      <div className="absolute inset-0 flex items-end justify-around px-3">
-                        <div className="w-8 rounded-t-sm" style={{ backgroundColor: COLORS.primary, height: '35%' }}></div>
-                        <div className="w-8 rounded-t-sm" style={{ backgroundColor: COLORS.primary, height: '52%' }}></div>
-                        <div className="w-8 rounded-t-sm" style={{ backgroundColor: COLORS.primary, height: '68%' }}></div>
-                        <div className="w-8 rounded-t-sm" style={{ backgroundColor: COLORS.primary, height: '85%' }}></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content Area */}
-                <div className="p-4 border-t border-gray-800 flex-1 relative" style={{ backgroundColor: COLORS.darkGray }}>
-                  <h3 className="text-lg font-bold text-white mb-1">Funding</h3>
-                  <p className="text-xs text-gray-400 mb-2">Investor Connections</p>
-                  <p className="text-sm text-gray-300 leading-relaxed mb-6">
-                    Refine your pitch and connect with global investors seeking deals
-                  </p>
-
-                  {/* Learn More Link */}
-                  <button
-                    onClick={() => toggleCard('funding')}
-                    className="absolute bottom-4 left-4 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-                  >
-                    <span className="text-orange-600 text-sm font-medium relative group/link">
-                      Learn More
-                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
-                    </span>
-                    <svg className="w-4 h-4 text-orange-600 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              {/* Image Column */}
+              <div className="lg:col-span-2 relative hidden lg:block">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center rounded-l-xl overflow-hidden m-4">
+                  <div className="text-center p-6">
+                    <svg className="w-16 h-16 mx-auto mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                  </button>
+                    <span className="text-xs text-gray-500 font-mono">funding-pitch.jpg</span>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Card 4 - Network */}
-            <div className="border border-neutral-800 shadow-2xl rounded-xl overflow-hidden hover:border-orange-600 transition-all h-[140px] md:min-h-[420px] group relative md:flex md:flex-col" style={{ backgroundColor: COLORS.darkGray }}>
-
-              {/* Detail Overlay - slides from left on mobile, bottom on desktop */}
-              <div
-                className="absolute inset-0 z-20 flex flex-col rounded-xl transition-all duration-500 ease-out"
-                style={{
-                  backgroundColor: COLORS.darkGray,
-                  transform: isCardSelected('network')
-                    ? 'translate(0, 0)'
-                    : window.innerWidth < 768
-                      ? 'translateX(-100%)'
-                      : 'translateY(100%)',
-                  opacity: isCardSelected('network') ? 1 : 0
-                }}
-              >
-                {/* Close Button */}
-                <button
-                  onClick={() => toggleCard('network')}
-                  className="absolute top-3 right-3 z-30 w-8 h-8 flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-
-                {/* Detail Content */}
-                <div className="p-4 md:p-6 flex flex-col justify-center h-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3" style={{ fontFamily: FONTS.heading }}>
-                    {cardDetails.network.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-gray-300 leading-relaxed mb-4" style={{ fontFamily: FONTS.mono }}>
-                    {cardDetails.network.description}
-                  </p>
-
-                  {/* Features List */}
-                  <ul className="space-y-1.5">
-                    {cardDetails.network.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <svg className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-[10px] md:text-xs text-gray-300" style={{ fontFamily: FONTS.mono }}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Mobile: Two-column grid layout */}
-              <div className="grid grid-cols-2 gap-2 h-full md:hidden p-2">
-                {/* Left Column - Text Content */}
-                <div className="flex flex-col justify-start pt-1">
-                  <h3 className="text-sm font-bold text-white mb-1">Network</h3>
-                  <p className="text-[9px] text-gray-400 mb-2">Lifetime Access</p>
-                  <p className="text-[10px] text-gray-300 leading-relaxed mb-2">
-                    Join a global community of founders and investors building together
-                  </p>
-
-                  {/* Learn More Button */}
-                  <button
-                    onClick={() => toggleCard('network')}
-                    className="flex items-center gap-1 cursor-pointer mt-auto"
-                  >
-                    <span className="text-[10px] font-medium text-orange-600">
-                      Learn More
-                    </span>
-                    <svg className="w-3 h-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Right Column - Network Image */}
-                <div className="relative rounded-lg overflow-hidden">
-                  <img
-                    src="/Network.png"
-                    alt="Network"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-              </div>
-
-              {/* Desktop: Original vertical layout */}
-              <div className="hidden md:flex md:flex-col md:h-full">
-                {/* Visual Area - Network */}
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src="/Network.png"
-                    alt="Network"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-
-                  {/* Badge */}
-                  <div className="absolute top-3 left-3 z-10">
-                    <div className="inline-block px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-md">
-                      <span className="text-[10px] text-white font-semibold uppercase tracking-wider">Network</span>
-                    </div>
+          {/* Network Panel */}
+          <div
+            id="network-panel"
+            role="tabpanel"
+            aria-labelledby="network-tab"
+            className={`transition-all duration-500 ${activeTab === 'network' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 absolute inset-0 pointer-events-none'}`}
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-5 h-[calc(100vh-220px)]">
+              {/* Text Column */}
+              <div className="lg:col-span-3 flex flex-col justify-start px-8 lg:px-20 pt-8 lg:pt-12 pb-8" style={{ backgroundColor: '#111111' }}>
+                <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight mb-4 max-w-[550px]" style={{ fontFamily: FONTS.heading }}>
+                  Join a global founder community
+                </h2>
+                <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
+                  Access our alumni network for partnerships, introductions, and peer support. Participate in exclusive events with investors and corporate partners.
+                </p>
+                <div className="flex flex-wrap gap-6 mt-6">
+                  <div className="text-center">
+                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>500+</div>
+                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Global Founders</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>30+</div>
+                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Countries</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>200+</div>
+                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Startups</div>
                   </div>
                 </div>
-
-                {/* Content Area */}
-                <div className="p-4 border-t border-gray-800 flex-1 relative" style={{ backgroundColor: COLORS.darkGray }}>
-                  <h3 className="text-lg font-bold text-white mb-1">Network</h3>
-                  <p className="text-xs text-gray-400 mb-2">Lifetime Access</p>
-                  <p className="text-sm text-gray-300 leading-relaxed mb-6">
-                    Join a global community of founders and investors building together
-                  </p>
-
-                  {/* Learn More Link */}
-                  <button
-                    onClick={() => toggleCard('network')}
-                    className="absolute bottom-4 left-4 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-                  >
-                    <span className="text-orange-600 text-sm font-medium relative group/link">
-                      Learn More
-                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
-                    </span>
-                    <svg className="w-4 h-4 text-orange-600 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </div>
+              {/* Image Column */}
+              <div className="lg:col-span-2 relative hidden lg:block">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center rounded-l-xl overflow-hidden m-4">
+                  <div className="text-center p-6">
+                    <svg className="w-16 h-16 mx-auto mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                  </button>
+                    <span className="text-xs text-gray-500 font-mono">network-event.jpg</span>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Who Should Apply Section */}
+      <section className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-8 pt-6 md:pt-12 h-full flex flex-col">
+          {/* Header */}
+          <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight mb-8 md:mb-12">
+            Who Should Apply<span style={{ color: COLORS.primary }}>?</span>
+          </h2>
+
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 flex-1">
+            {/* Card 1 - First-Time Founders */}
+            <div className="border border-gray-800 rounded-lg overflow-hidden flex flex-col" style={{ backgroundColor: COLORS.darkGray }}>
+              {/* Image Placeholder */}
+              <div className="h-48 md:h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                <div className="text-center">
+                  <svg className="w-16 h-16 mx-auto mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-xs text-gray-500 font-mono">founder-image-1.jpg</span>
+                </div>
+              </div>
+              {/* Content */}
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="text-xl font-bold text-white mb-2">First-Time Founders</h3>
+                <p className="text-sm text-gray-400 mb-4 flex-1" style={{ fontFamily: FONTS.mono }}>
+                  You have a validated idea and technical skills but need guidance on go-to-market strategy, fundraising, and scaling.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2 text-xs text-gray-300">
+                    <span style={{ color: COLORS.primary }}>✓</span> Technical background preferred
+                  </li>
+                  <li className="flex items-center gap-2 text-xs text-gray-300">
+                    <span style={{ color: COLORS.primary }}>✓</span> Ready to commit 20+ hrs/week
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Card 2 - International Founders */}
+            <div className="border border-gray-800 rounded-lg overflow-hidden flex flex-col" style={{ backgroundColor: COLORS.darkGray }}>
+              {/* Image Placeholder */}
+              <div className="h-48 md:h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                <div className="text-center">
+                  <svg className="w-16 h-16 mx-auto mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-xs text-gray-500 font-mono">founder-image-2.jpg</span>
+                </div>
+              </div>
+              {/* Content */}
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="text-xl font-bold text-white mb-2">International Founders</h3>
+                <p className="text-sm text-gray-400 mb-4 flex-1" style={{ fontFamily: FONTS.mono }}>
+                  Based outside the US but building for global markets. We help you navigate cross-border challenges and connect with US investors.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2 text-xs text-gray-300">
+                    <span style={{ color: COLORS.primary }}>✓</span> Any country welcome
+                  </li>
+                  <li className="flex items-center gap-2 text-xs text-gray-300">
+                    <span style={{ color: COLORS.primary }}>✓</span> English proficiency required
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Card 3 - Career Switchers */}
+            <div className="border border-gray-800 rounded-lg overflow-hidden flex flex-col" style={{ backgroundColor: COLORS.darkGray }}>
+              {/* Image Placeholder */}
+              <div className="h-48 md:h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                <div className="text-center">
+                  <svg className="w-16 h-16 mx-auto mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-xs text-gray-500 font-mono">founder-image-3.jpg</span>
+                </div>
+              </div>
+              {/* Content */}
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="text-xl font-bold text-white mb-2">Career Switchers</h3>
+                <p className="text-sm text-gray-400 mb-4 flex-1" style={{ fontFamily: FONTS.mono }}>
+                  Leaving corporate or another industry to pursue your startup dream. Your domain expertise is your unfair advantage.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2 text-xs text-gray-300">
+                    <span style={{ color: COLORS.primary }}>✓</span> Industry experience valued
+                  </li>
+                  <li className="flex items-center gap-2 text-xs text-gray-300">
+                    <span style={{ color: COLORS.primary }}>✓</span> Passion over pedigree
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
