@@ -766,13 +766,16 @@ function Home() {
                 <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight mb-4 max-w-[550px]" style={{ fontFamily: FONTS.heading }}>
                   Transform your idea into reality
                 </h2>
+                <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px] mb-4" style={{ fontFamily: FONTS.mono }}>
+                  In the first four weeks, you'll validate your concept with real customers, define your ideal customer profile, and build a working MVP. Our structured curriculum combines live workshops, async learning modules, and hands-on building time.
+                </p>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
-                  Our 10-week intensive program helps founders move from concept to market-ready startup with hands-on guidance for product development and go-to-market strategy.
+                  You'll receive weekly feedback from experienced founders, access to no-code and low-code tools to accelerate development, and templates for everything from user interviews to landing pages. By the end of Build phase, you'll have a live product with early users.
                 </p>
                 <div className="flex flex-wrap gap-3 mt-6">
-                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>Product Development</span>
-                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>Market Validation</span>
-                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>MVP Launch</span>
+                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>Customer Discovery</span>
+                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>MVP Development</span>
+                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>User Testing</span>
                 </div>
               </div>
               {/* Image Column - 2/5 width */}
@@ -802,8 +805,11 @@ function Home() {
                 <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight mb-4 max-w-[550px]" style={{ fontFamily: FONTS.heading }}>
                   Learn from founders who've been there
                 </h2>
+                <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px] mb-4" style={{ fontFamily: FONTS.mono }}>
+                  Connect with mentors who have scaled startups from idea to exit. Our mentor network includes founders who've raised Series A+, operators from companies like Google and Stripe, and industry experts across verticals from fintech to healthcare.
+                </p>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
-                  Connect with mentors who have scaled startups. Get 1-on-1 sessions, weekly office hours, and strategic guidance throughout your journey.
+                  You'll get matched with 2-3 mentors based on your industry and stage. Expect bi-weekly 1-on-1 sessions, access to weekly office hours, and async support through our community platform. Mentors help with everything from product strategy to hiring your first employees.
                 </p>
                 <div className="flex flex-wrap gap-6 mt-6">
                   <div className="text-center">
@@ -843,8 +849,11 @@ function Home() {
                 <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight mb-4 max-w-[550px]" style={{ fontFamily: FONTS.heading }}>
                   Access capital to fuel your growth
                 </h2>
+                <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px] mb-4" style={{ fontFamily: FONTS.mono }}>
+                  Eligible startups can receive up to $100K in pre-seed funding on founder-friendly terms. Our investment thesis focuses on startups with validated demand, a clear path to revenue, and founders who demonstrate exceptional execution during the program.
+                </p>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
-                  Eligible startups can receive up to $100K in pre-seed funding. We also provide pitch coaching and warm introductions to our investor network.
+                  Beyond direct investment, you'll get intensive pitch coaching to refine your story, financial modeling workshops, and warm introductions to our network of 100+ angels and VCs. Demo Day puts you in front of investors actively looking for pre-seed opportunities.
                 </p>
                 <div className="flex flex-wrap gap-4 mt-6">
                   <div className="px-4 py-3 border border-gray-700 rounded-lg">
@@ -884,8 +893,11 @@ function Home() {
                 <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight mb-4 max-w-[550px]" style={{ fontFamily: FONTS.heading }}>
                   Join a global founder community
                 </h2>
+                <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px] mb-4" style={{ fontFamily: FONTS.mono }}>
+                  Join a global community of 500+ founders building across 30+ countries. Our alumni have gone on to raise over $50M collectively, with several reaching profitability and two successful exits. This network becomes your lifelong resource for advice, partnerships, and talent.
+                </p>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
-                  Access our alumni network for partnerships, introductions, and peer support. Participate in exclusive events with investors and corporate partners.
+                  As a member, you'll get access to our private Slack community, quarterly virtual summits, regional founder meetups, and exclusive perks from partners like AWS, Notion, and Stripe. Many of our best collaborations and even co-founder matches have come from within the network.
                 </p>
                 <div className="flex flex-wrap gap-6 mt-6">
                   <div className="text-center">
