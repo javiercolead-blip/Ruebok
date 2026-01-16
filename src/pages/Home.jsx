@@ -772,11 +772,6 @@ function Home() {
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
                   You'll get weekly feedback from experienced founders, access to no-code tools, and templates for user interviews to landing pages. By the end, you'll have a live product with early users.
                 </p>
-                <div className="flex flex-wrap gap-3 mt-6">
-                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>Customer Discovery</span>
-                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>MVP Development</span>
-                  <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>User Testing</span>
-                </div>
               </div>
               {/* Image Column - 2/5 width */}
               <div className="lg:col-span-2 relative hidden lg:block">
@@ -811,16 +806,6 @@ function Home() {
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
                   You'll get matched with 2-3 mentors based on your industry. Expect bi-weekly 1-on-1s, weekly office hours, and async support for everything from product strategy to hiring.
                 </p>
-                <div className="flex flex-wrap gap-6 mt-6">
-                  <div className="text-center">
-                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>50+</div>
-                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Active Mentors</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>100+</div>
-                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Hours of Guidance</div>
-                  </div>
-                </div>
               </div>
               {/* Image Column */}
               <div className="lg:col-span-2 relative hidden lg:block">
@@ -855,16 +840,6 @@ function Home() {
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
                   You'll get intensive pitch coaching, financial modeling workshops, and warm introductions to 100+ angels and VCs. Demo Day puts you in front of investors actively seeking pre-seed deals.
                 </p>
-                <div className="flex flex-wrap gap-4 mt-6">
-                  <div className="px-4 py-3 border border-gray-700 rounded-lg">
-                    <div className="text-[20px] font-bold text-white">$100K</div>
-                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Initial Investment</div>
-                  </div>
-                  <div className="px-4 py-3 border border-gray-700 rounded-lg">
-                    <div className="text-[20px] font-bold text-white">10%</div>
-                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Equity</div>
-                  </div>
-                </div>
               </div>
               {/* Image Column */}
               <div className="lg:col-span-2 relative hidden lg:block">
@@ -899,20 +874,6 @@ function Home() {
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
                   Get access to our private Slack, quarterly summits, regional meetups, and perks from AWS, Notion, and Stripe. Many of our best collaborations have come from within the network.
                 </p>
-                <div className="flex flex-wrap gap-6 mt-6">
-                  <div className="text-center">
-                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>500+</div>
-                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Global Founders</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>30+</div>
-                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Countries</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-[24px] font-bold" style={{ color: COLORS.primary }}>200+</div>
-                    <div className="text-xs text-gray-400" style={{ fontFamily: FONTS.mono }}>Startups</div>
-                  </div>
-                </div>
               </div>
               {/* Image Column */}
               <div className="lg:col-span-2 relative hidden lg:block">
