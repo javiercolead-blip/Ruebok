@@ -767,10 +767,10 @@ function Home() {
                   Transform your idea into reality
                 </h2>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px] mb-4" style={{ fontFamily: FONTS.mono }}>
-                  In the first four weeks, you'll validate your concept with real customers, define your ideal customer profile, and build a working MVP. Our structured curriculum combines live workshops, async learning modules, and hands-on building time.
+                  In the first four weeks, you'll validate your concept with real customers, define your ideal customer profile, and build a working MVP through live workshops and hands-on building time.
                 </p>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
-                  You'll receive weekly feedback from experienced founders, access to no-code and low-code tools to accelerate development, and templates for everything from user interviews to landing pages. By the end of Build phase, you'll have a live product with early users.
+                  You'll get weekly feedback from experienced founders, access to no-code tools, and templates for user interviews to landing pages. By the end, you'll have a live product with early users.
                 </p>
                 <div className="flex flex-wrap gap-3 mt-6">
                   <span className="px-3 py-1.5 text-xs text-gray-300 border border-gray-700 rounded" style={{ fontFamily: FONTS.mono }}>Customer Discovery</span>
@@ -806,10 +806,10 @@ function Home() {
                   Learn from founders who've been there
                 </h2>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px] mb-4" style={{ fontFamily: FONTS.mono }}>
-                  Connect with mentors who have scaled startups from idea to exit. Our mentor network includes founders who've raised Series A+, operators from companies like Google and Stripe, and industry experts across verticals from fintech to healthcare.
+                  Connect with mentors who have scaled startups from idea to exit—founders who've raised Series A+, operators from Google and Stripe, and industry experts across fintech to healthcare.
                 </p>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
-                  You'll get matched with 2-3 mentors based on your industry and stage. Expect bi-weekly 1-on-1 sessions, access to weekly office hours, and async support through our community platform. Mentors help with everything from product strategy to hiring your first employees.
+                  You'll get matched with 2-3 mentors based on your industry. Expect bi-weekly 1-on-1s, weekly office hours, and async support for everything from product strategy to hiring.
                 </p>
                 <div className="flex flex-wrap gap-6 mt-6">
                   <div className="text-center">
@@ -850,10 +850,10 @@ function Home() {
                   Access capital to fuel your growth
                 </h2>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px] mb-4" style={{ fontFamily: FONTS.mono }}>
-                  Eligible startups can receive up to $100K in pre-seed funding on founder-friendly terms. Our investment thesis focuses on startups with validated demand, a clear path to revenue, and founders who demonstrate exceptional execution during the program.
+                  Eligible startups can receive up to $100K in pre-seed funding on founder-friendly terms. We invest in startups with validated demand and founders who demonstrate exceptional execution.
                 </p>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
-                  Beyond direct investment, you'll get intensive pitch coaching to refine your story, financial modeling workshops, and warm introductions to our network of 100+ angels and VCs. Demo Day puts you in front of investors actively looking for pre-seed opportunities.
+                  You'll get intensive pitch coaching, financial modeling workshops, and warm introductions to 100+ angels and VCs. Demo Day puts you in front of investors actively seeking pre-seed deals.
                 </p>
                 <div className="flex flex-wrap gap-4 mt-6">
                   <div className="px-4 py-3 border border-gray-700 rounded-lg">
@@ -894,10 +894,10 @@ function Home() {
                   Join a global founder community
                 </h2>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px] mb-4" style={{ fontFamily: FONTS.mono }}>
-                  Join a global community of 500+ founders building across 30+ countries. Our alumni have gone on to raise over $50M collectively, with several reaching profitability and two successful exits. This network becomes your lifelong resource for advice, partnerships, and talent.
+                  Join 500+ founders building across 30+ countries. Our alumni have raised over $50M collectively, with several exits. This network becomes your lifelong resource for advice and partnerships.
                 </p>
                 <p className="text-[14px] md:text-[16px] text-[#cccccc] leading-[1.6] max-w-[550px]" style={{ fontFamily: FONTS.mono }}>
-                  As a member, you'll get access to our private Slack community, quarterly virtual summits, regional founder meetups, and exclusive perks from partners like AWS, Notion, and Stripe. Many of our best collaborations and even co-founder matches have come from within the network.
+                  Get access to our private Slack, quarterly summits, regional meetups, and perks from AWS, Notion, and Stripe. Many of our best collaborations have come from within the network.
                 </p>
                 <div className="flex flex-wrap gap-6 mt-6">
                   <div className="text-center">
