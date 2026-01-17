@@ -1,14 +1,8 @@
 import { useState } from 'react'
-import { useCounterAnimation } from '../hooks/useCounterAnimation'
-import { COLORS, FONTS } from '../constants'
+import { COLORS } from '../constants'
 
 function TheStack() {
   const [isHovered, setIsHovered] = useState(false)
-
-  // Use counter animation hook for all animated numbers
-  const revenue = useCounterAnimation(100, 2000, 'easeOut')
-  const downloads = useCounterAnimation(1247, 2000, 'easeOut')
-  const users = useCounterAnimation(89, 2000, 'easeOut')
 
   return (
     <div

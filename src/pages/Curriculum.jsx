@@ -13,39 +13,6 @@ function Curriculum() {
     setOpenFaq(openFaq === index ? null : index)
   }
 
-  const weeks = [
-    {
-      week: 1,
-      title: 'PROVE IT OR PIVOT',
-      description: "You'll interview 20+ potential customers, map the problem space, and identify whether your solution addresses a genuine pain point or just a nice-to-have. By the end of the week, you'll know if you're onto something real."
-    },
-    {
-      week: 2,
-      title: 'MVP & EARLY TRACTION',
-      description: "Build a lean MVP using no-code tools and lightweight experiments. Learn to generate Letters of Intent (LOIs) from real prospects and get users to commit before writing production code. We'll show you how to validate with minimum resources."
-    },
-    {
-      week: 3,
-      title: 'UNIT ECONOMICS',
-      description: "Build a financial model that investors actually care about. Learn to calculate Customer Acquisition Cost (CAC), Lifetime Value (LTV), burn rate, and runway. We'll teach you how to project revenue realistically and identify the metrics that matter for your sector."
-    },
-    {
-      week: 4,
-      title: 'GO-TO-MARKET',
-      description: "Map out your path from your first 10 customers to your first 100. You'll identify acquisition channels, test messaging, design a sales or growth playbook, and build a repeatable system for customer acquisition that doesn't rely on luck."
-    },
-    {
-      week: 5,
-      title: 'NARRATIVE & DESIGN',
-      description: "Transform your business into a story that resonates. Learn how to frame the problem, position your solution, and articulate your vision in a way that captures attention. You'll design a pitch deck that's visually compelling and built to close deals."
-    },
-    {
-      week: 6,
-      title: 'THE CLOSE',
-      description: "Prepare for the hardest questions investors will ask. Through live roast sessions, Q&A drills, and a final Demo Day showcase in front of real investors, you'll refine your delivery, sharpen your responses, and walk away ready to close funding."
-    }
-  ]
-
   const faqs = [
     {
       question: "Do you take equity?",

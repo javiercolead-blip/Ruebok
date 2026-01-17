@@ -38,7 +38,7 @@ function Apply() {
     setMessage({ type: '', text: '' })
 
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('applicants')
         .insert([formData])
 

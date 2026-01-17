@@ -227,13 +227,14 @@ function LaunchTimelineSection() {
   }
 
   useEffect(() => {
+    const currentRef = carouselSectionRef.current
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((entry) => setIsCarouselVisible(entry.isIntersecting)),
       { threshold: 0.5 }
     )
-    if (carouselSectionRef.current) observer.observe(carouselSectionRef.current)
+    if (currentRef) observer.observe(currentRef)
     return () => {
-      if (carouselSectionRef.current) observer.unobserve(carouselSectionRef.current)
+      if (currentRef) observer.unobserve(currentRef)
     }
   }, [])
 

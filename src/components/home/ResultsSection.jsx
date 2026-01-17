@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { COLORS, FONTS } from '../../constants'
 import { useStatsCounter } from '../../hooks/useStatsCounter'
 
-function StatItem({ value, label, color, icon, subLabel }) {
+function StatItem({ value, label, color, subLabel }) {
   return (
     <div className="flex flex-col">
       <div
