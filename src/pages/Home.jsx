@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import TheStack from '../components/TheStack'
 import { COLORS, FONTS } from '../constants'
-import { useCounterAnimation } from '../hooks/useCounterAnimation'
 import { useStatsCounter } from '../hooks/useStatsCounter'
 
 function Home() {
@@ -13,18 +11,10 @@ function Home() {
   const [dragOffset, setDragOffset] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const [isHorizontalSwipe, setIsHorizontalSwipe] = useState(false)
-  const [selectedCards, setSelectedCards] = useState([])
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const [isCarouselVisible, setIsCarouselVisible] = useState(false)
   const [activeTab, setActiveTab] = useState('build')
   const carouselSectionRef = useRef(null)
-
-  // Use counter animation hook for all animated numbers
-  const count = useCounterAnimation(50, 2000, 'easeOut')
-  const agriProgress = useCounterAnimation(60, 2000, 'easeInOut')
-  const agriGrowth = useCounterAnimation(340, 2000, 'easeInOut')
-  const fintechProgress = useCounterAnimation(85, 2000, 'easeInOut')
-  const fintechGrowth = useCounterAnimation(220, 2000, 'easeInOut')
 
   // Hero stats counters with staggered delays
   const totalRaised = useStatsCounter(850, 2500, 0, 'easeOut')
@@ -108,19 +98,6 @@ function Home() {
     setTouchEnd(0)
     setTouchStartY(0)
     setIsHorizontalSwipe(false)
-  }
-
-  // Desktop card overlay functions
-  const toggleCard = (cardName) => {
-    setSelectedCards(prev =>
-      prev.includes(cardName)
-        ? prev.filter(name => name !== cardName)
-        : [...prev, cardName]
-    )
-  }
-
-  const isCardSelected = (cardName) => {
-    return selectedCards.includes(cardName)
   }
 
   const cardDetails = {
