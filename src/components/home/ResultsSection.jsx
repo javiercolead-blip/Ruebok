@@ -31,35 +31,191 @@ function StatItem({ value, label, color, subLabel }) {
   )
 }
 
-function DesktopStatItem({ value, label, color, icon, subLabel, animValue }) {
+function DesktopStatRow({ value, label, color, animValue }) {
   return (
-    <div className="mb-10" style={{
+    <div className="flex items-center gap-4" style={{
       opacity: animValue > 0 ? 1 : 0.7,
-      transform: `scale(${animValue > 0 ? 1 : 0.95})`,
+      transform: `scale(${animValue > 0 ? 1 : 0.98})`,
       transition: 'all 0.3s ease-out'
     }}>
-      <div className="flex items-baseline gap-3 mb-3">
-        {icon}
-        <div
-          className="font-bold"
-          style={{
-            fontSize: '56px',
-            color,
-            fontFamily: FONTS.heading,
-            lineHeight: 1
-          }}
-        >
-          {value}
-        </div>
+      <div
+        className="font-bold"
+        style={{
+          fontSize: '40px',
+          color,
+          fontFamily: FONTS.heading,
+          lineHeight: 1,
+          minWidth: '140px'
+        }}
+      >
+        {value}
       </div>
-      <p className="text-white text-[16px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
+      <p className="text-white text-[15px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
         {label}
       </p>
-      {subLabel && (
-        <p className="text-[14px] mt-1" style={{ color: COLORS.primary, fontFamily: FONTS.mono }}>
-          {subLabel}
-        </p>
-      )}
+    </div>
+  )
+}
+
+function RotatingGlobe() {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      {/* Globe Container */}
+      <div
+        className="relative w-[320px] h-[320px]"
+        style={{
+          animation: 'spin 30s linear infinite'
+        }}
+      >
+        {/* Globe Circle */}
+        <div
+          className="absolute inset-0 rounded-full border-2 border-gray-700"
+          style={{
+            background: 'radial-gradient(circle at 30% 30%, #1a1a2e 0%, #0a0a0f 100%)',
+            boxShadow: 'inset 0 0 60px rgba(255, 103, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.5)'
+          }}
+        />
+
+        {/* Latitude Lines */}
+        <div className="absolute inset-0 rounded-full border border-gray-800 scale-[0.85]" />
+        <div className="absolute inset-0 rounded-full border border-gray-800 scale-[0.65]" />
+        <div className="absolute inset-0 rounded-full border border-gray-800 scale-[0.45]" />
+
+        {/* Equator */}
+        <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-gray-700 -translate-y-1/2" />
+
+        {/* Meridian */}
+        <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-gray-700 -translate-x-1/2" />
+
+        {/* Location Dots */}
+        {/* San Francisco */}
+        <div className="absolute w-3 h-3 rounded-full bg-orange-500 shadow-lg" style={{ top: '35%', left: '18%', boxShadow: '0 0 10px rgba(255, 103, 0, 0.8)' }}>
+          <div className="absolute inset-0 rounded-full bg-orange-500 animate-ping opacity-75" />
+        </div>
+
+        {/* Kenya */}
+        <div className="absolute w-2.5 h-2.5 rounded-full bg-green-500 shadow-lg" style={{ top: '52%', left: '62%', boxShadow: '0 0 8px rgba(34, 197, 94, 0.8)' }} />
+
+        {/* India */}
+        <div className="absolute w-2.5 h-2.5 rounded-full bg-blue-500 shadow-lg" style={{ top: '42%', left: '72%', boxShadow: '0 0 8px rgba(59, 130, 246, 0.8)' }} />
+
+        {/* UK */}
+        <div className="absolute w-2 h-2 rounded-full bg-purple-500 shadow-lg" style={{ top: '30%', left: '48%', boxShadow: '0 0 8px rgba(168, 85, 247, 0.8)' }} />
+
+        {/* Brazil */}
+        <div className="absolute w-2 h-2 rounded-full bg-yellow-500 shadow-lg" style={{ top: '60%', left: '32%', boxShadow: '0 0 8px rgba(234, 179, 8, 0.8)' }} />
+
+        {/* Singapore */}
+        <div className="absolute w-2 h-2 rounded-full bg-pink-500 shadow-lg" style={{ top: '53%', left: '78%', boxShadow: '0 0 8px rgba(236, 72, 153, 0.8)' }} />
+      </div>
+
+      {/* Flight Path Arcs - These don't rotate */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 400 400"
+        style={{ transform: 'translateZ(0)' }}
+      >
+        {/* SF to Kenya */}
+        <path
+          d="M 95 150 Q 200 50 270 195"
+          fill="none"
+          stroke="url(#arcGradient1)"
+          strokeWidth="2"
+          strokeDasharray="8,4"
+          className="animate-dash"
+          opacity="0.8"
+        />
+
+        {/* SF to India */}
+        <path
+          d="M 95 150 Q 220 30 300 170"
+          fill="none"
+          stroke="url(#arcGradient2)"
+          strokeWidth="2"
+          strokeDasharray="8,4"
+          className="animate-dash"
+          opacity="0.7"
+        />
+
+        {/* SF to UK */}
+        <path
+          d="M 95 150 Q 160 80 215 130"
+          fill="none"
+          stroke="url(#arcGradient3)"
+          strokeWidth="1.5"
+          strokeDasharray="6,3"
+          className="animate-dash"
+          opacity="0.6"
+        />
+
+        {/* SF to Brazil */}
+        <path
+          d="M 95 150 Q 130 220 155 240"
+          fill="none"
+          stroke="url(#arcGradient4)"
+          strokeWidth="1.5"
+          strokeDasharray="6,3"
+          className="animate-dash"
+          opacity="0.6"
+        />
+
+        {/* SF to Singapore */}
+        <path
+          d="M 95 150 Q 200 80 325 210"
+          fill="none"
+          stroke="url(#arcGradient5)"
+          strokeWidth="1.5"
+          strokeDasharray="6,3"
+          className="animate-dash"
+          opacity="0.5"
+        />
+
+        {/* Gradients */}
+        <defs>
+          <linearGradient id="arcGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ff6700" />
+            <stop offset="100%" stopColor="#22c55e" />
+          </linearGradient>
+          <linearGradient id="arcGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ff6700" />
+            <stop offset="100%" stopColor="#3b82f6" />
+          </linearGradient>
+          <linearGradient id="arcGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ff6700" />
+            <stop offset="100%" stopColor="#a855f7" />
+          </linearGradient>
+          <linearGradient id="arcGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ff6700" />
+            <stop offset="100%" stopColor="#eab308" />
+          </linearGradient>
+          <linearGradient id="arcGradient5" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ff6700" />
+            <stop offset="100%" stopColor="#ec4899" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      {/* Glow effect behind globe */}
+      <div
+        className="absolute w-[280px] h-[280px] rounded-full opacity-20"
+        style={{
+          background: 'radial-gradient(circle, rgba(255, 103, 0, 0.4) 0%, transparent 70%)',
+          filter: 'blur(40px)'
+        }}
+      />
+
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes dash {
+          to { stroke-dashoffset: -24; }
+        }
+        .animate-dash {
+          animation: dash 2s linear infinite;
+        }
+      `}</style>
     </div>
   )
 }
@@ -90,51 +246,42 @@ function ResultsSection() {
         </div>
 
         {/* Desktop Layout */}
-        <div className="hidden lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
-          <div className="space-y-4 sm:space-y-6">
-            <h2 className="text-[32px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight" style={{ fontFamily: FONTS.heading }}>
+        <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center h-full">
+          {/* Left Column - Content + Stats */}
+          <div className="flex flex-col justify-center">
+            <h2 className="text-[40px] xl:text-[48px] font-bold text-white leading-tight mb-4" style={{ fontFamily: FONTS.heading }}>
               Proven Results, Wherever You Are
             </h2>
-            <p className="text-[15px] sm:text-[17px] lg:text-[19px] text-gray-400 leading-relaxed" style={{ fontFamily: FONTS.mono }}>
+            <p className="text-[16px] xl:text-[17px] text-gray-400 leading-relaxed mb-8" style={{ fontFamily: FONTS.mono }}>
               Your location doesn't limit your potential. With the right guidance and support, we help founders from anywhere build companies that attract real investment and create lasting impact.
             </p>
+
+            {/* Stats Row */}
+            <div className="flex flex-col gap-5">
+              <DesktopStatRow
+                value={`$${totalRaised}K+`}
+                label="Raised by Our Founders"
+                color={COLORS.primary}
+                animValue={totalRaised}
+              />
+              <DesktopStatRow
+                value={`${successRate}%`}
+                label="Get Investor Meetings"
+                color="#50c878"
+                animValue={successRate}
+              />
+              <DesktopStatRow
+                value={`${spotsLeft}`}
+                label="Spots Available"
+                color="white"
+                animValue={spotsLeft}
+              />
+            </div>
           </div>
 
-          <div className="flex flex-col justify-start pt-4">
-            <DesktopStatItem
-              value={`$${totalRaised}K+`}
-              label="Raised by Our Founders"
-              color={COLORS.primary}
-              animValue={totalRaised}
-              icon={
-                <svg className="w-8 h-8 flex-shrink-0" style={{ color: COLORS.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              }
-            />
-            <DesktopStatItem
-              value={`${successRate}%`}
-              label="Get Investor Meetings"
-              color="#50c878"
-              animValue={successRate}
-              icon={
-                <svg className="w-8 h-8 flex-shrink-0 text-[#50c878]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              }
-            />
-            <DesktopStatItem
-              value={spotsLeft}
-              label="Spots Available"
-              color="white"
-              animValue={spotsLeft}
-              subLabel="Applications closing soon"
-              icon={
-                <svg className="w-8 h-8 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              }
-            />
+          {/* Right Column - Rotating Globe */}
+          <div className="flex items-center justify-center h-full">
+            <RotatingGlobe />
           </div>
         </div>
       </div>
