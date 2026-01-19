@@ -15,8 +15,8 @@ function Home() {
     <div className="snap-y snap-mandatory h-screen overflow-y-scroll" style={{ scrollBehavior: 'smooth' }}>
       <HeroSection />
       <LaunchTimelineSection />
-      <WhoShouldApplySection />
       <ResultsSection />
+      <WhoShouldApplySection />
     </div>
   )
 }

@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Globe from 'react-globe.gl'
 import { COLORS, FONTS } from '../../constants'
 import { useStatsCounter } from '../../hooks/useStatsCounter'
 
@@ -31,191 +33,105 @@ function StatItem({ value, label, color, subLabel }) {
   )
 }
 
-function DesktopStatRow({ value, label, color, animValue }) {
+function DesktopStatColumn({ value, label, animValue }) {
   return (
-    <div className="flex items-center gap-4" style={{
+    <div className="flex flex-col" style={{
       opacity: animValue > 0 ? 1 : 0.7,
       transform: `scale(${animValue > 0 ? 1 : 0.98})`,
       transition: 'all 0.3s ease-out'
     }}>
       <div
-        className="font-bold"
+        className="font-bold mb-2"
         style={{
-          fontSize: '40px',
-          color,
+          fontSize: '52px',
+          color: 'white',
           fontFamily: FONTS.heading,
-          lineHeight: 1,
-          minWidth: '140px'
+          lineHeight: 1
         }}
       >
         {value}
       </div>
-      <p className="text-white text-[15px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400 }}>
+      <p className="text-[14px] leading-[1.4]" style={{ fontFamily: FONTS.mono, fontWeight: 400, color: COLORS.primary }}>
         {label}
       </p>
     </div>
   )
 }
 
-function RotatingGlobe() {
+// Arc color - orange for all flight paths
+const ARC_COLOR = '#ff6700'
+
+// Investment flight paths - simplified, fewer connections
+const arcsData = [
+  // From San Francisco (US West Coast)
+  { startLat: 37.7749, startLng: -122.4194, endLat: -1.2921, endLng: 36.8219 },    // SF → Nairobi
+  { startLat: 37.7749, startLng: -122.4194, endLat: 1.3521, endLng: 103.8198 },    // SF → Singapore
+
+  // From London (Europe hub)
+  { startLat: 51.5074, startLng: -0.1278, endLat: -1.2921, endLng: 36.8219 },      // London → Nairobi
+  { startLat: 51.5074, startLng: -0.1278, endLat: 19.0760, endLng: 72.8777 },      // London → Mumbai
+
+  // From New York (US East Coast)
+  { startLat: 40.7128, startLng: -74.0060, endLat: -23.5505, endLng: -46.6333 },   // NYC → São Paulo
+
+  // From Dubai (Middle East hub)
+  { startLat: 25.2048, startLng: 55.2708, endLat: 1.3521, endLng: 103.8198 },      // Dubai → Singapore
+]
+
+function InteractiveGlobe() {
+  const globeRef = useRef()
+  const [globeReady, setGlobeReady] = useState(false)
+
+  useEffect(() => {
+    if (globeRef.current && globeReady) {
+      // Set initial camera position
+      globeRef.current.pointOfView({ lat: 20, lng: -30, altitude: 2.0 }, 0)
+
+      // Enable auto-rotation - slower speed
+      const controls = globeRef.current.controls()
+      if (controls) {
+        controls.autoRotate = true
+        controls.autoRotateSpeed = 0.2
+        controls.enableZoom = false
+      }
+    }
+  }, [globeReady])
+
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      {/* Globe Container */}
-      <div
-        className="relative w-[320px] h-[320px]"
-        style={{
-          animation: 'spin 30s linear infinite'
-        }}
-      >
-        {/* Globe Circle */}
-        <div
-          className="absolute inset-0 rounded-full border-2 border-gray-700"
-          style={{
-            background: 'radial-gradient(circle at 30% 30%, #1a1a2e 0%, #0a0a0f 100%)',
-            boxShadow: 'inset 0 0 60px rgba(255, 103, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.5)'
-          }}
-        />
-
-        {/* Latitude Lines */}
-        <div className="absolute inset-0 rounded-full border border-gray-800 scale-[0.85]" />
-        <div className="absolute inset-0 rounded-full border border-gray-800 scale-[0.65]" />
-        <div className="absolute inset-0 rounded-full border border-gray-800 scale-[0.45]" />
-
-        {/* Equator */}
-        <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-gray-700 -translate-y-1/2" />
-
-        {/* Meridian */}
-        <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-gray-700 -translate-x-1/2" />
-
-        {/* Location Dots */}
-        {/* San Francisco */}
-        <div className="absolute w-3 h-3 rounded-full bg-orange-500 shadow-lg" style={{ top: '35%', left: '18%', boxShadow: '0 0 10px rgba(255, 103, 0, 0.8)' }}>
-          <div className="absolute inset-0 rounded-full bg-orange-500 animate-ping opacity-75" />
-        </div>
-
-        {/* Kenya */}
-        <div className="absolute w-2.5 h-2.5 rounded-full bg-green-500 shadow-lg" style={{ top: '52%', left: '62%', boxShadow: '0 0 8px rgba(34, 197, 94, 0.8)' }} />
-
-        {/* India */}
-        <div className="absolute w-2.5 h-2.5 rounded-full bg-blue-500 shadow-lg" style={{ top: '42%', left: '72%', boxShadow: '0 0 8px rgba(59, 130, 246, 0.8)' }} />
-
-        {/* UK */}
-        <div className="absolute w-2 h-2 rounded-full bg-purple-500 shadow-lg" style={{ top: '30%', left: '48%', boxShadow: '0 0 8px rgba(168, 85, 247, 0.8)' }} />
-
-        {/* Brazil */}
-        <div className="absolute w-2 h-2 rounded-full bg-yellow-500 shadow-lg" style={{ top: '60%', left: '32%', boxShadow: '0 0 8px rgba(234, 179, 8, 0.8)' }} />
-
-        {/* Singapore */}
-        <div className="absolute w-2 h-2 rounded-full bg-pink-500 shadow-lg" style={{ top: '53%', left: '78%', boxShadow: '0 0 8px rgba(236, 72, 153, 0.8)' }} />
-      </div>
-
-      {/* Flight Path Arcs - These don't rotate */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox="0 0 400 400"
-        style={{ transform: 'translateZ(0)' }}
-      >
-        {/* SF to Kenya */}
-        <path
-          d="M 95 150 Q 200 50 270 195"
-          fill="none"
-          stroke="url(#arcGradient1)"
-          strokeWidth="2"
-          strokeDasharray="8,4"
-          className="animate-dash"
-          opacity="0.8"
-        />
-
-        {/* SF to India */}
-        <path
-          d="M 95 150 Q 220 30 300 170"
-          fill="none"
-          stroke="url(#arcGradient2)"
-          strokeWidth="2"
-          strokeDasharray="8,4"
-          className="animate-dash"
-          opacity="0.7"
-        />
-
-        {/* SF to UK */}
-        <path
-          d="M 95 150 Q 160 80 215 130"
-          fill="none"
-          stroke="url(#arcGradient3)"
-          strokeWidth="1.5"
-          strokeDasharray="6,3"
-          className="animate-dash"
-          opacity="0.6"
-        />
-
-        {/* SF to Brazil */}
-        <path
-          d="M 95 150 Q 130 220 155 240"
-          fill="none"
-          stroke="url(#arcGradient4)"
-          strokeWidth="1.5"
-          strokeDasharray="6,3"
-          className="animate-dash"
-          opacity="0.6"
-        />
-
-        {/* SF to Singapore */}
-        <path
-          d="M 95 150 Q 200 80 325 210"
-          fill="none"
-          stroke="url(#arcGradient5)"
-          strokeWidth="1.5"
-          strokeDasharray="6,3"
-          className="animate-dash"
-          opacity="0.5"
-        />
-
-        {/* Gradients */}
-        <defs>
-          <linearGradient id="arcGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ff6700" />
-            <stop offset="100%" stopColor="#22c55e" />
-          </linearGradient>
-          <linearGradient id="arcGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ff6700" />
-            <stop offset="100%" stopColor="#3b82f6" />
-          </linearGradient>
-          <linearGradient id="arcGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ff6700" />
-            <stop offset="100%" stopColor="#a855f7" />
-          </linearGradient>
-          <linearGradient id="arcGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ff6700" />
-            <stop offset="100%" stopColor="#eab308" />
-          </linearGradient>
-          <linearGradient id="arcGradient5" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ff6700" />
-            <stop offset="100%" stopColor="#ec4899" />
-          </linearGradient>
-        </defs>
-      </svg>
-
       {/* Glow effect behind globe */}
       <div
-        className="absolute w-[280px] h-[280px] rounded-full opacity-20"
+        className="absolute w-[550px] h-[550px] rounded-full"
         style={{
-          background: 'radial-gradient(circle, rgba(255, 103, 0, 0.4) 0%, transparent 70%)',
-          filter: 'blur(40px)'
+          background: 'radial-gradient(circle, rgba(255, 103, 0, 0.12) 0%, transparent 70%)',
+          filter: 'blur(60px)'
         }}
       />
 
-      <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes dash {
-          to { stroke-dashoffset: -24; }
-        }
-        .animate-dash {
-          animation: dash 2s linear infinite;
-        }
-      `}</style>
+      <Globe
+        ref={globeRef}
+        onGlobeReady={() => setGlobeReady(true)}
+        width={600}
+        height={600}
+        backgroundColor="rgba(0,0,0,0)"
+        globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
+
+        // Arcs (flight paths) - orange colored, slower animation
+        arcsData={arcsData}
+        arcColor={() => ARC_COLOR}
+        arcAltitude={0.25}
+        arcStroke={0.5}
+        arcDashLength={0.4}
+        arcDashGap={0.2}
+        arcDashAnimateTime={4000}
+
+        // Atmosphere - subtle grey
+        atmosphereColor="#555555"
+        atmosphereAltitude={0.12}
+
+        showGlobe={true}
+        showAtmosphere={true}
+      />
     </div>
   )
 }
@@ -227,15 +143,15 @@ function ResultsSection() {
 
   return (
     <section className="snap-center relative h-screen bg-[#0a0a0a] dark-grid pt-[70px] flex flex-col overflow-hidden">
-      <div className="flex-1 max-w-7xl mx-auto px-6 pt-8 sm:pt-10 lg:pt-12 pb-4 w-full">
+      <div className="flex-1 max-w-[1400px] mx-auto px-8 lg:px-20 pt-8 pb-4 w-full">
         {/* Mobile Layout */}
         <div className="lg:hidden flex flex-col">
           <h2 className="text-[32px] font-bold text-white leading-[1.15] mb-4 text-left" style={{ fontFamily: FONTS.heading }}>
-            Proven Results, Wherever You Are
+            Build Locally. Raise Globally.
           </h2>
 
           <p className="text-[16px] text-[#b0b0b0] leading-[1.5] mb-8 text-left max-w-[92%]" style={{ fontFamily: FONTS.mono }}>
-            Your location doesn't limit your potential. With the right guidance and support, we help founders from anywhere build companies that attract real investment and create lasting impact.
+            You have the local market insight. We have the global capital network. Ruebok bridges the gap between where you build and where you scale. From finding a technical co-founder in a different time zone to pitching investors on a different continent—we make the world feel small.
           </p>
 
           <div className="flex flex-col gap-6 mb-8">
@@ -246,56 +162,46 @@ function ResultsSection() {
         </div>
 
         {/* Desktop Layout */}
-        <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center h-full">
-          {/* Left Column - Content + Stats */}
-          <div className="flex flex-col justify-center">
-            <h2 className="text-[40px] xl:text-[48px] font-bold text-white leading-tight mb-4" style={{ fontFamily: FONTS.heading }}>
-              Proven Results, Wherever You Are
-            </h2>
-            <p className="text-[16px] xl:text-[17px] text-gray-400 leading-relaxed mb-8" style={{ fontFamily: FONTS.mono }}>
-              Your location doesn't limit your potential. With the right guidance and support, we help founders from anywhere build companies that attract real investment and create lasting impact.
-            </p>
+        <div className="hidden lg:grid lg:grid-cols-2 lg:gap-12 h-full">
+          {/* Left Column - Header, Description, Stats */}
+          <div className="flex flex-col justify-start py-8 gap-16">
+            <div className="space-y-6">
+              <h2 className="text-[44px] xl:text-[52px] font-bold text-white leading-[1.1] max-w-[480px]" style={{ fontFamily: FONTS.heading }}>
+                Build Locally. Raise Globally.
+              </h2>
 
-            {/* Stats Row */}
-            <div className="flex flex-col gap-5">
-              <DesktopStatRow
+              <p className="text-[17px] xl:text-[18px] text-gray-400 leading-[1.7] max-w-[480px]" style={{ fontFamily: FONTS.mono }}>
+                You have the local market insight. We have the global capital network. Ruebok bridges the gap between where you build and where you scale. From finding a technical co-founder in a different time zone to pitching investors on a different continent—we make the world feel small.
+              </p>
+            </div>
+
+            {/* Stats in 3 columns */}
+            <div className="grid grid-cols-3 gap-8 max-w-[520px]">
+              <DesktopStatColumn
                 value={`$${totalRaised}K+`}
-                label="Raised by Our Founders"
-                color={COLORS.primary}
+                label="Raised by Founders"
                 animValue={totalRaised}
               />
-              <DesktopStatRow
+              <DesktopStatColumn
                 value={`${successRate}%`}
                 label="Get Investor Meetings"
-                color="#50c878"
                 animValue={successRate}
               />
-              <DesktopStatRow
+              <DesktopStatColumn
                 value={`${spotsLeft}`}
                 label="Spots Available"
-                color="white"
                 animValue={spotsLeft}
               />
             </div>
           </div>
 
-          {/* Right Column - Rotating Globe */}
+          {/* Right Column - Globe */}
           <div className="flex items-center justify-center h-full">
-            <RotatingGlobe />
+            <InteractiveGlobe />
           </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="w-full mt-auto bg-black border-t border-gray-800 px-4 sm:px-8 py-4">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm text-gray-400">
-          <Link to="/about" className="hover:text-orange-600 transition-colors">About</Link>
-          <Link to="/faq" className="hover:text-orange-600 transition-colors">FAQ</Link>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">Twitter</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">LinkedIn</a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">Instagram</a>
-        </div>
-      </div>
     </section>
   )
 }

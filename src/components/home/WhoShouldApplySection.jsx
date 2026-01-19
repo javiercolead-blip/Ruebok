@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { COLORS, FONTS } from '../../constants'
 
 const founderTypes = [
@@ -64,8 +65,8 @@ function FounderCard({ title, description, requirements, imageName }) {
 
 function WhoShouldApplySection() {
   return (
-    <section className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] pb-12 overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-8 lg:px-20 pt-6 md:pt-12 h-full flex flex-col">
+    <section className="snap-center relative h-screen bg-[#111111] dark-grid pt-[70px] flex flex-col overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-8 lg:px-20 pt-6 md:pt-12 flex-1 flex flex-col pb-4">
         <h2 className="text-[34px] sm:text-[40px] lg:text-[56px] font-bold text-white leading-tight mb-4 md:mb-12">
           Who Should Apply<span style={{ color: COLORS.primary }}>?</span>
         </h2>
@@ -92,6 +93,17 @@ function WhoShouldApplySection() {
           {founderTypes.map((founder, index) => (
             <FounderCard key={index} {...founder} />
           ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="w-full mt-auto bg-black border-t border-gray-800 px-4 sm:px-8 py-4">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm text-gray-400">
+          <Link to="/about" className="hover:text-orange-600 transition-colors">About</Link>
+          <Link to="/faq" className="hover:text-orange-600 transition-colors">FAQ</Link>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">Twitter</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">LinkedIn</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">Instagram</a>
         </div>
       </div>
     </section>
