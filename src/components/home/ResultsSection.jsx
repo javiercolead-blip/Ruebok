@@ -179,8 +179,8 @@ function ResultsSection() {
               </p>
             </div>
 
-            {/* Stats in 3 columns */}
-            <div className="grid grid-cols-3 gap-8 max-w-[520px]">
+            {/* Stats in 2 columns */}
+            <div className="grid grid-cols-2 gap-16 max-w-[400px]">
               <DesktopStatColumn
                 value={`$${totalRaised}K+`}
                 label="Raised by Founders"
@@ -190,11 +190,6 @@ function ResultsSection() {
                 value={`${successRate}%`}
                 label="Get Investor Meetings"
                 animValue={successRate}
-              />
-              <DesktopStatColumn
-                value={`${spotsLeft}`}
-                label="Spots Available"
-                animValue={spotsLeft}
               />
             </div>
           </div>
