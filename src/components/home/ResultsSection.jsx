@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
-import Globe from 'react-globe.gl'
 import { COLORS, FONTS } from '../../constants'
 import { useStatsCounter } from '../../hooks/useStatsCounter'
+
+// Lazy load Globe to avoid SSR issues
+const Globe = lazy(() => import('react-globe.gl'))
 
 function StatItem({ value, label, color, subLabel }) {
   return (
@@ -108,30 +110,32 @@ function InteractiveGlobe() {
         }}
       />
 
-      <Globe
-        ref={globeRef}
-        onGlobeReady={() => setGlobeReady(true)}
-        width={600}
-        height={600}
-        backgroundColor="rgba(0,0,0,0)"
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
+      <Suspense fallback={<div className="w-[600px] h-[600px]" />}>
+        <Globe
+          ref={globeRef}
+          onGlobeReady={() => setGlobeReady(true)}
+          width={600}
+          height={600}
+          backgroundColor="rgba(0,0,0,0)"
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
 
-        // Arcs (flight paths) - orange colored, slower animation
-        arcsData={arcsData}
-        arcColor={() => ARC_COLOR}
-        arcAltitude={0.25}
-        arcStroke={0.5}
-        arcDashLength={0.4}
-        arcDashGap={0.2}
-        arcDashAnimateTime={4000}
+          // Arcs (flight paths) - orange colored, slower animation
+          arcsData={arcsData}
+          arcColor={() => ARC_COLOR}
+          arcAltitude={0.25}
+          arcStroke={0.5}
+          arcDashLength={0.4}
+          arcDashGap={0.2}
+          arcDashAnimateTime={4000}
 
-        // Atmosphere - subtle grey
-        atmosphereColor="#555555"
-        atmosphereAltitude={0.12}
+          // Atmosphere - subtle grey
+          atmosphereColor="#555555"
+          atmosphereAltitude={0.12}
 
-        showGlobe={true}
-        showAtmosphere={true}
-      />
+          showGlobe={true}
+          showAtmosphere={true}
+        />
+      </Suspense>
     </div>
   )
 }
