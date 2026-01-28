@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { eventsData } from './eventsData'
 import EventCard from './EventCard'
 import RegistrationForm from './RegistrationForm'
@@ -9,6 +9,8 @@ function EventCarousel() {
   const [dragOffset, setDragOffset] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const dragStartX = useRef(null)
+  const carouselRef = useRef(null)
+  const lastWheelTime = useRef(0)
 
   const currentEvent = eventsData[currentIndex]
   const canNext = currentIndex < eventsData.length - 1
@@ -17,7 +19,43 @@ function EventCarousel() {
   const goNext = () => canNext && setCurrentIndex(i => i + 1)
   const goPrev = () => canPrev && setCurrentIndex(i => i - 1)
 
-  // Drag handlers
+  // Wheel/scroll handler for two-finger swipe
+  useEffect(() => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+
+    const handleWheel = (e) => {
+      if (showRegistration) return
+
+      const absX = Math.abs(e.deltaX)
+      const absY = Math.abs(e.deltaY)
+
+      // More sensitive horizontal detection - trigger on smaller deltaX
+      // and require vertical scroll to be much larger to pass through
+      const isHorizontalScroll = absX > 3 && absX > absY * 0.3
+
+      if (isHorizontalScroll) {
+        e.preventDefault()
+        e.stopPropagation()
+
+        // Throttle to only allow one card switch per swipe gesture
+        const now = Date.now()
+        if (now - lastWheelTime.current < 800) return
+        lastWheelTime.current = now
+
+        if (e.deltaX > 0 && canNext) {
+          goNext()
+        } else if (e.deltaX < 0 && canPrev) {
+          goPrev()
+        }
+      }
+    }
+
+    carousel.addEventListener('wheel', handleWheel, { passive: false })
+    return () => carousel.removeEventListener('wheel', handleWheel)
+  }, [canNext, canPrev, showRegistration])
+
+  // Mouse drag handlers (keep for click-drag support)
   const handleDragStart = (clientX) => {
     if (showRegistration) return
     setIsDragging(true)
@@ -46,24 +84,47 @@ function EventCarousel() {
 
   const getCardStyle = (index) => {
     const offset = index - currentIndex
-    const baseTranslate = offset * 500
     const dragTranslate = isDragging ? dragOffset : 0
-    const stackOffset = offset > 0 ? offset * 25 : 0
-    const scale = offset > 0 ? 1 - offset * 0.05 : 1
-    const opacity = offset > 0 ? 1 - offset * 0.3 : offset < 0 ? 0 : 1
 
-    return {
-      transform: `translateX(${baseTranslate + dragTranslate + stackOffset}px) scale(${scale})`,
-      opacity: Math.max(0, opacity),
-      filter: `blur(${offset > 0 ? offset * 2 : 0}px)`,
-      zIndex: offset === 0 ? 20 : offset > 0 ? 10 - offset : 5,
-      transition: isDragging ? 'none' : 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+    // Stacked card effect - cards stack to the right with slight offset
+    if (offset > 0) {
+      // Cards behind (to the right) - stacked effect
+      const stackX = offset * 40 // Horizontal offset for stacking
+      const stackY = offset * 8 // Slight vertical offset
+      const scale = 1 - offset * 0.06
+      const opacity = 1 - offset * 0.35
+
+      return {
+        transform: `translateX(${stackX + dragTranslate}px) translateY(${stackY}px) scale(${scale})`,
+        opacity: Math.max(0, opacity),
+        filter: `blur(${offset * 3}px)`,
+        zIndex: 10 - offset,
+        transition: isDragging ? 'none' : 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+      }
+    } else if (offset < 0) {
+      // Cards that have been swiped past (to the left) - hide them
+      return {
+        transform: `translateX(${-500 + dragTranslate}px) scale(0.9)`,
+        opacity: 0,
+        zIndex: 5,
+        transition: isDragging ? 'none' : 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+      }
+    } else {
+      // Current card (front)
+      return {
+        transform: `translateX(${dragTranslate}px) scale(1)`,
+        opacity: 1,
+        filter: 'blur(0px)',
+        zIndex: 20,
+        transition: isDragging ? 'none' : 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+      }
     }
   }
 
   return (
     <div
-      className="relative w-[520px] h-[480px] overflow-hidden cursor-grab active:cursor-grabbing"
+      ref={carouselRef}
+      className="relative w-[560px] h-[580px] overflow-hidden cursor-grab active:cursor-grabbing"
       onMouseDown={(e) => { e.preventDefault(); handleDragStart(e.clientX) }}
       onMouseMove={(e) => handleDragMove(e.clientX)}
       onMouseUp={handleDragEnd}
@@ -75,36 +136,21 @@ function EventCarousel() {
       {eventsData.map((event, index) => (
         <div
           key={event.id}
-          className={`absolute top-0 left-0 w-[480px] select-none ${showRegistration && index === currentIndex ? 'opacity-0 scale-95 pointer-events-none' : ''}`}
+          className={`absolute top-[20px] left-0 w-[480px] select-none ${showRegistration && index === currentIndex ? 'opacity-0 scale-95 pointer-events-none' : ''}`}
           style={getCardStyle(index)}
         >
           <EventCard
             event={event}
-            showImage={index === 0}
-            showNav={index === currentIndex}
+            isActive={index === currentIndex}
             onRegister={() => { setCurrentIndex(index); setShowRegistration(true) }}
-            onPrev={goPrev}
-            onNext={goNext}
-            canPrev={canPrev}
-            canNext={canNext}
           />
         </div>
       ))}
 
-      {/* Dots */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2 z-[25]">
-        {eventsData.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentIndex(i)}
-            className={`h-2 rounded-full transition-all duration-500 ${i === currentIndex ? 'bg-orange-500 w-6' : 'bg-gray-600 hover:bg-gray-500 w-2'}`}
-          />
-        ))}
-      </div>
 
       {/* Registration Form */}
       <div
-        className={`absolute top-0 left-0 w-[480px] transition-all duration-600 ease-out z-[30] ${showRegistration ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+        className={`absolute top-[20px] left-0 w-[480px] transition-all duration-600 ease-out z-[30] ${showRegistration ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
       >
         <RegistrationForm event={currentEvent} onClose={() => setShowRegistration(false)} />
       </div>

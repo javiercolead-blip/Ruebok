@@ -168,14 +168,14 @@ function ResultsSection() {
         {/* Desktop Layout */}
         <div className="hidden lg:grid lg:grid-cols-2 lg:gap-12 h-full">
           {/* Left Column - Header, Description, Stats */}
-          <div className="flex flex-col justify-start py-8 gap-16">
+          <div className="flex flex-col justify-start pt-12 pb-8 gap-16">
             <div className="space-y-6">
               <h2 className="text-[44px] xl:text-[52px] font-bold text-white leading-[1.1] max-w-[480px]" style={{ fontFamily: FONTS.heading }}>
                 Build Locally. Raise Globally.
               </h2>
 
               <p className="text-[17px] xl:text-[18px] text-gray-400 leading-[1.7] max-w-[480px]" style={{ fontFamily: FONTS.mono }}>
-                You have the local market insight. We have the global capital network. Ruebok bridges the gap between where you build and where you scale. From finding a technical co-founder in a different time zone to pitching investors on a different continent—we make the world feel small.
+                You have the local market insight. We have the global capital network. Ruebok bridges the gap between where you build and where you scale—we make the world feel small.
               </p>
             </div>
 
@@ -195,7 +195,7 @@ function ResultsSection() {
           </div>
 
           {/* Right Column - Globe */}
-          <div className="flex items-center justify-center h-full">
+          <div className="flex items-center justify-center h-full -ml-6">
             <InteractiveGlobe />
           </div>
         </div>

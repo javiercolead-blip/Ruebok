@@ -82,39 +82,41 @@ function TheStack() {
           animation: 'float2 14s ease-in-out infinite'
         }}
       >
-        <div className="bg-[#0F0F0F] border border-gray-700 shadow-2xl relative overflow-hidden h-full" style={{ borderRadius: '8px' }}>
-          {/* Mentor Image Background */}
-          <img
-            src="/mentorpic.png"
-            alt="Mentor"
-            className="absolute inset-0 w-full h-full object-cover brightness-125"
-          />
+        <div className="bg-[#0F0F0F] border border-gray-800 shadow-2xl relative overflow-hidden h-full p-3" style={{ borderRadius: '8px' }}>
+          {/* Mentor Image with border and rounded corners */}
+          <div className="relative w-full h-full rounded-lg overflow-hidden border border-gray-700">
+            <img
+              src="/mentorpic.png"
+              alt="Mentor"
+              className="absolute inset-0 w-full h-full object-cover brightness-125"
+            />
 
-          {/* Dark overlay for contrast */}
-          <div className="absolute inset-0 bg-black/30"></div>
+            {/* Dark overlay for contrast */}
+            <div className="absolute inset-0 bg-black/30"></div>
 
-          {/* Content Container - Centered */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            {/* Play Button */}
-            <button className="relative z-10 w-16 h-16 rounded-full border-2 border-white/80 flex items-center justify-center bg-black/30 backdrop-blur-sm hover:scale-110 transition-transform">
-              <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </button>
-          </div>
-
-          {/* Top Left Overlay */}
-          <div className="absolute top-4 left-4">
-            {/* Mentor Review Badge */}
-            <div className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20" style={{ borderRadius: '6px' }}>
-              <span className="text-xs text-white font-semibold uppercase tracking-wider">Mentor Review</span>
+            {/* Content Container - Centered */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              {/* Play Button */}
+              <button className="relative z-10 w-16 h-16 rounded-full border-2 border-white/80 flex items-center justify-center bg-black/30 backdrop-blur-sm hover:scale-110 transition-transform">
+                <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
             </div>
-          </div>
 
-          {/* Bottom Overlay - Progress Bar */}
-          <div className="absolute bottom-4 left-4 right-4">
-            <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
-              <div className="h-full w-[40%] rounded-full" style={{ backgroundColor: COLORS.primary }}></div>
+            {/* Top Left Overlay */}
+            <div className="absolute top-4 left-4">
+              {/* Mentor Review Badge */}
+              <div className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20" style={{ borderRadius: '6px' }}>
+                <span className="text-xs text-white font-semibold uppercase tracking-wider">Mentor Review</span>
+              </div>
+            </div>
+
+            {/* Bottom Overlay - Progress Bar */}
+            <div className="absolute bottom-4 left-4 right-4">
+              <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
+                <div className="h-full w-[40%] rounded-full" style={{ backgroundColor: COLORS.primary }}></div>
+              </div>
             </div>
           </div>
         </div>

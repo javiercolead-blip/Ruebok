@@ -55,12 +55,14 @@ const CheckIcon = () => (
 )
 
 const ImagePlaceholder = ({ name }) => (
-  <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center rounded-l-xl overflow-hidden m-4">
-    <div className="text-center p-6">
-      <svg className="w-16 h-16 mx-auto mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-      <span className="text-xs text-gray-500 font-mono">{name}</span>
+  <div className="w-[520px] h-[322px] bg-[#0a0a0a] border border-gray-800 rounded-xl p-4">
+    <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg border border-gray-700 flex items-center justify-center">
+      <div className="text-center p-6">
+        <svg className="w-14 h-14 mx-auto mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span className="text-xs text-gray-500 font-mono">{name}</span>
+      </div>
     </div>
   </div>
 )
@@ -111,10 +113,10 @@ const TabPanel = ({ id, activeTab, title, paragraphs, imageName }) => (
     id={`${id}-panel`}
     role="tabpanel"
     aria-labelledby={`${id}-tab`}
-    className={`transition-all duration-500 ${activeTab === id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 absolute inset-0 pointer-events-none'}`}
+    className={`transition-all duration-700 ease-in-out ${activeTab === id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 absolute inset-0 pointer-events-none'}`}
   >
-    <div className="grid grid-cols-1 lg:grid-cols-5 h-[calc(100vh-220px)]">
-      <div className="lg:col-span-3 flex flex-col justify-start px-8 lg:px-20 pt-8 lg:pt-12 pb-8" style={{ backgroundColor: '#111111' }}>
+    <div className="grid grid-cols-1 lg:grid-cols-2 h-[calc(100vh-220px)]">
+      <div className="flex flex-col justify-start px-8 lg:px-20 pt-8 lg:pt-12 pb-8" style={{ backgroundColor: '#111111' }}>
         <h2 className="text-[28px] md:text-[36px] font-bold text-white leading-tight mb-4 max-w-[550px]" style={{ fontFamily: FONTS.heading }}>
           {title}
         </h2>
@@ -124,7 +126,7 @@ const TabPanel = ({ id, activeTab, title, paragraphs, imageName }) => (
           </p>
         ))}
       </div>
-      <div className="lg:col-span-2 relative hidden lg:block">
+      <div className="hidden lg:flex items-start justify-end pr-[100px] pt-[60px]">
         <ImagePlaceholder name={imageName} />
       </div>
     </div>
