@@ -16,7 +16,7 @@
       --muted: rgba(255, 255, 255, 0.6);
       --line: rgba(255, 255, 255, 0.14);
       --gutter: clamp(20px, 5vw, 64px);
-      --maxw: 1280px;
+      --maxw: 1400px;
       --serif: "Fraunces", Georgia, "Times New Roman", serif;
       --sans: "Inter", system-ui, -apple-system, sans-serif;
     }
@@ -201,13 +201,13 @@
     /* Work rows — video + description side by side */
     .work-row {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.4fr 0.8fr;
       gap: clamp(28px, 5vw, 72px);
       align-items: center;
       padding: clamp(36px, 6vh, 80px) 0;
       border-top: 1px solid var(--line);
     }
-    .work-row.reverse { grid-template-columns: 0.85fr 1.15fr; }
+    .work-row.reverse { grid-template-columns: 0.8fr 1.4fr; }
     .work-row.reverse .work-media { order: 2; }
     .work-row.reverse .work-text { order: 1; }
     .work-row.portrait-row {
