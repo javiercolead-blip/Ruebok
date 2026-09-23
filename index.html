@@ -1,62 +1,589 @@
-<!doctype html>
-<html lang="en" style="background-color: #111111;">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ruebok</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruebok</title>
+  <meta name="description" content="Ruebok — [one-line description of the business goes here]." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Editorial serif display + clean sans for supporting text -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --fg: #ffffff;
+      --muted: rgba(255, 255, 255, 0.6);
+      --line: rgba(255, 255, 255, 0.14);
+      --gutter: clamp(20px, 5vw, 64px);
+      --maxw: 1280px;
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: "Inter", system-ui, -apple-system, sans-serif;
+    }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="Ruebok - Build. Ship. Pitch." />
-    <meta name="description" content="Turn your SaaS idea into a startup in 8 weeks, then pitch it to real investors. Global founders welcome. No equity taken." />
+    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.ruebok.com/" />
-    <meta property="og:title" content="Ruebok - Build. Ship. Pitch." />
-    <meta property="og:description" content="Turn your SaaS idea into a startup in 8 weeks, then pitch it to real investors. Global founders welcome. No equity taken." />
-    <meta property="og:image" content="https://www.ruebok.com/open_tag_two.png" />
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.ruebok.com/" />
-    <meta property="twitter:title" content="Ruebok - Build. Ship. Pitch." />
-    <meta property="twitter:description" content="Turn your SaaS idea into a startup in 8 weeks, then pitch it to real investors. Global founders welcome. No equity taken." />
-    <meta property="twitter:image" content="https://www.ruebok.com/open_tag_two.png" />
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
 
-    <!-- Google Analytics 4 -->
-    <!-- Replace G-XXXXXXXXXX with your actual GA4 Measurement ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
-        // Track referrer and campaign data
-        'send_page_view': true,
-        'campaign_source': new URLSearchParams(window.location.search).get('utm_source'),
-        'campaign_medium': new URLSearchParams(window.location.search).get('utm_medium'),
-        'campaign_name': new URLSearchParams(window.location.search).get('utm_campaign'),
+    /* ---------- Nav ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-cta {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease, opacity 0.4s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .nav-cta.show { opacity: 1; pointer-events: auto; }
+    .nav-cta:hover { background: var(--fg); color: var(--bg); }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding-top: clamp(64px, 12vh, 140px);
+      padding-bottom: clamp(64px, 12vh, 140px);
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(44px, 8.5vw, 128px);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      max-width: 15ch;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .hero-lede {
+      margin-top: 36px;
+      max-width: 52ch;
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .hero-actions {
+      margin-top: 44px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      padding: 15px 28px;
+      border-radius: 999px;
+      transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+      display: inline-block;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--fg); color: var(--bg); }
+    .btn-primary:hover { background: rgba(255, 255, 255, 0.85); }
+    .btn-ghost { color: var(--fg); border: 1px solid var(--line); }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.06); }
+
+    /* ---------- Video section ---------- */
+    .videos {
+      padding-top: clamp(56px, 9vh, 110px);
+      padding-bottom: clamp(56px, 9vh, 110px);
+      border-bottom: 1px solid var(--line);
+    }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(30px, 5vw, 60px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .section-head .section-sub {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Work rows — video + description side by side */
+    .work-row {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+      padding: clamp(36px, 6vh, 80px) 0;
+      border-top: 1px solid var(--line);
+    }
+    .work-row.reverse { grid-template-columns: 0.85fr 1.15fr; }
+    .work-row.reverse .work-media { order: 2; }
+    .work-row.reverse .work-text { order: 1; }
+    .work-row.portrait-row { grid-template-columns: minmax(0, 340px) 1fr; }
+    .work-num {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .work-text h3 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+    .work-text p {
+      margin-top: 18px;
+      max-width: 48ch;
+      color: var(--muted);
+      font-size: clamp(15px, 1.5vw, 17px);
+      line-height: 1.65;
+    }
+    .work-text .work-role {
+      margin-top: 22px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+    @media (max-width: 760px) {
+      .work-row,
+      .work-row.reverse,
+      .work-row.portrait-row {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .work-row.reverse .work-media,
+      .work-row.reverse .work-text { order: initial; }
+      .work-media.portrait-media { max-width: 320px; margin: 0 auto; }
+    }
+
+    /* Video player card */
+    .player {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0a0a0a;
+      aspect-ratio: 16 / 9;
+    }
+    .player.portrait { aspect-ratio: 9 / 16; width: 100%; max-width: 340px; }
+    .player video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .player .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: clamp(18px, 3vw, 32px);
+      gap: 6px;
+      cursor: pointer;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.05) 45%, rgba(0,0,0,0.15) 100%);
+      transition: opacity 0.3s ease;
+    }
+    .player.is-playing .overlay { opacity: 0; pointer-events: none; }
+    .player .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(56px, 7vw, 84px);
+      height: clamp(56px, 7vw, 84px);
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.5);
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+      display: grid;
+      place-items: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .player .overlay:hover .play-btn { background: var(--fg); transform: translate(-50%, -50%) scale(1.05); }
+    .player .play-btn svg { width: 40%; height: 40%; fill: #fff; transition: fill 0.2s ease; margin-left: 8%; }
+    .player .overlay:hover .play-btn svg { fill: #000; }
+    .player .v-title {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.4vw, 26px);
+      font-weight: 400;
+    }
+    .player .v-meta {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Anchor offset for sticky header */
+    #work, #contact { scroll-margin-top: 90px; }
+
+    /* Reveal-on-scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- Booking / book a call ---------- */
+    .booking {
+      text-align: center;
+      padding-top: clamp(72px, 14vh, 160px);
+      padding-bottom: clamp(72px, 14vh, 160px);
+      border-top: 1px solid var(--line);
+    }
+    .booking .eyebrow { margin-bottom: 24px; }
+    .booking h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(34px, 6vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      max-width: 16ch;
+      margin: 0 auto;
+    }
+    .booking .booking-lede {
+      margin: 28px auto 0;
+      max-width: 46ch;
+      color: var(--muted);
+      font-size: clamp(16px, 1.7vw, 19px);
+      line-height: 1.6;
+    }
+    .booking .phone {
+      display: inline-block;
+      margin-top: 40px;
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(30px, 5vw, 56px);
+      letter-spacing: -0.01em;
+      color: var(--fg);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .booking .phone:hover { opacity: 0.7; }
+    .booking .booking-actions {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding-top: 48px;
+      padding-bottom: 48px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">Ruebok</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#journal">Journal</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="nav-cta" href="#contact" id="navCta" data-scroll data-quick>Get in touch</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Ruebok · Video for business</p>
+        <h1>I make videos that <em>capture</em> your business and everything you offer.</h1>
+        <p class="hero-lede">
+          Interviews, property tours, branded skits — I shoot, edit, and finish it all,
+          so your work shows up on screen the way it should. Tell me what you do, and
+          I'll help you put it in front of people.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work" data-scroll>Explore the work</a>
+          <a class="btn btn-ghost" href="#contact" data-scroll data-quick>Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap videos" id="work">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <span class="section-sub">Reel — 2026</span>
+      </div>
+
+      <!-- 01 — REALTOR SHOWING (landscape) -->
+      <div class="work-row">
+        <div class="work-media">
+          <div class="player" data-player>
+            <video
+              preload="metadata"
+              playsinline
+              poster="videos/posters/realtor-showing.jpg"
+              src="videos/realtor-showing.mp4"
+            ></video>
+            <div class="overlay" data-overlay>
+              <div class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="v-title">Realtor showing</div>
+              <div class="v-meta">Real estate — 1:10</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-text">
+          <p class="work-num">01 — Real estate</p>
+          <h3>Realtor showing</h3>
+          <p>A cinematic walkthrough of a staged listing, shot on gimbal to move through the home the way a buyer would. Graded to keep the light warm and the whites clean, then cut to a slow, unhurried rhythm that lets each room breathe.</p>
+          <p class="work-role">Direction · Cinematography · Edit · Color</p>
+        </div>
+      </div>
+
+      <!-- 02 — ALTHRA (landscape) -->
+      <div class="work-row reverse">
+        <div class="work-media">
+          <div class="player" data-player>
+            <video
+              preload="metadata"
+              playsinline
+              poster="videos/posters/althra-skit.jpg"
+              src="videos/althra-skit.mp4"
+            ></video>
+            <div class="overlay" data-overlay>
+              <div class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="v-title">Althra skit</div>
+              <div class="v-meta">Branded — 0:43</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-text">
+          <p class="work-num">02 — Branded comedy</p>
+          <h3>Althra skit</h3>
+          <p>A short comedic skit produced for Althra — written, shot, and edited to land a single idea fast. Lit for a moody office look and paced tight, with captions built in so it plays with the sound off on social.</p>
+          <p class="work-role">Concept · Production · Edit</p>
+        </div>
+      </div>
+
+      <!-- 03 — SHORT-FORM INTERVIEW (vertical) -->
+      <div class="work-row portrait-row">
+        <div class="work-media portrait-media">
+          <div class="player portrait" data-player>
+            <video
+              preload="metadata"
+              playsinline
+              poster="videos/posters/interview.jpg"
+              src="videos/interview.mp4"
+            ></video>
+            <div class="overlay" data-overlay>
+              <div class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+              <div class="v-title">Interview</div>
+              <div class="v-meta">Short form — 0:39</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-text">
+          <p class="work-num">03 — Short form</p>
+          <h3>Vertical interview</h3>
+          <p>A vertical, short-form interview cut for social — trimmed to the strongest soundbites with dynamic captions so it reads with the sound off. Framed full-screen for mobile and paced to hook attention in the first three seconds.</p>
+          <p class="work-role">Interview · Edit · Captions</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap booking reveal" id="contact">
+      <p class="eyebrow">Let's talk</p>
+      <h2>Have something worth capturing?</h2>
+      <p class="booking-lede">
+        Tell me about your business and what you want to show. I'll help you figure
+        out the shots and handle the rest — from filming to the final cut.
+      </p>
+      <a class="phone" href="tel:+17783253958">778-325-3958</a>
+      <div class="booking-actions">
+        <a class="btn btn-primary" href="tel:+17783253958">Book a call</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© 2026 Ruebok. All rights reserved.</span>
+    <span>Built for something new.</span>
+  </footer>
+
+  <script>
+    (function () {
+      const players = document.querySelectorAll('[data-player]');
+
+      players.forEach((player) => {
+        const video = player.querySelector('video');
+        const overlay = player.querySelector('[data-overlay]');
+
+        function play() {
+          // Pause any other playing video first
+          players.forEach((p) => {
+            if (p !== player) {
+              const v = p.querySelector('video');
+              v.pause();
+              p.classList.remove('is-playing');
+              v.controls = false;
+            }
+          });
+          player.classList.add('is-playing');
+          video.controls = true;
+          video.play();
+        }
+
+        overlay.addEventListener('click', play);
+
+        // Show the overlay again when the video ends or is paused via native controls
+        video.addEventListener('ended', () => {
+          player.classList.remove('is-playing');
+          video.controls = false;
+        });
+        video.addEventListener('pause', () => {
+          if (!video.ended && video.currentTime > 0) {
+            // keep controls visible while manually paused, but re-reveal overlay only on end
+          }
+        });
       });
-    </script>
 
-    <style>
-      body {
-        background-color: #111111;
-        margin: 0;
+      /* ---- Smooth scroll for in-page links ---- */
+      const HEADER_OFFSET = 76;
+      function smoothScrollTo(targetY, duration) {
+        const startY = window.scrollY;
+        const diff = targetY - startY;
+        let startTime = null;
+        function step(now) {
+          if (startTime === null) startTime = now;
+          const t = Math.min((now - startTime) / duration, 1);
+          const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; // easeInOutQuad
+          window.scrollTo(0, startY + diff * eased);
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
       }
-      #root {
-        background-color: #111111;
+      document.querySelectorAll('[data-scroll]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const id = link.getAttribute('href');
+          if (!id || !id.startsWith('#')) return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          const y = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+          const duration = link.hasAttribute('data-quick') ? 450 : 750;
+          smoothScrollTo(y, duration);
+        });
+      });
+
+      /* ---- Nav "Get in touch" fades in once the hero button scrolls away ---- */
+      const navCta = document.getElementById('navCta');
+      const heroActions = document.querySelector('.hero-actions');
+      if (navCta && heroActions && 'IntersectionObserver' in window) {
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            navCta.classList.toggle('show', !entry.isIntersecting);
+          });
+        }, { rootMargin: '-40px 0px 0px 0px' });
+        navObserver.observe(heroActions);
       }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+      /* ---- Reveal-on-scroll (book a call, etc.) ---- */
+      const revealEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        revealEls.forEach((el) => revealObserver.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('in'));
+      }
+    })();
+  </script>
+</body>
 </html>

@@ -1,16 +1,22 @@
-# React + Vite
+# Ruebok
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Static one-page site for Ruebok — video production for business.
 
-Currently, two official plugins are available:
+Plain HTML/CSS/JS, no build step. Deployed on Vercel (`vercel.json` serves the
+repo root directly).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Structure
 
-## React Compiler
+- `index.html` — the entire site (styles and script are inline)
+- `videos/` — web-optimized 1080p clips + `posters/` still frames
+- `vercel.json` — static hosting config (no build)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Local preview
 
-## Expanding the ESLint configuration
+Any static file server works, e.g.:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+python3 -m http.server 8123
+```
+
+Then open http://localhost:8123
