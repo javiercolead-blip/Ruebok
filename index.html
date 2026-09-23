@@ -213,6 +213,7 @@
       grid-template-columns: 280px minmax(auto, 440px);
       justify-content: center;
       gap: clamp(28px, 5vw, 60px);
+      padding-left: clamp(0px, 10vw, 200px);
     }
     .work-num {
       font-size: 12px;
@@ -249,6 +250,7 @@
         grid-template-columns: 1fr;
         gap: 24px;
       }
+      .work-row.portrait-row { padding-left: 0; }
       .work-row.reverse .work-media,
       .work-row.reverse .work-text { order: initial; }
       .work-media.portrait-media { max-width: 280px; margin: 0 auto; }
@@ -359,15 +361,14 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-items: flex-end;
+      align-items: flex-start;
       gap: clamp(28px, 4vh, 48px);
-      padding-right: clamp(20px, 6vw, 120px);
     }
     .contact-item {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      text-align: right;
+      align-items: flex-start;
+      text-align: left;
       gap: 8px;
     }
     .contact-label {
