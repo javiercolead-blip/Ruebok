@@ -359,11 +359,15 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      align-items: flex-end;
       gap: clamp(28px, 4vh, 48px);
+      padding-right: clamp(20px, 6vw, 120px);
     }
     .contact-item {
       display: flex;
       flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
       gap: 8px;
     }
     .contact-label {
@@ -390,6 +394,11 @@
       }
       .booking-left { padding-left: 0; }
       .booking-left .booking-lede { margin-top: 24px; padding-top: 0; }
+      .booking-right {
+        align-items: flex-start;
+        padding-right: 0;
+      }
+      .contact-item { align-items: flex-start; text-align: left; }
     }
 
     /* ---------- Footer ---------- */
