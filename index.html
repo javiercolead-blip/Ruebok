@@ -101,6 +101,27 @@
       padding-bottom: clamp(48px, 9vh, 104px);
       border-bottom: 1px solid var(--line);
     }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(24px, 5vw, 72px);
+      align-items: center;
+    }
+    .hero-media {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .hero-media img {
+      display: block;
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+    }
+    @media (max-width: 860px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-media { justify-content: center; margin-top: 8px; }
+      .hero-media img { max-width: 320px; }
+    }
     .eyebrow {
       font-size: 12px;
       letter-spacing: 0.22em;
@@ -379,17 +400,22 @@
 
   <main>
     <section class="hero">
-      <div class="wrap">
-        <p class="eyebrow">Ruebok · Video for business</p>
-        <h1>I make videos that <em>capture</em> your business and everything you offer.</h1>
-        <p class="hero-lede">
-          Interviews, property tours, branded skits — I shoot, edit, and finish it all,
-          so your work shows up on screen the way it should. Tell me what you do, and
-          I'll help you put it in front of people.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#work" data-scroll>Explore the work</a>
-          <a class="btn btn-ghost" href="#contact" data-scroll data-quick>Get in touch</a>
+      <div class="wrap hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">Ruebok · Video for business</p>
+          <h1>I make videos that <em>capture</em> your business and everything you offer.</h1>
+          <p class="hero-lede">
+            Interviews, property tours, branded skits — I shoot, edit, and finish it all,
+            so your work shows up on screen the way it should. Tell me what you do, and
+            I'll help you put it in front of people.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work" data-scroll>Explore the work</a>
+            <a class="btn btn-ghost" href="#contact" data-scroll data-quick>Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="images/photographer.png" alt="Single-line drawing of a photographer holding a camera" />
         </div>
       </div>
     </section>
