@@ -406,12 +406,14 @@
     .closing-art {
       display: flex;
       justify-content: center;
-      padding-bottom: clamp(40px, 7vh, 88px);
+      align-items: flex-start;
+      overflow: hidden;
+      height: clamp(104px, 15vh, 124px);
     }
     .closing-art img {
       display: block;
       width: 100%;
-      max-width: 340px;
+      max-width: 230px;
       height: auto;
     }
 
@@ -557,16 +559,16 @@
         </div>
       </div>
     </section>
-
-    <div class="wrap closing-art">
-      <img src="images/paper-plane.png" alt="Single-line drawing of a paper airplane" />
-    </div>
   </main>
 
   <footer class="wrap">
     <span>© 2026 Ruebok. All rights reserved.</span>
     <span>Built for something new.</span>
   </footer>
+
+  <div class="closing-art">
+    <img src="images/paper-plane.png" alt="Single-line drawing of a paper airplane" />
+  </div>
 
   <script>
     (function () {
