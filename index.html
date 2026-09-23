@@ -97,8 +97,8 @@
 
     /* ---------- Hero ---------- */
     .hero {
-      padding-top: clamp(64px, 12vh, 140px);
-      padding-bottom: clamp(64px, 12vh, 140px);
+      padding-top: clamp(48px, 9vh, 104px);
+      padding-bottom: clamp(48px, 9vh, 104px);
       border-bottom: 1px solid var(--line);
     }
     .eyebrow {
@@ -111,10 +111,10 @@
     .hero h1 {
       font-family: var(--serif);
       font-weight: 300;
-      font-size: clamp(44px, 8.5vw, 128px);
-      line-height: 0.98;
+      font-size: clamp(34px, 5.4vw, 78px);
+      line-height: 1.02;
       letter-spacing: -0.02em;
-      max-width: 15ch;
+      max-width: 17ch;
     }
     .hero h1 em {
       font-style: italic;
@@ -188,7 +188,11 @@
     .work-row.reverse { grid-template-columns: 0.85fr 1.15fr; }
     .work-row.reverse .work-media { order: 2; }
     .work-row.reverse .work-text { order: 1; }
-    .work-row.portrait-row { grid-template-columns: minmax(0, 340px) 1fr; }
+    .work-row.portrait-row {
+      grid-template-columns: 280px minmax(auto, 440px);
+      justify-content: center;
+      gap: clamp(28px, 5vw, 60px);
+    }
     .work-num {
       font-size: 12px;
       letter-spacing: 0.18em;
@@ -226,7 +230,7 @@
       }
       .work-row.reverse .work-media,
       .work-row.reverse .work-text { order: initial; }
-      .work-media.portrait-media { max-width: 320px; margin: 0 auto; }
+      .work-media.portrait-media { max-width: 280px; margin: 0 auto; }
     }
 
     /* Video player card */
@@ -238,7 +242,7 @@
       background: #0a0a0a;
       aspect-ratio: 16 / 9;
     }
-    .player.portrait { aspect-ratio: 9 / 16; width: 100%; max-width: 340px; }
+    .player.portrait { aspect-ratio: 9 / 16; width: 100%; max-width: 280px; }
     .player video {
       width: 100%;
       height: 100%;
