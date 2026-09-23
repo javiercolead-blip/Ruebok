@@ -337,6 +337,7 @@
     .booking-left {
       display: flex;
       flex-direction: column;
+      padding-left: clamp(20px, 6vw, 120px);
     }
     .booking .eyebrow { margin-bottom: 24px; }
     .booking h2 {
@@ -386,8 +387,8 @@
       .booking {
         grid-template-columns: 1fr;
         gap: 40px;
-        min-height: 0;
       }
+      .booking-left { padding-left: 0; }
       .booking-left .booking-lede { margin-top: 24px; padding-top: 0; }
     }
 
