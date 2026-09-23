@@ -99,7 +99,6 @@
     .hero {
       padding-top: clamp(48px, 9vh, 104px);
       padding-bottom: clamp(48px, 9vh, 104px);
-      border-bottom: 1px solid var(--line);
     }
     .hero-inner {
       display: grid;
@@ -181,7 +180,7 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 44px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
     }
     .section-head h2 {
@@ -208,6 +207,7 @@
       border-top: 1px solid var(--line);
     }
     .work-row.reverse { grid-template-columns: 0.8fr 1.4fr; }
+    .work-row:first-of-type { padding-top: clamp(18px, 3vh, 32px); }
     .work-row.reverse .work-media { order: 2; }
     .work-row.reverse .work-text { order: 1; }
     .work-row.portrait-row {
