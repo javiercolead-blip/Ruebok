@@ -402,29 +402,57 @@
       .contact-item { align-items: flex-start; text-align: left; }
     }
 
-    /* ---------- Closing art ---------- */
-    .closing-art {
-      display: flex;
-      justify-content: center;
-      padding-bottom: clamp(40px, 7vh, 80px);
+    /* ---------- Closing (plane + footer) ---------- */
+    .site-bottom {
+      position: relative;
+      overflow: hidden;
+      height: clamp(146px, 19vh, 176px);
+      margin-bottom: clamp(24px, 5vh, 56px);
     }
-    .closing-art img {
-      display: block;
+    .closing-plane {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -28px;
       width: 100%;
-      max-width: 280px;
+      max-width: 250px;
       height: auto;
+      pointer-events: none;
     }
-
-    /* ---------- Footer ---------- */
-    footer {
-      padding-top: 48px;
-      padding-bottom: 48px;
-      color: var(--muted);
-      font-size: 13px;
+    .footer-row {
+      position: absolute;
+      bottom: clamp(12px, 2.4vh, 20px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: var(--maxw);
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 760px) {
+      .site-bottom {
+        height: auto;
+        overflow: visible;
+        padding-bottom: 24px;
+      }
+      .closing-plane {
+        position: static;
+        transform: none;
+        display: block;
+        margin: 0 auto;
+        max-width: 200px;
+      }
+      .footer-row {
+        position: static;
+        transform: none;
+        margin: 16px auto 0;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -558,15 +586,15 @@
       </div>
     </section>
 
-    <div class="wrap closing-art">
-      <img src="images/paper-plane.png" alt="Single-line drawing of a paper airplane" />
-    </div>
   </main>
 
-  <footer class="wrap">
-    <span>© 2026 Ruebok. All rights reserved.</span>
-    <span>Built for something new.</span>
-  </footer>
+  <div class="site-bottom">
+    <img class="closing-plane" src="images/paper-plane.png" alt="Single-line drawing of a paper airplane" />
+    <div class="wrap footer-row">
+      <span>© 2026 Ruebok. All rights reserved.</span>
+      <span>Built for something new.</span>
+    </div>
+  </div>
 
   <script>
     (function () {
